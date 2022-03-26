@@ -7,13 +7,12 @@ export const login = () => {
   const loginDiv = document.createElement('div');
   loginDiv.textContent = 'Bienvenida al Login';
   const btnLogOut = document.createElement('button');
-  btnLogOut.className = 'btnStyle';
+  btnLogOut.setAttribute('class', 'btnStyle');
   const msgVerified = document.createElement('div');
 
   btnLogOut.textContent = 'Cerrar Sesión';
   btnLogOut.addEventListener('click', () => {
     logOut();
-    onNavigate('/');
   });
 
   loginDiv.appendChild(btnLogOut);

@@ -1,36 +1,40 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { loginWithEmail, emailAuthState, registerWithGoogle  } from './auth.js';
+import { loginWithEmail, emailAuthState, registerWithGoogle } from './auth.js';
 
 export const home = () => {
   const homeDiv = document.createElement('div');
   homeDiv.className = 'divHome';
   const logoImg = document.createElement('IMG');
-  logoImg.src = './Image/webLogo.png';
-  logoImg.className = 'logoImg';
+  logoImg.setAttribute('src', './Image/webLogo.png');
+  logoImg.setAttribute('class', 'logoImg');
   const loginEmail = document.createElement('input');
   loginEmail.type = 'email';
   loginEmail.placeholder = 'E-mail';
-  loginEmail.id = 'loginEmail';
+  loginEmail.setAttribute('id', 'loginEmail');
   loginEmail.className = 'inputStyle';
+  // loginEmail.setAttribute('required');
   const loginPass = document.createElement('input');
   loginPass.type = 'password';
   loginPass.placeholder = 'Contraseña';
-  loginPass.id = 'loginPass';
-  loginPass.className = 'inputStyle';
+  loginPass.setAttribute('id', 'loginPass');
+  loginPass.setAttribute('class', 'inputStyle');
+  loginPass.setAttribute('min', '6');
+  // loginPass.setAttribute('required');
   const btnLogin = document.createElement('button');
-  btnLogin.id = 'login';
-  btnLogin.className = 'btnStyle';
+  btnLogin.setAttribute('id', 'login');
+  btnLogin.setAttribute('class', 'btnStyle');
   const btnRegister = document.createElement('button');
-  btnRegister.className = 'btnStyleText';
+  btnRegister.setAttribute('class', 'btnStyleText');
   const btnGoogleLogin = document.createElement('button');
-  btnGoogleLogin.className = 'btnGoogle';
+  btnGoogleLogin.setAttribute('class', 'btnGoogle');
   const loginDiv = document.createElement('div');
-  loginDiv.id = 'loginDiv';
+  loginDiv.setAttribute('id', 'loginDiv');
   const img = document.createElement('IMG');
-  img.src = './Image/img.svg';
-  img.className = 'imgHome';
+  img.setAttribute('src', './Image/img.svg');
+  img.setAttribute('class', 'imgHome');
+
   // const imgGoogle = document.createElement('IMG');
   // imgGoogle.textContent = `<i class="fa-brands fa-google"></i>`;
   // imgGoogle.className = 'imgGoogle';
@@ -41,9 +45,8 @@ export const home = () => {
 
   btnRegister.addEventListener('click', () => onNavigate('/register'));
   btnLogin.addEventListener('click', () => {
-    emailAuthState();
     loginWithEmail(loginEmail.value, loginPass.value);
-    onNavigate('/login');
+    emailAuthState();
   });
   btnGoogleLogin.addEventListener('click', () => {
     registerWithGoogle();

@@ -9,16 +9,27 @@ import {
   sendEmailVerification,
   onAuthStateChanged,
   signOut,
-// eslint-disable-next-line import/no-unresolved
-} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+  // eslint-disable-next-line import/no-unresolved
+} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
 // eslint-disable-next-line import/no-cycle
-import { onNavigate } from '../main.js';
+import { onNavigate } from "../main.js";
 
 const auth = getAuth();
 export const registerWithEmail = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      if (user) {
+        const uid = user.uid;
+        sendEmailVerification(auth.currentUser).then(() => {
+          // Email verification sent!
+          // ...
+        });
+        onNavigate("/");
+      } else {
+        console.log("no existe");
+        onNavigate("/");
+      }
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -56,20 +67,15 @@ export const loginWithEmail = (email, password) => {
     });
 };
 
-export const check = () => {
-  sendEmailVerification(auth.currentUser).then(() => {
-  });
-};
-
 export const emailAuthState = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
       console.log(user);
-      onNavigate('/login');
+      onNavigate("/login");
     } else {
-      console.log('no existe');
-      onNavigate('/');
+      console.log("no existe");
+      onNavigate("/");
     }
   });
 };
@@ -77,9 +83,11 @@ export const emailAuthState = () => {
 export const logOut = () => {
   signOut(auth)
     .then(() => {
-      console.log('Salir');
+      console.log("Salir");
+      onNavigate("/");
     })
     .catch((error) => {
       console.log(error);
+
     });
 };

@@ -2,32 +2,39 @@
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import {
-  registerWithEmail, registerWithGoogle, check, emailAuthState,
+  registerWithEmail, registerWithGoogle, emailAuthState,
 } from './auth.js';
 
 export const register = () => {
   const registerDiv = document.createElement('div');
-  registerDiv.className = 'divRegister';
+  registerDiv.setAttribute('class', 'divRegister');
   const logoImgRegister = document.createElement('IMG');
-  logoImgRegister.src = './Image/webLogo.png';
-  logoImgRegister.className = 'logoImg';
+  logoImgRegister.setAttribute('src', './Image/webLogo.png');
+  logoImgRegister.setAttribute('class', 'logoImg');
   const inputEmail = document.createElement('input');
-  inputEmail.type = 'email';
-  inputEmail.placeholder = 'E-mail';
-  inputEmail.className = 'inputStyle';
+  const inputUserId = document.createElement('input');
+  inputUserId.setAttribute('type', 'text');
+  inputUserId.setAttribute('placeholder', 'Nombre de Usuario');
+  inputUserId.setAttribute('class', 'inputStyle');
+  inputEmail.setAttribute('type', 'email');
+  inputEmail.setAttribute('placeholder', 'E-mail');
+  // inputEmail.setAttribute('required');
+  inputEmail.setAttribute('class', 'inputStyle');
   const inputPass = document.createElement('input');
-  inputPass.type = 'password';
-  inputPass.placeholder = 'Contraseña';
-  inputPass.className = 'inputStyle';
+  inputPass.setAttribute('type', 'password');
+  inputPass.setAttribute('placeholder', 'Contraseña');
+  inputPass.setAttribute('class', 'inputStyle');
+  inputPass.setAttribute('min', '6');
+  // inputPass.setAttribute('required');
   const btnLogin = document.createElement('button');
-  btnLogin.className = 'btnStyleText';
+  btnLogin.setAttribute('class', 'btnStyleText');
   const btnRegisterUser = document.createElement('button');
-  btnRegisterUser.className = 'btnStyle';
+  btnRegisterUser.setAttribute('class', 'btnStyle');
   const btnGoogleRegister = document.createElement('button');
-  btnGoogleRegister.className = 'btnGoogle';
+  btnGoogleRegister.setAttribute('class', 'btnGoogle');
   const imgRegister = document.createElement('IMG');
-  imgRegister.src = './Image/img2.svg';
-  imgRegister.className = 'imgRegister';
+  imgRegister.setAttribute('src', './Image/img2.svg');
+  imgRegister.setAttribute('class', 'imgRegister');
 
   btnGoogleRegister.textContent = 'Registrarme con Google';
   btnRegisterUser.textContent = 'Registrarme';
@@ -36,7 +43,7 @@ export const register = () => {
   btnLogin.addEventListener('click', () => onNavigate('/'));
   btnRegisterUser.addEventListener('click', () => {
     registerWithEmail(inputEmail.value, inputPass.value);
-    check();
+    // check();
     emailAuthState();
   });
   btnGoogleRegister.addEventListener('click', () => {
@@ -45,6 +52,7 @@ export const register = () => {
   });
 
   registerDiv.appendChild(logoImgRegister);
+  // registerDiv.appendChild(inputUserId);
   registerDiv.appendChild(inputEmail);
   registerDiv.appendChild(inputPass);
   registerDiv.appendChild(btnRegisterUser);
