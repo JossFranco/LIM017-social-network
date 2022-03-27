@@ -17,10 +17,6 @@
     flex-direction: column;
     align-items: center ;
 }
-/* 
-.inputStyleError:active{
-    border: 1px solid red;
-} */
 
 .inputStyle{
     border: 1px solid #f0e6ff;
@@ -31,6 +27,7 @@
     margin: 2%;
     text-align: center;
     box-shadow: 0px 0px 1px rgba(204, 204, 204, 0.712);
+    font-size: 1em;
     
 }
 
@@ -41,6 +38,7 @@
     height: 2em;
     margin: 2%;
     text-align: center;
+    font-size: 1em;
     color: #ffffff;
     font-weight: bold;
     border: none; 
@@ -50,10 +48,6 @@
     cursor: pointer;
 
 }
-
-/* .btnStyle:active{
-    transform: scale(1.05);
-} */
 
 .btnStyle:hover{
     box-shadow: 3px 0 30px rgba(163, 163, 163, 1);
@@ -65,6 +59,7 @@
     height: 2em;
     margin: 2%;
     text-align: center;
+    font-size: 1em;
     color: #000000;
     font-weight: bold;
     border: 1px solid #f0e6ff;
@@ -75,6 +70,7 @@
 }
 
 .btnStyleText {
+    font-size: 1em;
     border: none;
     background: #ffffff;
     margin: 3% 0 5% 0;
@@ -100,12 +96,51 @@ img{
     width: 50%;
     margin-top: 20%;
 }
-/* .imgGoogle{
-    width: 1.5%;
-    object-fit: contain;
-    position: absolute;
-    right: 34%;
+.containerRegister,
+.containerInformation{
+    width: 70%;
+    max-width: 70%;
+    border: 1px solid  #ff5050;
+    padding: 0;
+    display:  none;
+}
+.containerInformation,
+.containerRegister,
+.information{
+    background:  #ffe6e6;
+    margin: 2%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-size: bold;
+    text-align: center;
+    padding: 0.5em;
+    position: relative;
+}
+/* .informationNone{
+    display: none;
 } */
+.containerRegister{
+    border: 1px solid  #00cc99;
+}
+.informationRegister {
+    background:  #e6fff9 ;
+}
+.xCloseGreen,
+.xClose {
+    font-size: 0.8em;
+    color:#000000;
+    border: none;
+    width: 10%;
+    height: 80%;
+    background: #ff5050;
+}
+.xCloseGreen{
+    background: #00cc99;
+}
+.containerRegister{
+    background:  #e6fff9 ;
+}
 
 @media (min-width: 760px){ 
     .root{

@@ -18,14 +18,12 @@ export const register = () => {
   inputUserId.setAttribute('class', 'inputStyle');
   inputEmail.setAttribute('type', 'email');
   inputEmail.setAttribute('placeholder', 'E-mail');
-  // inputEmail.setAttribute('required');
   inputEmail.setAttribute('class', 'inputStyle');
   const inputPass = document.createElement('input');
   inputPass.setAttribute('type', 'password');
   inputPass.setAttribute('placeholder', 'Contraseña');
   inputPass.setAttribute('class', 'inputStyle');
   inputPass.setAttribute('min', '6');
-  // inputPass.setAttribute('required');
   const btnLogin = document.createElement('button');
   btnLogin.setAttribute('class', 'btnStyleText');
   const btnRegisterUser = document.createElement('button');
@@ -35,24 +33,34 @@ export const register = () => {
   const imgRegister = document.createElement('IMG');
   imgRegister.setAttribute('src', './Image/img2.svg');
   imgRegister.setAttribute('class', 'imgRegister');
+  const containerRegisterDiv = document.createElement('div');
+  containerRegisterDiv.setAttribute('id', 'containerRegister');
+  containerRegisterDiv.setAttribute('class', 'containerRegister');
+  const informationRegisterDiv = document.createElement('div');
+  informationRegisterDiv.setAttribute('id', 'informationRegister');
+  informationRegisterDiv.setAttribute('class', 'information informationRegister');
+  const btnCloseGreen = document.createElement('button');
+  btnCloseGreen.setAttribute('class', 'xCloseGreen');
 
   btnGoogleRegister.textContent = 'Registrarme con Google';
   btnRegisterUser.textContent = 'Registrarme';
   btnLogin.textContent = '¿Ya tienes una cuenta? Iniciar Sesión';
+  btnCloseGreen.textContent = 'X';
 
   btnLogin.addEventListener('click', () => onNavigate('/'));
   btnRegisterUser.addEventListener('click', () => {
     registerWithEmail(inputEmail.value, inputPass.value);
-    // check();
-    emailAuthState();
   });
   btnGoogleRegister.addEventListener('click', () => {
     registerWithGoogle();
     emailAuthState();
   });
+  btnCloseGreen.addEventListener('click', () => onNavigate('/register'));
 
   registerDiv.appendChild(logoImgRegister);
-  // registerDiv.appendChild(inputUserId);
+  registerDiv.appendChild(containerRegisterDiv);
+  containerRegisterDiv.appendChild(btnCloseGreen);
+  containerRegisterDiv.appendChild(informationRegisterDiv);
   registerDiv.appendChild(inputEmail);
   registerDiv.appendChild(inputPass);
   registerDiv.appendChild(btnRegisterUser);

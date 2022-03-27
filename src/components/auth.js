@@ -15,27 +15,21 @@ import {
 import { onNavigate } from "../main.js";
 
 const auth = getAuth();
-export const registerWithEmail = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      if (user) {
-        const uid = user.uid;
-        sendEmailVerification(auth.currentUser).then(() => {
-          // Email verification sent!
-          // ...
-        });
-        onNavigate("/");
-      } else {
-        console.log("no existe");
-        onNavigate("/");
-      }
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-    });
+export const registerWithEmail = async function (email, password) {
+  try {
+    const res2 = await createUserWithEmailAndPassword(auth, email, password);
+    console.log(res2);
+    const res1 = await sendEmailVerification(auth.currentUser);
+    console.log(res1);
+    const res3 = await onNavigate("/register");
+    console.log(res3);
+    document.getElementById('containerRegister').style.display = 'block';
+    document.getElementById('informationRegister').textContent = 'Verifique su correo  e inicia sesión';
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage);
+  }
 };
 
 const provider = new GoogleAuthProvider();
@@ -59,22 +53,35 @@ export const loginWithEmail = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      if (user.emailVerified === false) {
+        document.getElementById('containerRegister').style.display = 'block';
+        document.getElementById('informationRegister').textContent = 'Tu cuenta no ha sido verificada';
+      }
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      if (error.message === 'Firebase: Error (auth/wrong-password).') {
+        document.getElementById('containerInformation').style.display = 'block';
+        document.getElementById('information').textContent = 'Contraseña invalida';
+        loginPass.style.borderColor = '#ff5050';
+      } else {
+        document.getElementById('containerInformation').style.display = 'block';
+        document.getElementById('information').textContent = 'Tu cuenta no existe';
+        loginEmail.style.borderColor = '#ff5050';
+      }
       console.log(errorMessage);
     });
 };
 
 export const emailAuthState = () => {
   onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
+    if (user.emailVerified === true) {
+      // const uid = user.uid;
       console.log(user);
-      onNavigate("/login");
+      // console.log(user.emailVerified);
+      onNavigate("/home");
     } else {
-      console.log("no existe");
       onNavigate("/");
     }
   });
@@ -88,6 +95,5 @@ export const logOut = () => {
     })
     .catch((error) => {
       console.log(error);
-
     });
 };
