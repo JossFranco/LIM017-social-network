@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { loginWithEmail, emailAuthState, registerWithGoogle } from './auth.js';
+import { loginWithEmail, registerWithGoogle } from '../firebase/auth.js';
 
 export const home = () => {
   const homeDiv = document.createElement('div');
@@ -32,38 +32,28 @@ export const home = () => {
   const img = document.createElement('IMG');
   img.setAttribute('src', './Image/img.svg');
   img.setAttribute('class', 'imgHome');
-  const containerInformation = document.createElement('div');
-  containerInformation.setAttribute('id', 'containerInformation');
-  containerInformation.setAttribute('class', 'containerInformation');
   const informationDiv = document.createElement('div');
   informationDiv.setAttribute('id', 'information');
   informationDiv.setAttribute('class', 'information informationNone');
-  const btnClose = document.createElement('button');
-  btnClose.setAttribute('class', 'xClose');
-  btnClose.setAttribute('id', 'xClose');
 
   btnGoogleLogin.textContent = 'Iniciar Sesión con Google';
   btnRegister.textContent = '¿No tienes una cuenta? Regístrate';
   btnLogin.textContent = 'Iniciar Sesión';
-  btnClose.textContent = 'X';
 
   btnRegister.addEventListener('click', () => onNavigate('/register'));
   btnLogin.addEventListener('click', () => {
     loginWithEmail(loginEmail.value, loginPass.value);
-    emailAuthState();
+    // emailAuthState();
   });
   btnGoogleLogin.addEventListener('click', () => {
     registerWithGoogle();
     emailAuthState();
   });
-  btnClose.addEventListener('click', () => onNavigate('/'));
 
   homeDiv.appendChild(logoImg);
   homeDiv.appendChild(loginEmail);
   homeDiv.appendChild(loginPass);
-  homeDiv.appendChild(containerInformation);
-  containerInformation.appendChild(btnClose);
-  containerInformation.appendChild(informationDiv);
+  homeDiv.appendChild(informationDiv);
   homeDiv.appendChild(btnLogin);
   homeDiv.appendChild(btnGoogleLogin);
   homeDiv.appendChild(btnRegister);

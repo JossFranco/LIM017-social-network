@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { logOut } from './auth.js';
+import { logOut } from '../firebase/auth.js';;
 
 export const login = () => {
   const loginDiv = document.createElement('div');

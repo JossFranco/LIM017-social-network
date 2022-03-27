@@ -2,8 +2,8 @@
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import {
-  registerWithEmail, registerWithGoogle, emailAuthState,
-} from './auth.js';
+  registerWithEmail, registerWithGoogle,
+} from '../firebase/auth.js';;
 
 export const register = () => {
   const registerDiv = document.createElement('div');
@@ -33,19 +33,13 @@ export const register = () => {
   const imgRegister = document.createElement('IMG');
   imgRegister.setAttribute('src', './Image/img2.svg');
   imgRegister.setAttribute('class', 'imgRegister');
-  const containerRegisterDiv = document.createElement('div');
-  containerRegisterDiv.setAttribute('id', 'containerRegister');
-  containerRegisterDiv.setAttribute('class', 'containerRegister');
   const informationRegisterDiv = document.createElement('div');
   informationRegisterDiv.setAttribute('id', 'informationRegister');
   informationRegisterDiv.setAttribute('class', 'information informationRegister');
-  const btnCloseGreen = document.createElement('button');
-  btnCloseGreen.setAttribute('class', 'xCloseGreen');
 
   btnGoogleRegister.textContent = 'Registrarme con Google';
   btnRegisterUser.textContent = 'Registrarme';
   btnLogin.textContent = '¿Ya tienes una cuenta? Iniciar Sesión';
-  btnCloseGreen.textContent = 'X';
 
   btnLogin.addEventListener('click', () => onNavigate('/'));
   btnRegisterUser.addEventListener('click', () => {
@@ -53,14 +47,10 @@ export const register = () => {
   });
   btnGoogleRegister.addEventListener('click', () => {
     registerWithGoogle();
-    emailAuthState();
   });
-  btnCloseGreen.addEventListener('click', () => onNavigate('/register'));
 
   registerDiv.appendChild(logoImgRegister);
-  registerDiv.appendChild(containerRegisterDiv);
-  containerRegisterDiv.appendChild(btnCloseGreen);
-  containerRegisterDiv.appendChild(informationRegisterDiv);
+  registerDiv.appendChild(informationRegisterDiv);
   registerDiv.appendChild(inputEmail);
   registerDiv.appendChild(inputPass);
   registerDiv.appendChild(btnRegisterUser);
