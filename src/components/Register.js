@@ -43,7 +43,7 @@ export const register = () => {
 
   btnLogin.addEventListener('click', () => onNavigate('/'));
   btnRegisterUser.addEventListener('click', () => {
-    registerWithEmail(inputEmail.value, inputPass.value);
+    registerWithEmail(inputEmail.value, inputPass.value, inputUserId.value);
   });
   btnGoogleRegister.addEventListener('click', () => {
     registerWithGoogle();
@@ -51,6 +51,7 @@ export const register = () => {
 
   registerDiv.appendChild(logoImgRegister);
   registerDiv.appendChild(informationRegisterDiv);
+  registerDiv.appendChild(inputUserId);
   registerDiv.appendChild(inputEmail);
   registerDiv.appendChild(inputPass);
   registerDiv.appendChild(btnRegisterUser);

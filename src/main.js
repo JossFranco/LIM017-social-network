@@ -1,17 +1,17 @@
 import './config/firebase.config.js';
 // eslint-disable-next-line import/no-cycle
-import { home } from './components/Home.js';
+import { login } from './components/Login.js';
 // eslint-disable-next-line import/no-cycle
 import { register } from './components/Register.js';
 // eslint-disable-next-line import/no-cycle
-import { login } from './components/Login.js';
+import { home } from './components/Home.js';
 
 const rootDiv = document.getElementById('root');
 
 const routes = {
-  '/': home,
+  '/': login,
   '/register': register,
-  '/home': login,
+  '/home': home,
 };
 export const onNavigate = (pathname) => {
   window.history.pushState({}, pathname, window.location.origin + pathname);
