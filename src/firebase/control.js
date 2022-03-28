@@ -9,7 +9,7 @@ import {
   sendEmailVerification,
   onAuthStateChanged,
   signOut,
-} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 
 const auth = getAuth();
 

@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { logOut } from '../firebase/auth.js';import { login } from './Login.js';
-import { publication } from "../firebase/firestore.js";
+import { logOut } from '../firebase/auth.js';
+import { publication, getPublication, } from '../firebase/firestore.js';
 
 export const home = () => {
   const loginDiv = document.createElement('div');
@@ -20,7 +20,8 @@ export const home = () => {
   publicationText.setAttribute('id', 'publicationText');
   const btnSave = document.createElement('button');
   btnSave.setAttribute('id', 'btnSave');
-
+  const containerPublication = document.createElement('div');
+  containerPublication.setAttribute('class', 'containerPublication');
 
   btnLogOut.textContent = 'Cerrar Sesión';
   btnSave.textContent = 'Guardar';
@@ -30,16 +31,10 @@ export const home = () => {
   });
 
 
-
-window.addEventListener('DOMContentLoaded', () => {
-});
-
-formPublication.addEventListener('submit', (e) => {
+  formPublication.addEventListener('submit', (e) => {
     e.preventDefault()
     publication( publicationTitle.value, publicationText.value); 
 });
-
-
 
   loginDiv.appendChild(btnLogOut);
   loginDiv.appendChild(msgVerified);
@@ -47,7 +42,12 @@ formPublication.addEventListener('submit', (e) => {
   formPublication.appendChild(publicationTitle);
   formPublication.appendChild(publicationText);
   formPublication.appendChild(btnSave);
+  loginDiv.appendChild(containerPublication);
 
 
   return loginDiv;
-};
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  getPublication();
+  });

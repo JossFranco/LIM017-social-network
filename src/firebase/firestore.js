@@ -2,14 +2,21 @@ import {
     getFirestore,
     collection,
     addDoc,  
-} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js";
+    getDocs,
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
   const db = getFirestore();
 
-  export const publication = (title, text) => 
-    addDoc(collection(db, "tasks"), { title, text });
-    //   console.log("Document written with ID: ", docRef.id);
-    // } catch (e) {
-    //   console.error("Error adding document: ", e);
-    // }
-  
+  export const publication =  async (title, text) => 
+    await addDoc(collection(db, 'posts'), { title, text });
+    
+  export const getPublication = () => {
+    let postsCollection =[];
+    const getPostsCollection =  getDocs(collection(db, 'posts'));
+    getPostsCollection.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    postsCollection.push({ id: doc.id, ...doc.data()});
+    console.log(doc.data().title, doc.data().text);
+    });
+      return postsCollection
+    }
