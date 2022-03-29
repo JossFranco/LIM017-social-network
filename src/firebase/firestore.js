@@ -12,12 +12,12 @@ export const publication =  async (title, text) => {
 }
     
 export const getPublication = async () => {
-  // let postsCollection =[];
+  let postsCollection =[];
   const getPostsCollection =  await getDocs(collection(db, 'posts'));
   getPostsCollection.forEach((doc) => {
   // // doc.data() is never undefined for query doc snapshots
-  // postsCollection.push({ id: doc.id, ...doc.data()});
+  postsCollection.push({ id: doc.id, ...doc.data()});
   console.log(doc.id, doc.data());
   });
-    return getPostsCollection
+    return postsCollection 
 }

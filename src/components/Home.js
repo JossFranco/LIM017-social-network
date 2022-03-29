@@ -22,6 +22,10 @@ export const home = () => {
   btnSave.setAttribute('id', 'btnSave');
   const containerPublication = document.createElement('div');
   containerPublication.setAttribute('class', 'containerPublication');
+  const containerPublicationP = document.createElement('div');
+  containerPublicationP.setAttribute('class', 'containerPublicationP');
+  const containerPublicationD = document.createElement('div');
+  containerPublicationD.setAttribute('class', 'containerPublicationD');
 
   btnLogOut.textContent = 'Cerrar Sesión';
   btnSave.textContent = 'Guardar';
@@ -34,7 +38,13 @@ export const home = () => {
   formPublication.addEventListener('submit', (e) => {
     e.preventDefault()
     publication( publicationTitle.value, publicationText.value); 
+   
+ 
 });
+  const getPosts = () => {
+    containerPublication.innerHTML =  getPublication();
+   };
+   getPosts()
 
   loginDiv.appendChild(btnLogOut);
   loginDiv.appendChild(msgVerified);
@@ -43,6 +53,8 @@ export const home = () => {
   formPublication.appendChild(publicationText);
   formPublication.appendChild(btnSave);
   loginDiv.appendChild(containerPublication);
+  containerPublication.appendChild(containerPublicationP);
+  containerPublication.appendChild(containerPublicationD);
 
 
   return loginDiv;
