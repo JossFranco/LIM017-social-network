@@ -45,9 +45,33 @@ export const home = () => {
     loginWithEmail(loginEmail.value, loginPass.value);
     // emailAuthState();
   });
+<<<<<<< HEAD
   btnGoogleLogin.addEventListener('click', () => {
     registerWithGoogle();
     // emailAuthState();
+=======
+
+
+  formPublication.addEventListener('submit', (e) => {
+    e.preventDefault()
+    publication( publicationTitle.value, publicationText.value); 
+});
+
+  loginDiv.appendChild(btnLogOut);
+  loginDiv.appendChild(msgVerified);
+  loginDiv.appendChild(formPublication);
+  formPublication.appendChild(publicationTitle);
+  formPublication.appendChild(publicationText);
+  formPublication.appendChild(btnSave);
+  loginDiv.appendChild(containerPublication);
+
+
+  return loginDiv;
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  await getPublication();
+>>>>>>> post
   });
   // window.addEventListener('DOMContentLoad')
 

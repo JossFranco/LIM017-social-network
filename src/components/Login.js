@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { loginWithEmail, registerWithGoogle } from '../firebase/auth.js';
+import { registerWithGoogle, loginWithEmail } from '../firebase/auth.js';
 
 export const login = () => {
   const homeDiv = document.createElement('div');
@@ -43,11 +43,9 @@ export const login = () => {
   btnRegister.addEventListener('click', () => onNavigate('/register'));
   btnLogin.addEventListener('click', () => {
     loginWithEmail(loginEmail.value, loginPass.value);
-    // emailAuthState();
   });
   btnGoogleLogin.addEventListener('click', () => {
     registerWithGoogle();
-    emailAuthState();
   });
 
   homeDiv.appendChild(logoImg);

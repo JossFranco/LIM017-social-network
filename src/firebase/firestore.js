@@ -7,9 +7,11 @@ import {
 
   const db = getFirestore();
 
-  export const publication =  async (title, text) => 
-    await addDoc(collection(db, 'posts'), { title, text });
+export const publication =  async (title, text) => {
+  await addDoc(collection(db, 'posts'), { title, text });
+}
     
+<<<<<<< HEAD
   export const getPublication = async () => {
     let postsCollection =[];
     const getPostsCollection =  await getDocs(collection(db, 'posts'));
@@ -20,3 +22,15 @@ import {
     });
       return postsCollection
     }
+=======
+export const getPublication = async () => {
+  let postsCollection =[];
+  const getPostsCollection =  await getDocs(collection(db, 'posts'));
+  getPostsCollection.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  postsCollection.push({ id: doc.id, ...doc.data()});
+  console.log(doc.id, doc.data());
+  });
+    return postsCollection
+}
+>>>>>>> post
