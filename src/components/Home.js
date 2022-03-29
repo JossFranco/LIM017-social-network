@@ -49,5 +49,5 @@ export const home = () => {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-  getPublication();
+  await getPublication();
   });
