@@ -61,8 +61,3 @@ export const register = () => {
 
   return registerDiv;
 };
-
-// window.addEventListener('DOMContentLoad', () => {
-//   Solucionando Problemas
-
-// });

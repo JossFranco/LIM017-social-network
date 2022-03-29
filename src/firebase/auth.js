@@ -29,9 +29,8 @@ export const registerWithEmail = async function (email, password, user) {
   }
 };
 
-export const registerWithGoogle = () => {
-  registerGoogle();
-  onNavigate('/home');
+export const registerWithGoogle = async () => {
+  await registerGoogle().then(() => { onNavigate('/home')})
 };
 
 export const loginWithEmail = (email, password) => {

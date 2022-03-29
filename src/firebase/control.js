@@ -31,6 +31,7 @@ export const registerGoogle = function () {
     // The signed-in user info.
     const user = result.user;
     // ...
+    console.log(credential)
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
@@ -40,7 +41,8 @@ export const registerGoogle = function () {
     // The AuthCredential type that was used.
     const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
-  });;
+    console.log(credential)
+  });
 };
 
 export const logInEmail = function (email, password) {

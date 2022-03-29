@@ -1,55 +1,34 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { loginWithEmail, registerWithGoogle } from '../firebase/auth.js';
+import { logOut } from '../firebase/auth.js';
+import { publication, getPublication, } from '../firebase/firestore.js';
 
 export const home = () => {
-  const homeDiv = document.createElement('div');
-  homeDiv.setAttribute('class', 'divHome');
-  const logoImg = document.createElement('IMG');
-  logoImg.setAttribute('src', './Image/webLogo.png');
-  logoImg.setAttribute('class', 'logoImg');
-  const loginEmail = document.createElement('input');
-  loginEmail.setAttribute('type', 'email');
-  loginEmail.setAttribute('placeholder', 'E-mail');
-  loginEmail.setAttribute('id', 'loginEmail');
-  loginEmail.setAttribute('class', 'inputStyle');
-  const loginPass = document.createElement('input');
-  loginPass.setAttribute('type', 'password');
-  loginPass.setAttribute('placeholder', 'Contraseña');
-  loginPass.setAttribute('id', 'loginPass');
-  loginPass.setAttribute('class', 'inputStyle');
-  loginPass.setAttribute('min', '6');
-  const btnLogin = document.createElement('button');
-  btnLogin.setAttribute('id', 'login');
-  btnLogin.setAttribute('class', 'btnStyle');
-  const btnRegister = document.createElement('button');
-  btnRegister.setAttribute('class', 'btnStyleText');
-  const btnGoogleLogin = document.createElement('button');
-  btnGoogleLogin.setAttribute('class', 'btnGoogle');
   const loginDiv = document.createElement('div');
-  loginDiv.setAttribute('id', 'loginDiv');
-  const img = document.createElement('IMG');
-  img.setAttribute('src', './Image/img.svg');
-  img.setAttribute('class', 'imgHome');
-  const informationDiv = document.createElement('div');
-  informationDiv.setAttribute('id', 'information');
-  informationDiv.setAttribute('class', 'information informationNone');
+  loginDiv.textContent = 'Bienvenida al Login';
+  const btnLogOut = document.createElement('button');
+  btnLogOut.setAttribute('class', 'btnStyle');
+  const msgVerified = document.createElement('div');
+  const formPublication = document.createElement('form');
+  formPublication.setAttribute('id', 'formPublication');
+  const publicationTitle =  document.createElement('input');
+  publicationTitle.setAttribute('placeholder', 'Título de la Publicación');
+  publicationTitle.setAttribute('id', 'publicationTitle');
+  const publicationText =  document.createElement('textarea');
+  publicationText.setAttribute('placeholder', 'Escribe aquí');
+  publicationText.setAttribute('id', 'publicationText');
+  const btnSave = document.createElement('button');
+  btnSave.setAttribute('id', 'btnSave');
+  const containerPublication = document.createElement('div');
+  containerPublication.setAttribute('class', 'containerPublication');
 
-  btnGoogleLogin.textContent = 'Iniciar Sesión con Google';
-  btnRegister.textContent = '¿No tienes una cuenta? Regístrate';
-  btnLogin.textContent = 'Iniciar Sesión';
+  btnLogOut.textContent = 'Cerrar Sesión';
+  btnSave.textContent = 'Guardar';
 
-  btnRegister.addEventListener('click', () => onNavigate('/register'));
-  btnLogin.addEventListener('click', () => {
-    loginWithEmail(loginEmail.value, loginPass.value);
-    // emailAuthState();
+  btnLogOut.addEventListener('click', () => {
+    logOut();
   });
-<<<<<<< HEAD
-  btnGoogleLogin.addEventListener('click', () => {
-    registerWithGoogle();
-    // emailAuthState();
-=======
 
 
   formPublication.addEventListener('submit', (e) => {
@@ -71,21 +50,4 @@ export const home = () => {
 
 window.addEventListener('DOMContentLoaded', async () => {
   await getPublication();
->>>>>>> post
   });
-  // window.addEventListener('DOMContentLoad')
-
-  
-  homeDiv.appendChild(logoImg);
-  homeDiv.appendChild(loginEmail);
-  homeDiv.appendChild(loginPass);
-  homeDiv.appendChild(informationDiv);
-  homeDiv.appendChild(btnLogin);
-  homeDiv.appendChild(btnGoogleLogin);
-  homeDiv.appendChild(btnRegister);
-  homeDiv.appendChild(loginDiv);
-  homeDiv.appendChild(img);
-
-  return homeDiv;
-};
-
