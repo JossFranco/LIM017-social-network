@@ -1,63 +1,66 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { loginWithEmail, emailAuthState, registerWithGoogle  } from './auth.js';
+import { logOut } from '../firebase/auth.js';
+import { publication, getPublication, } from '../firebase/firestore.js';
 
 export const home = () => {
-  const homeDiv = document.createElement('div');
-  homeDiv.className = 'divHome';
-  const logoImg = document.createElement('IMG');
-  logoImg.src = './Image/webLogo.png';
-  logoImg.className = 'logoImg';
-  const loginEmail = document.createElement('input');
-  loginEmail.type = 'email';
-  loginEmail.placeholder = 'E-mail';
-  loginEmail.id = 'loginEmail';
-  loginEmail.className = 'inputStyle';
-  const loginPass = document.createElement('input');
-  loginPass.type = 'password';
-  loginPass.placeholder = 'Contraseña';
-  loginPass.id = 'loginPass';
-  loginPass.className = 'inputStyle';
-  const btnLogin = document.createElement('button');
-  btnLogin.id = 'login';
-  btnLogin.className = 'btnStyle';
-  const btnRegister = document.createElement('button');
-  btnRegister.className = 'btnStyleText';
-  const btnGoogleLogin = document.createElement('button');
-  btnGoogleLogin.className = 'btnGoogle';
   const loginDiv = document.createElement('div');
-  loginDiv.id = 'loginDiv';
-  const img = document.createElement('IMG');
-  img.src = './Image/img.svg';
-  img.className = 'imgHome';
-  // const imgGoogle = document.createElement('IMG');
-  // imgGoogle.textContent = `<i class="fa-brands fa-google"></i>`;
-  // imgGoogle.className = 'imgGoogle';
+  loginDiv.textContent = 'Bienvenida al Login';
+  const btnLogOut = document.createElement('button');
+  btnLogOut.setAttribute('class', 'btnStyle');
+  const msgVerified = document.createElement('div');
+  const formPublication = document.createElement('form');
+  formPublication.setAttribute('id', 'formPublication');
+  const publicationTitle =  document.createElement('input');
+  publicationTitle.setAttribute('placeholder', 'Título de la Publicación');
+  publicationTitle.setAttribute('id', 'publicationTitle');
+  const publicationText =  document.createElement('textarea');
+  publicationText.setAttribute('placeholder', 'Escribe aquí');
+  publicationText.setAttribute('id', 'publicationText');
+  const btnSave = document.createElement('button');
+  btnSave.setAttribute('id', 'btnSave');
+  const containerPublication = document.createElement('div');
+  containerPublication.setAttribute('class', 'containerPublication');
+  const containerPublicationP = document.createElement('div');
+  containerPublicationP.setAttribute('class', 'containerPublicationP');
+  const containerPublicationD = document.createElement('div');
+  containerPublicationD.setAttribute('class', 'containerPublicationD');
 
-  btnGoogleLogin.textContent = 'Iniciar Sesión con Google';
-  btnRegister.textContent = '¿No tienes una cuenta? Regístrate';
-  btnLogin.textContent = 'Iniciar Sesión';
+  btnLogOut.textContent = 'Cerrar Sesión';
+  btnSave.textContent = 'Guardar';
 
-  btnRegister.addEventListener('click', () => onNavigate('/register'));
-  btnLogin.addEventListener('click', () => {
-    emailAuthState();
-    loginWithEmail(loginEmail.value, loginPass.value);
-    onNavigate('/login');
+  btnLogOut.addEventListener('click', () => {
+    logOut();
   });
-  btnGoogleLogin.addEventListener('click', () => {
-    registerWithGoogle();
-    emailAuthState();
-  });
-  homeDiv.appendChild(logoImg);
-  homeDiv.appendChild(loginEmail);
-  homeDiv.appendChild(loginPass);
-  homeDiv.appendChild(btnLogin);
-  homeDiv.appendChild(btnGoogleLogin);
-  homeDiv.appendChild(btnRegister);
-  homeDiv.appendChild(loginDiv);
-  homeDiv.appendChild(img);
-  // btnGoogleLogin.appendChild(imgGoogle);
 
-  return homeDiv;
-};
+
+  formPublication.addEventListener('submit', (e) => {
+    e.preventDefault()
+    publication( publicationTitle.value, publicationText.value); 
+   
+ 
+});
+  const getPosts = () => {
+    containerPublication.innerHTML =  getPublication();
+   };
+   getPosts()
+
+  loginDiv.appendChild(btnLogOut);
+  loginDiv.appendChild(msgVerified);
+  loginDiv.appendChild(formPublication);
+  formPublication.appendChild(publicationTitle);
+  formPublication.appendChild(publicationText);
+  formPublication.appendChild(btnSave);
+  loginDiv.appendChild(containerPublication);
+  containerPublication.appendChild(containerPublicationP);
+  containerPublication.appendChild(containerPublicationD);
+
+
+  return loginDiv;
+}
+
+window.addEventListener('DOMContentLoaded', async () => {
+  await getPublication();
+  });
+
