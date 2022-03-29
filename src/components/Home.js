@@ -47,9 +47,9 @@ export const home = () => {
   });
   btnGoogleLogin.addEventListener('click', () => {
     registerWithGoogle();
-    emailAuthState();
+    // emailAuthState();
   });
-  window.addEventListener('DOMContentLoad')
+  // window.addEventListener('DOMContentLoad')
 
   
   homeDiv.appendChild(logoImg);
