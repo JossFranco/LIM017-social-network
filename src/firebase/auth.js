@@ -32,6 +32,10 @@ export const registerWithEmail = async function (email, password, user) {
       document.getElementById('informationRegister').style.display = 'block';
       document.getElementById('informationRegister').textContent = 'El correo electrónico ya esta asociado a una cuenta.';
     }
+    if(errorCode === 'auth/invalid-email') {
+      document.getElementById('informationRegister').style.display = 'block';
+      document.getElementById('informationRegister').textContent = 'Ingrese los datos correctamente.';
+    }
   }
 };
 

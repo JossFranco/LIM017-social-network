@@ -3,7 +3,7 @@ import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import { logOut } from '../firebase/auth.js';
 import { publication, getPublication, } from '../firebase/firestore.js';
-// import { createMenuItem } from './template.js';
+import { postsTemplate } from './template.js';
 
 export const home = () => {
   const loginDiv = document.createElement('div');
@@ -24,7 +24,7 @@ export const home = () => {
   const containerPublication = document.createElement('div');
   containerPublication.setAttribute('class', 'containerPublication');
   const containerPublicationP = document.createElement('div');
-  containerPublicationP.setAttribute('class', 'containerPublicationP');
+  containerPublicationP.setAttribute('id', 'containerPublicationP');
   const containerPublicationD = document.createElement('div');
   containerPublicationD.setAttribute('class', 'containerPublicationD');
 
@@ -39,9 +39,12 @@ export const home = () => {
   formPublication.addEventListener('submit', (e) => {
     e.preventDefault()
     publication( publicationTitle.value, publicationText.value); 
+    formPublication.reset();
  
 });
-
+const prueba = getPublication();
+const prueba2 = postsTemplate(prueba);
+containerPublication.innerHTML = `${prueba2}`;
 // const getPost = () => {
 // let postsCollection =[];
 // const getPostsCollection = getPublication();
@@ -68,6 +71,6 @@ export const home = () => {
   return loginDiv;
 }
 
-window.addEventListener('DOMContentLoaded', async () => {
-  await getPublication();
+window.addEventListener('DOMContentLoaded', () => {
+   getPublication();
   });
