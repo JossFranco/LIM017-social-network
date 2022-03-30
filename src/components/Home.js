@@ -3,21 +3,22 @@ import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import { logOut } from '../firebase/auth.js';
 import { publication, getPublication, } from '../firebase/firestore.js';
+// import { createMenuItem } from './template.js';
 
 export const home = () => {
   const loginDiv = document.createElement('div');
-  loginDiv.textContent = 'Bienvenida al Login';
+  // loginDiv.textContent = 'Bienvenida al Login';
   const btnLogOut = document.createElement('button');
-  btnLogOut.setAttribute('class', 'btnStyle');
+  btnLogOut.setAttribute('class', 'btnStyle btnLogOut');
   const msgVerified = document.createElement('div');
   const formPublication = document.createElement('form');
-  formPublication.setAttribute('id', 'formPublication');
+  formPublication.setAttribute('class', 'formPublication');
   const publicationTitle =  document.createElement('input');
   publicationTitle.setAttribute('placeholder', 'Título de la Publicación');
-  publicationTitle.setAttribute('id', 'publicationTitle');
+  publicationTitle.setAttribute('class', 'publicationTitle');
   const publicationText =  document.createElement('textarea');
   publicationText.setAttribute('placeholder', 'Escribe aquí');
-  publicationText.setAttribute('id', 'publicationText');
+  publicationText.setAttribute('class', 'publicationText');
   const btnSave = document.createElement('button');
   btnSave.setAttribute('id', 'btnSave');
   const containerPublication = document.createElement('div');
@@ -38,13 +39,21 @@ export const home = () => {
   formPublication.addEventListener('submit', (e) => {
     e.preventDefault()
     publication( publicationTitle.value, publicationText.value); 
-   
  
 });
-  const getPosts = () => {
-    containerPublication.innerHTML =  getPublication();
-   };
-   getPosts()
+
+// const getPost = () => {
+// let postsCollection =[];
+// const getPostsCollection = getPublication();
+// getPostsCollection.forEach((doc) => {
+//   let  newElement = documento.createElement( `${doc.data().title}`); 
+//   let a = containerPublicationP.innerHTML = newElement;
+// });
+// return a 
+// }
+// const variable1 =  getPost();
+// containerPublication.innerHTML= `${variable1}`;
+// const  newElement = documento.createElement( `${doc.data().title}`); 
 
   loginDiv.appendChild(btnLogOut);
   loginDiv.appendChild(msgVerified);
@@ -55,12 +64,10 @@ export const home = () => {
   loginDiv.appendChild(containerPublication);
   containerPublication.appendChild(containerPublicationP);
   containerPublication.appendChild(containerPublicationD);
-
-
+ 
   return loginDiv;
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
   await getPublication();
   });
-

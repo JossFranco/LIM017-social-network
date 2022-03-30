@@ -14,6 +14,7 @@ import { onNavigate } from '../main.js';
 export const registerWithEmail = async function (email, password, user) {
   try {
     const res2 = await registerEmail(email, password, user)
+    // localStorage.setItem('user');
     console.log(res2);
     const res1 = await sendEmail();
     console.log(res1);
@@ -24,8 +25,13 @@ export const registerWithEmail = async function (email, password, user) {
       'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';
   } catch (error) {
     const errorCode = error.code;
+    console.log(errorCode);
     const errorMessage = error.message;
     console.log(errorMessage);
+    if(errorCode === 'auth/email-already-in-use') {
+      document.getElementById('informationRegister').style.display = 'block';
+      document.getElementById('informationRegister').textContent = 'El correo electrónico ya esta asociado a una cuenta.';
+    }
   }
 };
 
