@@ -45,13 +45,17 @@ export const home = () => {
  
 });
 
+getPublication()
+.then( (data) => {
+  containerPublication.innerHTML = postsTemplate(data);
+})
+.catch((err) => {
+  console.log(err);
+});
 
 
-// const pub = postsTemplate(containerPublicationD);
-// console.log(pub);
 
-
-
+// postsTemplate();
 // const getPost = () => {
 // let postsCollection =[];
 // const getPostsCollection = getPublication();

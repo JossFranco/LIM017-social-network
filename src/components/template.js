@@ -1,18 +1,28 @@
 // import { template } from "@babel/core";
 
-import { getPublication, } from '../firebase/firestore.js';
-const finalData = getPublication();
-console.log(finalData);
+export function  postsTemplate(data) {
+  return `<h3> Título: ${data.title}</h3>
+  <p> Descripción: ${data.text}</p>`
+  
+};
 
-export function postsTemplate (place) {
-  for (let i in finalData){
- place.innerHTML += `<div> <h3> Titulo: ${i.title}</h3>
- <p> Descripción: ${i.text}</p> </div>`;
- }
-}
 
-const place = document.getElementById('root')
-postsTemplate(place);
+
+
+
+// import { getPublication, } from '../firebase/firestore.js';
+// const finalData = getPublication();
+// console.log(finalData);
+
+// export function postsTemplate (place) {
+//   for (let i in finalData){
+//  place.innerHTML += `<div> <h3> Titulo: ${i.title}</h3>
+//  <p> Descripción: ${i.text}</p> </div>`;
+//  }
+// }
+
+// const place = document.getElementById('root')
+// postsTemplate(place);
 
 //     postsTemplate();
 
