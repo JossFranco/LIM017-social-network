@@ -4,10 +4,7 @@ import { onNavigate } from '../main.js';
 import { logOut } from '../firebase/auth.js';
 import { publication, getPublication, } from '../firebase/firestore.js';
 import { postsTemplate } from './template.js';
-window.addEventListener('DOMContentLoaded', () => {
-  const finalData1 = getPublication();
-  console.log(finalData1);
-  });
+
 export const home = () => {
   const loginDiv = document.createElement('div');
   // loginDiv.textContent = 'Bienvenida al Login';
@@ -27,7 +24,7 @@ export const home = () => {
   const containerPublication = document.createElement('div');
   containerPublication.setAttribute('class', 'containerPublication');
   const containerPublicationP = document.createElement('div');
-  containerPublicationP.setAttribute('class', 'containerPublicationP');
+  containerPublicationP.setAttribute('id', 'containerPublicationP');
   const containerPublicationD = document.createElement('div');
   containerPublicationD.setAttribute('class', 'containerPublicationD');
 
@@ -42,18 +39,26 @@ export const home = () => {
   formPublication.addEventListener('submit', (e) => {
     e.preventDefault()
     publication( publicationTitle.value, publicationText.value); 
+    formPublication.reset();
  
 });
 
 getPublication()
 .then( (data) => {
-  containerPublication.innerHTML = postsTemplate(data);
+  postsTemplate(data,containerPublication);
 })
 .catch((err) => {
   console.log(err);
 });
 
 
+// getPublication()
+// .then( (data) => {
+//   containerPublication.innerHTML = postsTemplate(data);
+// })
+// .catch((err) => {
+//   console.log(err);
+// });
 
 // postsTemplate();
 // const getPost = () => {
@@ -78,11 +83,12 @@ getPublication()
   loginDiv.appendChild(containerPublication);
   containerPublication.appendChild(containerPublicationP);
   containerPublication.appendChild(containerPublicationD);
-  // containerPublication.appendChild(pub);
-  const pub = containerPublication.querySelector('.containerPublicationD')
-  pub.innerHTML = postsTemplate(containerPublicationD);
  
   return loginDiv;
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+   getPublication();
+  });
 
 

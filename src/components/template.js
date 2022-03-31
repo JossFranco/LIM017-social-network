@@ -1,10 +1,9 @@
 // import { template } from "@babel/core";
-
-export function  postsTemplate(data) {
-  return `<h3> Título: ${data.title}</h3>
-  <p> Descripción: ${data.text}</p>`
+// export function  postsTemplate(data) {
+//   return `<h3> Título: ${data.title}</h3>
+//   <p> Descripción: ${data.text}</p>`
   
-};
+// };
 
 
 
@@ -14,12 +13,12 @@ export function  postsTemplate(data) {
 // const finalData = getPublication();
 // console.log(finalData);
 
-// export function postsTemplate (place) {
-//   for (let i in finalData){
-//  place.innerHTML += `<div> <h3> Titulo: ${i.title}</h3>
-//  <p> Descripción: ${i.text}</p> </div>`;
-//  }
-// }
+export function postsTemplate (data,place) {
+  for (let i in data){
+ place.innerHTML += `<div> <h3> Titulo: ${i.title}</h3>
+ <p> Descripción: ${i.text}</p> </div>`;
+ }
+}
 
 // const place = document.getElementById('root')
 // postsTemplate(place);

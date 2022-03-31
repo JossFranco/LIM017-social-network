@@ -11,12 +11,6 @@ import {
   signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 
-import {
-  getFirestore,
-  collection,
-  addDoc,  
-  getDocs,
-} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 const auth = getAuth();
 
@@ -73,16 +67,3 @@ export const authState = function () {
 export const userLogOut = function () {
   return signOut(auth);
 };
-
-
-
-// const db = getFirestore();
-
-// export const publication =  async (title, text) => {
-// return await addDoc(collection(db, 'posts'), { title, text });
-// }
-  
-// export const getPublication = async () => {
-//  return  await getDocs(collection(db, 'posts'));
-  
-// }
