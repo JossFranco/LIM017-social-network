@@ -19,7 +19,7 @@ export const getPublication = async () => {
   // // doc.data() is never undefined for query doc snapshots
   postsCollection.push({ id: doc.id, ...doc.data()});
 
-  console.log(doc.id, doc.data());
+  // console.log(doc.data());
 
   });
     return postsCollection 

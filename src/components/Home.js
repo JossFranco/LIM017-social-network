@@ -3,8 +3,11 @@ import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import { logOut } from '../firebase/auth.js';
 import { publication, getPublication, } from '../firebase/firestore.js';
-// import { createMenuItem } from './template.js';
-
+import { postsTemplate } from './template.js';
+window.addEventListener('DOMContentLoaded', () => {
+  const finalData1 = getPublication();
+  console.log(finalData1);
+  });
 export const home = () => {
   const loginDiv = document.createElement('div');
   // loginDiv.textContent = 'Bienvenida al Login';
@@ -42,6 +45,13 @@ export const home = () => {
  
 });
 
+
+
+// const pub = postsTemplate(containerPublicationD);
+// console.log(pub);
+
+
+
 // const getPost = () => {
 // let postsCollection =[];
 // const getPostsCollection = getPublication();
@@ -64,10 +74,11 @@ export const home = () => {
   loginDiv.appendChild(containerPublication);
   containerPublication.appendChild(containerPublicationP);
   containerPublication.appendChild(containerPublicationD);
+  // containerPublication.appendChild(pub);
+  const pub = containerPublication.querySelector('.containerPublicationD')
+  pub.innerHTML = postsTemplate(containerPublicationD);
  
   return loginDiv;
 }
 
-window.addEventListener('DOMContentLoaded', async () => {
-  await getPublication();
-  });
+
