@@ -12,7 +12,7 @@ return await addDoc(collection(db, 'posts'), { title, text });
 }
 
 export const getPublication = async () => {
-  let data = 0;
+  let data;
   const getPostsCollection = await getDocs(collection(db, 'posts'));
   getPostsCollection.forEach((doc) => {
     data = doc.data();

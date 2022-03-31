@@ -42,9 +42,18 @@ export const home = () => {
     formPublication.reset();
  
 });
-const prueba = getPublication();
-const prueba2 = postsTemplate(prueba);
-containerPublication.innerHTML = `${prueba2}`;
+
+getPublication()
+.then( (data) => {
+  containerPublication.innerHTML = postsTemplate(data);
+})
+.catch((err) => {
+  console.log(err);
+});
+
+
+
+// postsTemplate();
 // const getPost = () => {
 // let postsCollection =[];
 // const getPostsCollection = getPublication();
