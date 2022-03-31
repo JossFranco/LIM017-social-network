@@ -1,8 +1,9 @@
 // import { getPublication, } from '../firebase/firestore.js';
-export function postsTemplate(data) {
+export function  postsTemplate(data) {
   return `<h3> Título: ${data.title}</h3>
-    <p> Descripción: ${data.text}</p>`;
-}
+  <p> Descripción: ${data.text}</p>`
+  
+};
 
 // export function createMenuItem(doc) {
 //     let liTitle = document.createElement('li');
