@@ -45,13 +45,20 @@ export const home = () => {
 
 getPublication()
 .then( (data) => {
-  containerPublication.innerHTML = postsTemplate(data);
+  postsTemplate(data,containerPublication);
 })
 .catch((err) => {
   console.log(err);
 });
 
 
+// getPublication()
+// .then( (data) => {
+//   containerPublication.innerHTML = postsTemplate(data);
+// })
+// .catch((err) => {
+//   console.log(err);
+// });
 
 // postsTemplate();
 // const getPost = () => {
@@ -83,3 +90,5 @@ getPublication()
 window.addEventListener('DOMContentLoaded', () => {
    getPublication();
   });
+
+

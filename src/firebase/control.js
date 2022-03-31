@@ -67,5 +67,3 @@ export const authState = function () {
 export const userLogOut = function () {
   return signOut(auth);
 };
-
-

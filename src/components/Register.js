@@ -3,7 +3,7 @@ import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import {
   registerWithEmail, registerWithGoogle,
-} from '../firebase/auth.js';;
+} from '../firebase/auth.js';
 
 export const register = () => {
   const registerDiv = document.createElement('div');
