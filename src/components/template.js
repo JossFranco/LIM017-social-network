@@ -5,20 +5,30 @@
   
 // };
 
-
-
-
-
 // import { getPublication, } from '../firebase/firestore.js';
 // const finalData = getPublication();
 // console.log(finalData);
 
+
+
+
+
+// export function postsTemplate (data,place) {
+//   for (let i in data){
+//     console.log(i.text, i.title)
+//  place.innerHTML += `<div> <h3> Titulo: ${i.title}</h3>
+//  <p> Descripción: ${i.text}</p> </div>`;
+//  }
+// }
+
+
 export function postsTemplate (data,place) {
-  for (let i in data){
- place.innerHTML += `<div> <h3> Titulo: ${i.title}</h3>
- <p> Descripción: ${i.text}</p> </div>`;
- }
-}
+  data.forEach((e,i)=>{
+    // console.log(i.text, i.title)
+ place.innerHTML += `<div> <h3> Titulo: ${data[i].title}</h3>
+ <p> Descripción: ${data[i].text}</p> </div><br>`;
+ })
+};
 
 // const place = document.getElementById('root')
 // postsTemplate(place);
