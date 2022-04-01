@@ -21,7 +21,8 @@ export const registerWithEmail = async function (email, password, user) {
     const res3 = await onNavigate('/register');
     console.log(res3);
     document.getElementById('informationRegister').style.display = 'block';
-    document.getElementById('informationRegister').textContent = 'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';
+    document.getElementById('informationRegister').textContent =
+      'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';
   } catch (error) {
     const errorCode = error.code;
     console.log(errorCode);
