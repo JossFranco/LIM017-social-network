@@ -1,15 +1,13 @@
 // import { getPublication, } from '../firebase/firestore.js';
-export function  postsTemplate(data) {
-    return `<h3> Título: ${data.title}</h3>
-    <p> Descripción: ${data.text}</p>`
-    
+export function  postsTemplate(data, place) {
+  data.forEach((e , i) => {
+  place.innerHTML += `<div class = "containerPosts"><h3 class = "titlePost"> ${data[i].title}</h3>
+  <p class = "descriptionPosts"> ${data[i].text}</p></div>`;
+   })
 };
 
-// export function createMenuItem(doc) {
-//     let liTitle = document.createElement('li');
-//     liTitle.textContent = doc.data().title;
-//     let liText = document.createElement('li');
-//     liText.textContent = doc.data().text;
-//     let result = liTitle + liText
-//     return result;
-// }
+// export function  userTemplate(data, place) {
+//   data.forEach((e , i) => {
+//   place.innerHTML += `<div class = "containerUser"><h3 class = "userData"> ${data[i].user}</h3></div>`;
+//    })
+// };

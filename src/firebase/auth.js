@@ -6,23 +6,41 @@ import {
   registerGoogle,
   logInEmail,
   userLogOut,
-  authState,
+  // authState,
 } from './control.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line import/no-unresolved
+import {
+  user
+} from './firestore.js';
 
-export const registerWithEmail = async function (email, password, user) {
+
+export const registerWithEmail = async function (email, password, name) {
   try {
-    const res2 = await registerEmail(email, password, user)
-    // localStorage.setItem('user');
-    console.log(res2);
-    const res1 = await sendEmail();
-    console.log(res1);
-    const res3 = await onNavigate('/register');
-    console.log(res3);
+     await registerEmail(email, password, name);
+     await sendEmail();
+     await onNavigate('/register');
     document.getElementById('informationRegister').style.display = 'block';
     document.getElementById('informationRegister').textContent =
       'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';
+      const uid = user.uid;
+      console.log(uid);
+      if(localStorage.getItem('usuario') !== null && localStorage.getItem('email') !== null && localStorage.getItem('name')!== null)  {
+        localStorage.removeItem('usuario');
+        localStorage.removeItem('email');
+        localStorage.removeItem('name');
+        localStorage.setItem('usuario', uid );
+        localStorage.setItem('email', email );
+        localStorage.setItem('name', name );
+      }else{
+        localStorage.setItem('usuario', uid );
+        localStorage.setItem('email', email );
+        localStorage.setItem('name', name );
+        user(email, name);
+       }
+          
   } catch (error) {
     const errorCode = error.code;
     console.log(errorCode);
@@ -41,6 +59,8 @@ export const registerWithEmail = async function (email, password, user) {
 
 export const registerWithGoogle = async () => {
   await registerGoogle().then(() => { onNavigate('/home')})
+  console.log(user.displayName);
+  console.log(user.email);
 };
 
 export const loginWithEmail = (email, password) => {
@@ -54,7 +74,24 @@ export const loginWithEmail = (email, password) => {
           'Tu cuenta no ha sido verificada';
       } else {
         onNavigate('/home');
-      }
+        const uid = user.uid;
+          console.log(uid);
+          if(localStorage.getItem('usuario') !== null && localStorage.getItem('email') !== null && localStorage.getItem('name')!== null)  {
+            localStorage.removeItem('usuario');
+            localStorage.removeItem('email');
+            localStorage.removeItem('name');
+            localStorage.setItem('usuario', uid );
+            localStorage.setItem('email', email );
+            localStorage.setItem('name', name );
+          }else{
+            localStorage.setItem('usuario', uid );
+            localStorage.setItem('email', email );
+            localStorage.setItem('name', name );
+            console.log('tu email aqui');
+            console.log(user.displayName);
+            console.log(user.email);
+          }
+        }
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -76,25 +113,26 @@ export const loginWithEmail = (email, password) => {
     });
 };
 
-export const emailAuthState = () => {
-  authState().then(() => {
-    console.log(user + 'observador');
-    if (user.emailVerified === true) {
-      const uid = user.uid;
-      onNavigate('/home');
-      console.log('si puedo entrar, pero no');
-    } else {
-      onNavigate('/');
-      console.log('no puedo entrar');
-    }
-  });
-};
+// export const emailAuthState = () => {
+//   authState().then(() => {
+//     console.log(user + 'observador');
+//     if (user.emailVerified === true) {
+//       const uid = user.uid;
+//       onNavigate('/home');
+//       console.log('si puedo entrar, pero no');
+//     } else {
+//       onNavigate('/');
+//       console.log('no puedo entrar');
+//     }
+//   });
+// };
 
 export const logOut = () => {
   userLogOut()
     .then(() => {
       console.log('Salir');
       onNavigate('/');
+      localStorage.clear();
     })
     .catch((error) => {
       console.log(error);

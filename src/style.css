@@ -31,7 +31,6 @@
     
 }
 
-
 .btnStyle {
     width: 70%;
     max-width: 70%;
@@ -52,6 +51,9 @@
 .btnLogOut{
     width: 25%;
     margin-left: 65%;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
 }
 
 .btnStyle:hover{
@@ -116,12 +118,44 @@ img{
     position: relative;
 }
 
+.informationRegister{
+    color: #70db70;
+}
+
+.profileDiv{
+ display: flex ;
+ height: 6em;
+ margin-bottom: 15%;
+ background: #6600ff;
+
+}
+
+.imgProfile{
+    border: 5px solid  #ffffff;
+    object-fit: contain;
+    width: 25%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 10%;
+    
+}
+
+.nameDiv{
+    font-size: 1em;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
 .formPublication{
     display: flex;
     flex-direction: column;
     width: 70%;
     margin: auto;
-    /* align-items: center; */
+
 }
 .publicationTitle,
 .publicationTitle{
@@ -130,6 +164,21 @@ img{
     text-align: center;
     margin-bottom: 0.5em;
     outline: none;
+}
+
+.containerPosts {
+    background:#e6ecff;
+    margin: 1em;
+}
+
+.titlePost{
+    font-size: 1.2em;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.userData{
+    color:#000000;
+    font-size: 1em;
 }
 
 @media (min-width: 760px){ 

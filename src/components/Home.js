@@ -2,15 +2,20 @@
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import { logOut } from '../firebase/auth.js';
-import { publication, getPublication, } from '../firebase/firestore.js';
+import { publication, getPublication } from '../firebase/firestore.js';
 import { postsTemplate } from './template.js';
 
 export const home = () => {
   const loginDiv = document.createElement('div');
-  // loginDiv.textContent = 'Bienvenida al Login';
+  const profileDiv = document.createElement('div');
+  profileDiv.setAttribute('class', 'profileDiv');
+  const imgProfile = document.createElement('IMG');
+  imgProfile.setAttribute('src', './Image/imgPerfil.png');
+  imgProfile.setAttribute('class', 'imgProfile');
+  const nameDiv = document.createElement('div');
+  nameDiv.setAttribute('class', 'nameDiv');
   const btnLogOut = document.createElement('button');
-  btnLogOut.setAttribute('class', 'btnStyle btnLogOut');
-  const msgVerified = document.createElement('div');
+  btnLogOut.setAttribute('class', 'btnLogOut');
   const formPublication = document.createElement('form');
   formPublication.setAttribute('class', 'formPublication');
   const publicationTitle =  document.createElement('input');
@@ -22,11 +27,6 @@ export const home = () => {
   const btnSave = document.createElement('button');
   btnSave.setAttribute('id', 'btnSave');
   const containerPublication = document.createElement('div');
-  containerPublication.setAttribute('class', 'containerPublication');
-  const containerPublicationP = document.createElement('div');
-  containerPublicationP.setAttribute('id', 'containerPublicationP');
-  const containerPublicationD = document.createElement('div');
-  containerPublicationD.setAttribute('class', 'containerPublicationD');
 
   btnLogOut.textContent = 'Cerrar Sesión';
   btnSave.textContent = 'Guardar';
@@ -35,51 +35,44 @@ export const home = () => {
     logOut();
   });
 
+  nameDiv.textContent ='Nombre'
 
   formPublication.addEventListener('submit', (e) => {
     e.preventDefault()
     publication( publicationTitle.value, publicationText.value); 
     formPublication.reset();
- 
 });
 
 getPublication()
-.then( (data) => {
-  containerPublication.innerHTML = postsTemplate(data);
+.then((data) => {
+ postsTemplate(data, containerPublication);
 })
 .catch((err) => {
   console.log(err);
 });
 
-
-
-// postsTemplate();
-// const getPost = () => {
-// let postsCollection =[];
-// const getPostsCollection = getPublication();
-// getPostsCollection.forEach((doc) => {
-//   let  newElement = documento.createElement( `${doc.data().title}`); 
-//   let a = containerPublicationP.innerHTML = newElement;
+// getUser()
+// .then((data) => {
+//   userTemplate(data, nameDiv);
+// })
+// .catch((err) => {
+//   console.log(err);
 // });
-// return a 
-// }
-// const variable1 =  getPost();
-// containerPublication.innerHTML= `${variable1}`;
-// const  newElement = documento.createElement( `${doc.data().title}`); 
 
-  loginDiv.appendChild(btnLogOut);
-  loginDiv.appendChild(msgVerified);
+  loginDiv.appendChild(profileDiv);
+  profileDiv.appendChild(imgProfile);
+  loginDiv.appendChild(nameDiv);
   loginDiv.appendChild(formPublication);
   formPublication.appendChild(publicationTitle);
   formPublication.appendChild(publicationText);
   formPublication.appendChild(btnSave);
   loginDiv.appendChild(containerPublication);
-  containerPublication.appendChild(containerPublicationP);
-  containerPublication.appendChild(containerPublicationD);
+  loginDiv.appendChild(btnLogOut);
+
  
   return loginDiv;
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-   getPublication();
-  });
+// window.addEventListener('DOMContentLoaded', () => {
+//    getPublication();
+//   });

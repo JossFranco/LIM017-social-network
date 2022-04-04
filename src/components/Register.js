@@ -2,8 +2,11 @@
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import {
+  // getDataUser,
   registerWithEmail, registerWithGoogle,
-} from '../firebase/auth.js';;
+} from '../firebase/auth.js';
+// eslint-disable-next-line import/no-cycle
+// import {  user } from '../firebase/firestore.js';
 
 export const register = () => {
   const registerDiv = document.createElement('div');
@@ -42,19 +45,23 @@ export const register = () => {
   btnLogin.textContent = '¿Ya tienes una cuenta? Iniciar Sesión';
 
   btnLogin.addEventListener('click', () => onNavigate('/'));
+
   btnRegisterUser.addEventListener('click', () => {
     registerWithEmail(inputEmail.value, inputPass.value, inputUserId.value);
+    // getDataUser(inputEmail.value, inputUserId.value);
+    // user(inputEmail.value, inputUserId.value);
   });
+
   btnGoogleRegister.addEventListener('click', () => {
     registerWithGoogle();
   });
 
   registerDiv.appendChild(logoImgRegister);
-  registerDiv.appendChild(informationRegisterDiv);
   registerDiv.appendChild(inputUserId);
   registerDiv.appendChild(inputEmail);
   registerDiv.appendChild(inputPass);
   registerDiv.appendChild(btnRegisterUser);
+  registerDiv.appendChild(informationRegisterDiv);
   registerDiv.appendChild(btnGoogleRegister);
   registerDiv.appendChild(btnLogin);
   registerDiv.appendChild(imgRegister);
