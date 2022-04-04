@@ -44,19 +44,43 @@ export const home = () => {
 });
 
 getPublication()
+<<<<<<< HEAD
 .then((data) => {
  postsTemplate(data, containerPublication);
+=======
+.then( (data) => {
+  postsTemplate(data,containerPublication);
+>>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3
 })
 .catch((err) => {
   console.log(err);
 });
 
+<<<<<<< HEAD
 // getUser()
 // .then((data) => {
 //   userTemplate(data, nameDiv);
 // })
 // .catch((err) => {
 //   console.log(err);
+=======
+
+// getPublication()
+// .then( (data) => {
+//   containerPublication.innerHTML = postsTemplate(data);
+// })
+// .catch((err) => {
+//   console.log(err);
+// });
+
+// postsTemplate();
+// const getPost = () => {
+// let postsCollection =[];
+// const getPostsCollection = getPublication();
+// getPostsCollection.forEach((doc) => {
+//   let  newElement = documento.createElement( `${doc.data().title}`); 
+//   let a = containerPublicationP.innerHTML = newElement;
+>>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3
 // });
 
   loginDiv.appendChild(profileDiv);
@@ -73,6 +97,14 @@ getPublication()
   return loginDiv;
 }
 
+<<<<<<< HEAD
 // window.addEventListener('DOMContentLoaded', () => {
 //    getPublication();
 //   });
+=======
+window.addEventListener('DOMContentLoaded', () => {
+   getPublication();
+  });
+
+
+>>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3

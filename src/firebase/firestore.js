@@ -13,6 +13,7 @@ return await addDoc(collection(db, 'posts'), { title, text });
 }
 
 export const getPublication = async () => {
+<<<<<<< HEAD
   let  postsCollection = [];
   const getPostsCollection = await getDocs(collection(db, 'posts'));
   getPostsCollection.forEach((doc) => {
@@ -42,3 +43,31 @@ export const getUser = async () => {
 export const onGetPublication = () => {
   onSnapshot(collection(db, 'posts'));
 }
+=======
+  let postsCollection=[];
+  const getPostsCollection = await getDocs(collection(db, 'posts'));
+  getPostsCollection.forEach((doc) => {
+    // postsCollection = data;
+  
+  // // doc.data() is never undefined for query doc snapshots
+  postsCollection.push(doc.data())
+  });
+  console.log( postsCollection)
+  return postsCollection
+}
+
+// export const getPublication = async () => {
+//   let data;
+//   const getPostsCollection = await getDocs(collection(db, 'posts'));
+//   getPostsCollection.forEach((doc) => {
+//     data = doc.data();
+//     // postsCollection = data;
+  
+//   // // doc.data() is never undefined for query doc snapshots
+//   // postsCollection.push({ ...doc.id, ...doc.data().title, ...doc.data().text})
+//   console.log(data);
+
+//   });
+//     return data
+// }
+>>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3
