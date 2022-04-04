@@ -39,3 +39,6 @@ export const getUser = async () => {
 // export const onGetPublication = () => {
 //   onSnapshot(collection(db, 'posts'));
 // }
+export const onGetPublication = () => {
+  onSnapshot(collection(db, 'posts'));
+}
