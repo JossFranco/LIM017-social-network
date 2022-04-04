@@ -7,7 +7,7 @@ import {
   signInWithPopup,
   signInWithEmailAndPassword,
   sendEmailVerification,
-  onAuthStateChanged,
+  // onAuthStateChanged,
   signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 
@@ -50,20 +50,37 @@ export const logInEmail = function (email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-export const authState = function () {
-  return onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
-    } else {
-      // User is signed out
-      signOut(auth);
-    }
-  });
-};
+// export const authState = function () {
+//   return onAuthStateChanged(auth, (user) => {
+//     if (user) {
+//       // User is signed in, see docs for a list of available properties
+//       // https://firebase.google.com/docs/reference/js/firebase.User
+//       const uid = user.uid;
+//       // ...
+//     } else {
+//       // User is signed out
+//       signOut(auth);
+//     }
+//   });
+// };
 
 export const userLogOut = function () {
   return signOut(auth);
+<<<<<<< HEAD
 };
+
+export const getUserUid = () => {
+getAuth()
+  .getUser(uid)
+  .then((userRecord) => {
+    // See the UserRecord reference doc for the contents of userRecord.
+    console.log(`Successfully fetched user data: ${userRecord.toJSON()}`);
+  })
+  .catch((error) => {
+    console.log('Error fetching user data:', error);
+  });
+}
+
+=======
+};
+>>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3

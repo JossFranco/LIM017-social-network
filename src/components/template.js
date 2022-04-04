@@ -6,6 +6,20 @@
 // };
 
 // import { getPublication, } from '../firebase/firestore.js';
+<<<<<<< HEAD
+export function  postsTemplate(data, place) {
+  data.forEach((e , i) => {
+  place.innerHTML += `<div class = "containerPosts"><h3 class = "titlePost"> ${data[i].title}</h3>
+  <p class = "descriptionPosts"> ${data[i].text}</p></div>`;
+   })
+};
+
+// export function  userTemplate(data, place) {
+//   data.forEach((e , i) => {
+//   place.innerHTML += `<div class = "containerUser"><h3 class = "userData"> ${data[i].user}</h3></div>`;
+//    })
+// };
+=======
 // const finalData = getPublication();
 // console.log(finalData);
 
@@ -50,4 +64,9 @@ export function postsTemplate (data,place) {
 //     let liText = document.createElement('li');
 //     liText.textContent = doc.data().text;
 //     let result = liTitle + liText
+<<<<<<< HEAD
 //     return result;
+=======
+//     return result;
+>>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3
+>>>>>>> upstream/main
