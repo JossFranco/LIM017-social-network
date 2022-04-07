@@ -2,14 +2,8 @@
 import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
 import {
-  // getDataUser,
   registerWithEmail, registerWithGoogle,
 } from '../firebase/auth.js';
-<<<<<<< HEAD
-// eslint-disable-next-line import/no-cycle
-// import {  user } from '../firebase/firestore.js';
-=======
->>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3
 
 export const register = () => {
   const registerDiv = document.createElement('div');

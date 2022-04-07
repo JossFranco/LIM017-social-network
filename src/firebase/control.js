@@ -66,7 +66,6 @@ export const logInEmail = function (email, password) {
 
 export const userLogOut = function () {
   return signOut(auth);
-<<<<<<< HEAD
 };
 
 export const getUserUid = () => {
@@ -81,6 +80,3 @@ getAuth()
   });
 }
 
-=======
-};
->>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3

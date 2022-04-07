@@ -10,6 +10,10 @@
     height: 100vh;
     margin: auto;
 }
+.loginDiv{
+    /* background: #e6f2ff; */
+    background: #ffffff; 
+}
 
 .divRegister,
 .divHome {
@@ -47,13 +51,34 @@
     cursor: pointer;
 
 }
+.btnLogOut,
+.btnSave {
+    width: 100%;
+    max-width: 100%;
+    height: 2em;
+    margin: 2%;
+    text-align: center;
+    font-size: 1em;
+    color: #ffffff;
+    font-weight: bold;
+    border: none; 
+    background: #6600ff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
+    cursor: pointer;
+
+}
 
 .btnLogOut{
-    width: 25%;
-    margin-left: 65%;
+    width: 50%;
+    margin-left: 40%;
     font-size: 1em;
     border: none;
     cursor: pointer;
+}
+
+.btnSave{
+    margin: auto;
 }
 
 .btnStyle:hover{
@@ -122,23 +147,29 @@ img{
     color: #70db70;
 }
 
+.imgProfileDiv,
 .profileDiv{
  display: flex ;
- height: 6em;
- margin-bottom: 15%;
- background: #6600ff;
+ height: 7em;
+ margin-bottom: 5%;
+ justify-content: center;
+ position: relative;
+}
 
+.imgProfileDiv{
+    z-index: 5;
 }
 
 .imgProfile{
     border: 5px solid  #ffffff;
     object-fit: contain;
-    width: 25%;
+    max-width: 25%;
+    height: auto;
     border-radius: 50%;
     overflow: hidden;
-    margin: auto;
     margin-top: 10%;
-    
+    z-index: 100;
+    position: absolute;
 }
 
 .nameDiv{
@@ -153,37 +184,83 @@ img{
 .formPublication{
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 90%;
     margin: auto;
+    margin-bottom: 5%;
 
 }
-.publicationTitle,
+
+.publicationText,
 .publicationTitle{
     width: 100%;
     font-size: 1em;
     text-align: center;
     margin-bottom: 0.5em;
     outline: none;
+    font-size: 1em;
+    text-align: center;
+    font-family:'Open Sans', sans-serif, Arial, Helvetica;
+    border: none;
+    padding: 0.5em 0;
 }
 
-.containerPosts {
-    background:#e6ecff;
+.publicationText{
+    text-align: left;
+    padding: 0 0.5em;
+}
+
+.containerPosts{
     margin: 1em;
+    font-size: 1.1em;
+}
+
+.descriptionPosts,
+.titlePost{
+    font-size: 1em;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .titlePost{
-    font-size: 1.2em;
+    margin-bottom: 0.8em;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+}
+
+.descriptionPosts{
+ font-size: 0.9em;
 }
 .userData{
     color:#000000;
     font-size: 1em;
 }
 
+.containerPublicationDiv{
+    border: 1px solid #ccddff;
+    /* border-radius: 6%; */
+    max-width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1em;
+    background: #ffffff;
+}
+
+/* .btnsPostsStyle{
+    max-width: 10%;
+    height: 1em;
+    margin: 2%;
+    text-align: center;
+    font-size: 1em;
+    color: #ffffff;
+    font-weight: bold;
+    border: none; 
+    background: #6600ff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
+    cursor: pointer
+} */
+
 @media (min-width: 760px){ 
     .root{
-        max-width: 50%;
+        max-width: 100%;
     }
     .btnGoogle,
     .btnStyle,
@@ -195,9 +272,42 @@ img{
     .btnStyleText {
         font-size: 1em;
     }
+    
+    .imgProfileDiv,
+    .profileDiv{
+     height: 15em;
+     margin-bottom: 10%;
+    }
+    
+    .imgProfileDiv{
+        margin-bottom: 15%;
+    }
+    .imgProfile{
+        max-width: 30%;
+    }
 }
 @media (min-width: 1500px){ 
     .root{
-        max-width: 30%;
+        max-width: 50%;
+    }
+    .imgProfileDiv,
+    .profileDiv{
+     height: 15em;
+     margin-bottom: 10%;
+    }
+    
+    .imgProfileDiv{
+        margin-bottom: 15%;
+    }
+    .imgProfile{
+        max-width: 25%;
+    }
+    .formPublication{
+        width: 80%;
+    }
+    .containerPublicationDiv{
+        max-width: 90%;
+        margin: auto;
+        margin-bottom: 2%;
     }
 }

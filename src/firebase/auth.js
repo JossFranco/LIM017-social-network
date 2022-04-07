@@ -10,18 +10,14 @@ import {
 } from './control.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-unresolved
-import {
-  user
-} from './firestore.js';
-
 
 export const registerWithEmail = async function (email, password, name) {
   try {
-     await registerEmail(email, password, name);
-     await sendEmail();
-     await onNavigate('/register');
+     const register = await registerEmail(email, password, name);
+     console.log(register);
+     const send = await sendEmail();
+     console.log(send);
+     onNavigate('/register');
     document.getElementById('informationRegister').style.display = 'block';
     document.getElementById('informationRegister').textContent =
       'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';

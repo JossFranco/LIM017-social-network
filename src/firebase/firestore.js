@@ -4,70 +4,53 @@ import {
   addDoc,  
   getDocs,
   onSnapshot,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 const db = getFirestore();
 
-export const publication =  async (title, text) => {
-return await addDoc(collection(db, 'posts'), { title, text });
+export const publication =  async (title, text, user) => {
+return await addDoc(collection(db, 'posts'), { title, text, user, likes});
 }
 
 export const getPublication = async () => {
-<<<<<<< HEAD
   let  postsCollection = [];
-  const getPostsCollection = await getDocs(collection(db, 'posts'));
-  getPostsCollection.forEach((doc) => {
-   postsCollection.push(doc.data());
+  const querySnapshot = await getDocs(collection(db, 'posts'));
+  querySnapshot.forEach((doc) => {
+   postsCollection.push(doc);
+   console.log(doc);
+   console.log(doc.data());
   });
   console.log(postsCollection);
     return  postsCollection
 }
 
-export const user =  async (email, user) => {
-  return await addDoc(collection(db, 'userIdCollection'), { email, user });
-}
+export const onGetPublication = (callback) => onSnapshot(collection(db, 'posts'), callback);
 
-export const getUser = async () => {
-    let  userCollection = [];
-    const getUserCollection = await getDocs(collection(db, 'userIdColection'));
-    getUserCollection.forEach((doc) => {
-     userCollection.push(doc.data().user);
-    });
-    console.log(userCollection);
-      return  userCollection
-  }
+export const deletePublication = (id) => deleteDoc(doc(db, 'posts', id));
 
-// export const onGetPublication = () => {
-//   onSnapshot(collection(db, 'posts'));
-// }
-export const onGetPublication = () => {
-  onSnapshot(collection(db, 'posts'));
-}
-=======
-  let postsCollection=[];
-  const getPostsCollection = await getDocs(collection(db, 'posts'));
-  getPostsCollection.forEach((doc) => {
-    // postsCollection = data;
-  
-  // // doc.data() is never undefined for query doc snapshots
-  postsCollection.push(doc.data())
-  });
-  console.log( postsCollection)
-  return postsCollection
-}
+export const getPost = (id)=> getDoc(doc(db, 'posts', id));
 
-// export const getPublication = async () => {
-//   let data;
-//   const getPostsCollection = await getDocs(collection(db, 'posts'));
-//   getPostsCollection.forEach((doc) => {
-//     data = doc.data();
-//     // postsCollection = data;
-  
-//   // // doc.data() is never undefined for query doc snapshots
-//   // postsCollection.push({ ...doc.id, ...doc.data().title, ...doc.data().text})
-//   console.log(data);
+export const updatePublication = (id, newField) => updateDoc(doc(db, 'posts', id), newField);
 
-//   });
-//     return data
-// }
->>>>>>> fb3e2363799e4413d71a3e59aaccedcbd0e395c3
+
+// export const likes =  async (user) => {
+//   return await addDoc(collection(db, 'likes'), { user});
+//   }
+
+//   export const getLikes = async () => {
+//     let  likesCollection = [];
+//     const querySnapshot = await getDocs(collection(db, 'likes'));
+//     querySnapshot.forEach((doc) => {
+//      likesCollection.push(doc);
+//      console.log(doc);
+//      console.log(doc.data());
+//     });
+//     console.log(likesCollection);
+//       return  likesCollection
+//   }
+
+//   export const onGetLikes = (callback) => onSnapshot(collection(db, 'likes'), callback);
