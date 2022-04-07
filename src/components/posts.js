@@ -103,4 +103,3 @@
 //   formPublication.appendChild(publicationText);
 //   formPublication.appendChild(btnSave);
 //   postsFn.appendChild(containerPublication);
-

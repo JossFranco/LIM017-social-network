@@ -1,7 +1,7 @@
-export function postsTemplate(doc, place) {
-  place.innerHTML = "";
+export function postsTemplate (doc, place) {
+  place.innerHTML= '';
   doc.forEach((e) => {
-    place.innerHTML += `
+  place.innerHTML += `
   <div class = "containerPublicationDiv" >
     <div class = "containerPosts">
       <h3 class = "titlePost"> ${e.data().title}</h3>
@@ -13,5 +13,5 @@ export function postsTemplate(doc, place) {
       <span id = "count" > 0 </span></button>
      </div>
   </div>`;
-  });
-}
+   })
+};

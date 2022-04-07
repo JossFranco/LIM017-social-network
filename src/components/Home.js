@@ -1,195 +1,143 @@
 // eslint-disable-next-line import/no-cycle
-import { onNavigate } from "../main.js";
+import { onNavigate } from '../main.js';
 // eslint-disable-next-line import/no-cycle
-import { logOut } from "../firebase/auth.js";
-
 import {
-  publication,
-  getPublication,
+   logOut
+ } from '../firebase/auth.js';
+
+import { 
+  publication, 
+  getPublication, 
   onGetPublication,
   deletePublication,
   getPost,
   updatePublication,
-  likes,
-} from "../firebase/firestore.js";
+  //likes,
+} from '../firebase/firestore.js';
 
-import { postsTemplate } from "./template.js";
+import { 
+  postsTemplate
+ } from './template.js';
 
 export const home = () => {
-  const loginDiv = document.createElement("div");
-  loginDiv.setAttribute("class", "loginDiv");
-  const profileDiv = document.createElement("div");
-  profileDiv.setAttribute("class", "profileDiv");
-  const imgProfileDiv = document.createElement("IMG");
-  imgProfileDiv.setAttribute("src", "./Image/fondoCiudad.PNG");
-  imgProfileDiv.setAttribute("class", "imgProfileDiv");
-  const imgProfile = document.createElement("IMG");
-  imgProfile.setAttribute("src", "./Image/22Perfil.png");
-  imgProfile.setAttribute("class", "imgProfile");
-  const nameDiv = document.createElement("div");
-  nameDiv.setAttribute("class", "nameDiv");
-  const btnLogOut = document.createElement("button");
-  btnLogOut.setAttribute("class", "btnLogOut");
-  const postDiv = document.createElement("div");
-  const formPublication = document.createElement("form");
-  formPublication.setAttribute("class", "formPublication");
-  const publicationTitle = document.createElement("input");
-  publicationTitle.setAttribute("placeholder", "¿Qué quieres compartir?");
-  publicationTitle.setAttribute("class", "publicationTitle");
-  const publicationText = document.createElement("textarea");
-  publicationText.setAttribute("placeholder", "Escribe aquí");
-  publicationText.setAttribute("class", "publicationText");
-  publicationText.setAttribute("rows", "5");
-  const btnSave = document.createElement("button");
-  btnSave.setAttribute("class", "btnSave");
-  btnSave.setAttribute("id", "btnSave");
-  const containerPublication = document.createElement("div");
+  const loginDiv = document.createElement('div');
+  loginDiv.setAttribute('class', 'loginDiv');
+  const profileDiv = document.createElement('div');
+  profileDiv.setAttribute('class', 'profileDiv');
+  const imgProfileDiv = document.createElement('IMG');
+  imgProfileDiv.setAttribute('src', './Image/fondoCiudad.PNG');
+  imgProfileDiv.setAttribute('class', 'imgProfileDiv');
+  const imgProfile = document.createElement('IMG');
+  imgProfile.setAttribute('src', './Image/22Perfil.png');
+  imgProfile.setAttribute('class', 'imgProfile');
+  const nameDiv = document.createElement('div');
+  nameDiv.setAttribute('class', 'nameDiv');
+  const btnLogOut = document.createElement('button');
+  btnLogOut.setAttribute('class', 'btnLogOut');
+  const postDiv = document.createElement('div');
+  const formPublication = document.createElement('form');
+  formPublication.setAttribute('class', 'formPublication');
+  const publicationTitle =  document.createElement('input');
+  publicationTitle.setAttribute('placeholder', '¿Qué quieres compartir?');
+  publicationTitle.setAttribute('class', 'publicationTitle');
+  const publicationText =  document.createElement('textarea');
+  publicationText.setAttribute('placeholder', 'Escribe aquí');
+  publicationText.setAttribute('class', 'publicationText');
+  publicationText.setAttribute('rows', '5');
+  const btnSave = document.createElement('button');
+  btnSave.setAttribute('class', 'btnSave');
+  btnSave.setAttribute('id', 'btnSave');
+  const containerPublication = document.createElement('div');
 
-  btnLogOut.textContent = "Cerrar Sesión";
-  btnSave.textContent = "Publicar";
+  btnLogOut.textContent = 'Cerrar Sesión';
+  btnSave.textContent = 'Publicar';
 
-  btnLogOut.addEventListener("click", () => {
+  btnLogOut.addEventListener('click', () => {
     logOut();
   });
 
-  formPublication.addEventListener("submit", (e) => {
-    e.preventDefault();
-    publication(publicationTitle.value, publicationText.value);
-    formPublication.reset();
-  });
+  nameDiv.textContent = localStorage.getItem('email');
 
-  getPublication()
-    .then((data) => {
-      postsTemplate(data, containerPublication);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  // getPublication()
-  // .then( (data) => {
-  //   containerPublication.innerHTML = postsTemplate(data);
-  // })
-  // .catch((err) => {
-  //   console.log(err);
-  // });
-
-  // postsTemplate();
-  // const getPost = () => {
-  // let postsCollection =[];
-  // const getPostsCollection = getPublication();
-  // getPostsCollection.forEach((doc) => {
-  //   let  newElement = documento.createElement( `${doc.data().title}`);
-  //   let a = containerPublicationP.innerHTML = newElement;
-  // });
-  // return a
-  // }
-  // const variable1 =  getPost();
-  // containerPublication.innerHTML= `${variable1}`;
-  // const  newElement = documento.createElement( `${doc.data().title}`);
-
-  nameDiv.textContent = localStorage.getItem("email");
   let editStatus = false;
-  let id = "";
-
-  formPublication.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (!editStatus) {
-      publication(
-        publicationTitle.value,
-        publicationText.value,
-        localStorage.getItem("usuario")
-      );
-    } else {
-      updatePublication(id, {
-        title: publicationTitle.value,
-        text: publicationText.value,
-        user: localStorage.getItem("usuario"),
+  let id = '';
+  
+  formPublication.addEventListener('submit', (e) => {
+    e.preventDefault()
+    if(!editStatus){
+      publication(publicationTitle.value, publicationText.value, localStorage.getItem('usuario')); 
+    } else { 
+      updatePublication( id,{ 
+        title: publicationTitle.value, 
+        text: publicationText.value, 
+        user: localStorage.getItem('usuario'),
       });
       editStatus = false;
     }
     formPublication.reset();
-  });
+});
 
-  onGetPublication((querySnapshot) => {
-    getPublication()
-      .then((data) => {
-        postsTemplate(data, containerPublication);
+onGetPublication((querySnapshot) =>{
+getPublication()
+.then((data) => { 
+ postsTemplate(data, containerPublication);
 
-        const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
-        console.log(btnsDelete);
-        btnsDelete.forEach((btn) => {
-          btn.addEventListener("click", ({ target: { dataset } }) => {
-            deletePublication(dataset.id);
-          });
-        });
+ const btnsDelete = containerPublication.querySelectorAll('.btnsDelete');
+ console.log(btnsDelete);
+ btnsDelete.forEach( btn => {
+   btn.addEventListener('click', ({target: {dataset}}) => {
+    deletePublication(dataset.id)
+   })
+ })
 
-        const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
-        console.log(btnsEdit);
-        btnsEdit.forEach((btn) => {
-          btn.addEventListener("click", async (e) => {
-            const doc = await getPost(e.target.dataset.id);
-            const publication = doc.data();
 
-            publicationTitle.value = publication.title;
-            publicationText.value = publication.text;
+ const btnsEdit = containerPublication.querySelectorAll('.btnsEdit');
+ console.log(btnsEdit);
+ btnsEdit.forEach((btn) => {
+   btn.addEventListener('click', async (e) => {
+    const doc = await getPost(e.target.dataset.id);
+    const publication = doc.data();
 
-            editStatus = true;
-            id = e.target.dataset.id;
-            btnSave.textContent = "Actualizar";
-          });
-        });
+    publicationTitle.value = publication.title;
+    publicationText.value = publication.text;
 
-        const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
-        const count = containerPublication.querySelectorAll("#count");
-        console.log(btnsLikes);
+    editStatus = true;
+    id = e.target.dataset.id;
+    btnSave.textContent = 'Actualizar';
 
-        const user = localStorage.getItem("usuario");
-        btnsLikes.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            if (data.includes(user) !== true) {
-              const likeUser = likes(user);
-              console.log(likeUser);
-              getLikes()
-                .then(() => {
-                  count.textContent = data.length;
-                })
-                .catch((err) => {
-                  console.log(err);
-                });
-            } else if (data.includes(user) !== false) {
-              count.textContent = data.length;
-            }
-          });
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+  })
+})
 
-  // getUser()
-  // .then((data) => {
-  //   userTemplate(data, nameDiv);
-  // })
-  // .catch((err) => {
-  //   console.log(err);
+const btnsLikes = containerPublication.querySelectorAll('.btnsLikes');
+const count = containerPublication.querySelectorAll('#count');
+console.log(btnsLikes);
 
-  // getPublication()
-  // .then( (data) => {
-  //   containerPublication.innerHTML = postsTemplate(data);
-  // })
-  // .catch((err) => {
-  //   console.log(err);
-  // });
+const user = localStorage.getItem('usuario');
+btnsLikes.forEach((btn) => {
+  btn.addEventListener('click',  () => {
+    if(data.includes(user) !== true){
+    const likeUser = likes(user);  
+    console.log(likeUser);
+    getLikes()
+    .then (( ) => { 
+      count.textContent = data.length;
+    })
+    .catch ((err) =>{ 
+      console.log(err);
+    })
+    } else if (data.includes(user) !== false){ 
+    
+      count.textContent =  data.length;
+    }
+  })
+})
 
-  // postsTemplate();
-  // const getPost = () => {
-  // let postsCollection =[];
-  // const getPostsCollection = getPublication();
-  // getPostsCollection.forEach((doc) => {
-  //   let  newElement = documento.createElement( `${doc.data().title}`);
-  //   let a = containerPublicationP.innerHTML = newElement;
+
+})
+.catch((err) => {
+  console.log(err);
+});
+});
+
 
   loginDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
@@ -200,6 +148,9 @@ export const home = () => {
   formPublication.appendChild(publicationText);
   formPublication.appendChild(btnSave);
   loginDiv.appendChild(containerPublication);
+  loginDiv.appendChild(postDiv);
+  loginDiv.appendChild(btnLogOut);
 
+ 
   return loginDiv;
-};
+}
