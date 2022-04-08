@@ -37,10 +37,10 @@ export const home = () => {
   const postDiv = document.createElement('div');
   const formPublication = document.createElement('form');
   formPublication.setAttribute('class', 'formPublication');
-  const publicationTitle =  document.createElement('input');
+  const publicationTitle = document.createElement('input');
   publicationTitle.setAttribute('placeholder', '¿Qué quieres compartir?');
   publicationTitle.setAttribute('class', 'publicationTitle');
-  const publicationText =  document.createElement('textarea');
+  const publicationText = document.createElement('textarea');
   publicationText.setAttribute('placeholder', 'Escribe aquí');
   publicationText.setAttribute('class', 'publicationText');
   publicationText.setAttribute('rows', '5');
@@ -60,7 +60,6 @@ export const home = () => {
 
   let editStatus = false;
   let id = '';
-  
   formPublication.addEventListener('submit', (e) => {
     e.preventDefault()
     if(!editStatus){
