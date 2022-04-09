@@ -54,7 +54,7 @@ export const home = () => {
 
   let editStatus = false;
   let id = "";
- 
+
   let getLikes = [localStorage.getItem("usuario")];
   // let time = updateTimestamp;
 
@@ -119,7 +119,6 @@ export const home = () => {
         //           const likeUser = likes(user);
         //           console.log(likeUser);
         //         } else {
-                  
         //         }
         //         count.textContent = data.length;
         //       });
@@ -128,7 +127,6 @@ export const home = () => {
         //   .catch((err) => {
         //     console.log(err);
         //   });
-
       })
       .catch((err) => {
         console.log(err);
