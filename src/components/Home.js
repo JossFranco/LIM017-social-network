@@ -1,7 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { 
-  logOut 
-} from "../firebase/auth.js";
+import {  logOut } from "../firebase/auth.js";
 
 import {
   publication,
@@ -83,31 +81,30 @@ export const home = () => {
     formPublication.reset();
   });
 
-
-  // const author = doc.data().author;
-  // // const getAuthor= author.forEach((element) => {
-  // //   return element
-  // //  }); 
-  // console.log(author);
-  const idAuthor = localStorage.getItem('email');
-  console.log(idAuthor);
-  console.log('aqui estas');
+//  const author = containerPublication.querySelectorAll('.authorPublication').map()
 
   onGetPublication((querySnapshot) => { 
     getPublication()
       .then((data) => {
         postsTemplate(data, containerPublication);
+
+        // const dataP = postsTemplate(data, containerPublication);
+        // // const getAuthor= author.forEach((element) => {
+        // //   return element
+        // //  }); 
+        // console.log(dataP);
+        // const idAuthor = localStorage.getItem('email');
+        // console.log(idAuthor);
+        // console.log('aqui estas');
           
           const btnsDelete = containerPublication.querySelectorAll('.btnsDelete');
-          console.log(btnsDelete);
           const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
-          console.log(btnsEdit);
-          if (!containerPublication.getElementById('author') ===  localStorage.getItem("email")) {
-            containerPublication.getElementById('containerBtns').style.display = "block";
-          } else {
-            console.log('no es posible');
-            containerPublication.getElementById('containerBtns').style.display = "block";
-          }
+          // if (!containerPublication.getElementById('author') ===  localStorage.getItem("email")) {
+          //   containerPublication.getElementById('containerBtns').style.display = "block";
+          // } else {
+          //   console.log('no es posible');
+          //   containerPublication.getElementById('containerBtns').style.display = "block";
+          // }
 
 
 
@@ -171,6 +168,7 @@ export const home = () => {
         console.log(err);
       });
   });
+ 
 
   loginDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
