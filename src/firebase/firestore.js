@@ -9,8 +9,9 @@ import {
   getDoc,
   updateDoc,
   serverTimestamp,
-  // orderBy,
-} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js";
+  query,
+  orderBy,
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 const db = getFirestore();
 
@@ -20,20 +21,16 @@ const db = getFirestore();
 //   timestamp: serverTimestamp()
 // });
 
-export const publication = async (title, text, user) => {
-  return await addDoc(collection(db, 'posts'), {
-    title,
-    text,
-    user,
-    timestamp: serverTimestamp().toDate(),
-  });
-};
 
-// orderBy('title' 'desc');
+export const publication =  async (title, text, author) => {
+return await addDoc(collection(db, 'posts'), { title, text, author, likes: [], timestamp: serverTimestamp()});
+}
+
+const orderPublication = query((collection(db, 'posts')), orderBy('timestamp', 'desc'));
 
 export const getPublication = async () => {
-  let postsCollection = [];
-  const querySnapshot = await getDocs(collection(db, "posts"));
+  let  postsCollection = [];
+  const querySnapshot = await getDocs(orderPublication);
   querySnapshot.forEach((doc) => {
     postsCollection.push(doc);
     console.log(doc);
@@ -53,7 +50,6 @@ export const getPost = (id) => getDoc(doc(db, "posts", id));
 export const updatePublication = (id, newField) =>
   updateDoc(doc(db, "posts", id), newField);
 
-//crear funcion para obtener el tiempo
 
 // //crear funcion para obtener los likes
 // export const onGetLikes = (callback) => onSnapshot(collection(db, 'likes'), callback);

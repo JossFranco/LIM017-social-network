@@ -64,7 +64,7 @@ export const home = () => {
       publication(
         publicationTitle.value,
         publicationText.value,
-        localStorage.getItem("usuario"),
+        localStorage.getItem("email"),
         // getLikes,
       );
     } else {
@@ -106,6 +106,24 @@ export const home = () => {
           });
         });
 
+////contador
+        
+        //     let dDatabase = firebase.database().ref('Like Number Counter').child(cId);
+
+        //     // get firebase data
+        //     dDatabase.on('value', function(snap) {
+        //         var data = snap.val() || 0;
+        //         dCounter.querySelector('span').innerHTML = data;
+        //     });
+
+        //     // set firebase data
+        //     el.addEventListener('click', function() {
+        //         dDatabase.transaction(function(dCount) {
+        //             return (dCount || 0) + 1;
+        //         });
+        //     });
+        // });
+
         // const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
         // const count = containerPublication.querySelectorAll("#count");
         // console.log(btnsLikes);
@@ -132,6 +150,9 @@ export const home = () => {
         console.log(err);
       });
   });
+
+
+
 
   loginDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
