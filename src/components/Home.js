@@ -8,10 +8,12 @@ import {
   deletePublication,
   getPost,
   updatePublication,
+  getIdAuthor,
 } from "../firebase/firestore.js";
 
 import {
    postsTemplate,
+   authorTemplate,
 } from "./template.js";
 
 export const home = () => {
@@ -81,7 +83,9 @@ export const home = () => {
     formPublication.reset();
   });
 
-//  const author = containerPublication.querySelectorAll('.authorPublication').map()
+const author =  getIdAuthor();
+console.log(author);
+console.log('aqui estoy');
 
   onGetPublication((querySnapshot) => { 
     getPublication()

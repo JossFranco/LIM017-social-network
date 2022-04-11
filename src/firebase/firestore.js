@@ -13,7 +13,7 @@ import {
   orderBy,
   where,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
-import { async } from 'regenerator-runtime';
+
 
 const db = getFirestore();
  
@@ -53,7 +53,7 @@ export const getPublication = async () => {
   querySnapshot.forEach((doc) => {
    postsCollection.push(doc);
   //  console.log(doc);
-  //  console.log(doc.data());
+   console.log(doc.data());
   });
     return  postsCollection
 }
@@ -65,7 +65,7 @@ export const  getIdAuthor = async () => {
 const getIdPost = await getDocs(idPost);
 getIdPost.forEach((idData) => {
   authorPost.push(idData.data().author);
-  console.log(authorPost[0])
+  console.log(authorPost[0]);
 })
 return authorPost[0];
 }

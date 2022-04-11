@@ -21,3 +21,6 @@ export function postsTemplate (doc, place) {
    })
 };
 
+export function authorTemplate (doc) {
+  return `${doc.data().author}`;
+};
