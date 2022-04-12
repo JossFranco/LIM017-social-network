@@ -8,10 +8,9 @@ import {
   deletePublication,
   getPost,
   updatePublication,
-  getIdAuthor,
 } from "../firebase/firestore.js";
 
-import { postsTemplate, authorTemplate } from "./template.js";
+import { postsTemplate } from "./template.js";
 
 export const home = () => {
   const loginDiv = document.createElement("div");
@@ -79,32 +78,16 @@ export const home = () => {
     formPublication.reset();
   });
 
-  const author = getIdAuthor();
-  console.log(author);
-  console.log("aqui estoy");
-
   onGetPublication((querySnapshot) => {
     getPublication()
-      .then((data) => {
+      .then(async (data) => {
         postsTemplate(data, containerPublication);
-
-        // const dataP = postsTemplate(data, containerPublication);
-        // // const getAuthor= author.forEach((element) => {
-        // //   return element
-        // //  });
-        // console.log(dataP);
-        // const idAuthor = localStorage.getItem('email');
-        // console.log(idAuthor);
-        // console.log('aqui estas');
 
         const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
         const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
-        // if (!containerPublication.getElementById('author') ===  localStorage.getItem("email")) {
-        //   containerPublication.getElementById('containerBtns').style.display = "block";
-        // } else {
-        //   console.log('no es posible');
-        //   containerPublication.getElementById('containerBtns').style.display = "block";
-        // }
+        const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
+        // btnsLikes.forEach((btn) => {
+        //   btn.addEventListener("click",
 
         btnsDelete.forEach((btn) => {
           btn.addEventListener("click", async ({ target: { dataset } }) => {
@@ -124,41 +107,6 @@ export const home = () => {
             formPublication.reset();
           });
         });
-
-        ////contador
-        //     let dDatabase = firebase.database().ref('Like Number Counter').child(cId);
-        //     // get firebase data
-        //     dDatabase.on('value', function(snap) {
-        //         var data = snap.val() || 0;
-        //         dCounter.querySelector('span').innerHTML = data;
-        //     });
-        //     // set firebase data
-        //     el.addEventListener('click', function() {
-        //         dDatabase.transaction(function(dCount) {
-        //             return (dCount || 0) + 1;
-        //         });
-        //     });
-        // });
-        // const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
-        // const count = containerPublication.querySelectorAll("#count");
-        // console.log(btnsLikes);
-        // getLikes()
-        //   .then(() => {
-        //     const user = localStorage.getItem("usuario");
-        //     btnsLikes.forEach((btn) => {
-        //       btn.addEventListener("click", () => {
-        //         if (!data.includes(user) ) {
-        //           const likeUser = likes(user);
-        //           console.log(likeUser);
-        //         } else {
-        //         }
-        //         count.textContent = data.length;
-        //       });
-        //     });
-        //   })
-        //   .catch((err) => {
-        //     console.log(err);
-        //   });
       })
       .catch((err) => {
         console.log(err);

@@ -257,9 +257,9 @@ img{
     box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
     cursor: pointer
 } */
-.containerBtns{
+/* .containerBtns{
     display: none;
-}
+} */
 
 .errorPublication{
     font-size: 1em;
