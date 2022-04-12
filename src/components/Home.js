@@ -8,10 +8,10 @@ import {
   deletePublication,
   getPost,
   updatePublication,
-  // likes,
+  getIdAuthor,
 } from "../firebase/firestore.js";
 
-import { postsTemplate } from "./template.js";
+import { postsTemplate, authorTemplate } from "./template.js";
 
 export const home = () => {
   const loginDiv = document.createElement("div");
@@ -42,31 +42,33 @@ export const home = () => {
   btnSave.setAttribute("class", "btnSave");
   btnSave.setAttribute("id", "btnSave");
   const containerPublication = document.createElement("div");
+  const errorPublication = document.createElement("div");
+  errorPublication.setAttribute("class", "errorPublication");
 
   btnLogOut.textContent = "Cerrar Sesión";
   btnSave.textContent = "Publicar";
+  nameDiv.textContent = localStorage.getItem("email");
 
   btnLogOut.addEventListener("click", () => {
     logOut();
   });
 
-  nameDiv.textContent = localStorage.getItem("email");
-
   let editStatus = false;
   let id = "";
 
-  let getLikes = [localStorage.getItem("usuario")];
-  // let time = updateTimestamp;
-
   formPublication.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (!editStatus) {
-      publication(
-        publicationTitle.value,
-        publicationText.value,
-        localStorage.getItem("email"),
-        // getLikes,
-      );
+    if (
+      !editStatus &&
+      publicationTitle.value !== "" &&
+      publicationText.value !== ""
+    ) {
+      publication(publicationTitle.value, publicationText.value);
+    } else if (!editStatus && publicationTitle.value === "") {
+      errorPublication.textContent = "- Debe agregar el título";
+      publicationTitle.setAttribute("id", "postTitle");
+    } else if (!editStatus && publicationText.value === "") {
+      errorPublication.textContent = "- Debe agregar descripción";
     } else {
       updatePublication(id, {
         title: publicationTitle.value,
@@ -77,45 +79,59 @@ export const home = () => {
     formPublication.reset();
   });
 
+  const author = getIdAuthor();
+  console.log(author);
+  console.log("aqui estoy");
+
   onGetPublication((querySnapshot) => {
     getPublication()
       .then((data) => {
         postsTemplate(data, containerPublication);
 
+        // const dataP = postsTemplate(data, containerPublication);
+        // // const getAuthor= author.forEach((element) => {
+        // //   return element
+        // //  });
+        // console.log(dataP);
+        // const idAuthor = localStorage.getItem('email');
+        // console.log(idAuthor);
+        // console.log('aqui estas');
+
         const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
-        console.log(btnsDelete);
+        const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
+        // if (!containerPublication.getElementById('author') ===  localStorage.getItem("email")) {
+        //   containerPublication.getElementById('containerBtns').style.display = "block";
+        // } else {
+        //   console.log('no es posible');
+        //   containerPublication.getElementById('containerBtns').style.display = "block";
+        // }
+
         btnsDelete.forEach((btn) => {
-          btn.addEventListener("click", ({ target: { dataset } }) => {
-            deletePublication(dataset.id);
+          btn.addEventListener("click", async ({ target: { dataset } }) => {
+            await deletePublication(dataset.id);
           });
         });
 
-        const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
-        console.log(btnsEdit);
         btnsEdit.forEach((btn) => {
           btn.addEventListener("click", async (e) => {
             const doc = await getPost(e.target.dataset.id);
             const publication = doc.data();
-
             publicationTitle.value = publication.title;
             publicationText.value = publication.text;
-
             editStatus = true;
             id = e.target.dataset.id;
             btnSave.textContent = "Actualizar";
+            formPublication.reset();
           });
         });
 
-////contador
-        
+        ////contador
         //     let dDatabase = firebase.database().ref('Like Number Counter').child(cId);
-
         //     // get firebase data
         //     dDatabase.on('value', function(snap) {
         //         var data = snap.val() || 0;
         //         dCounter.querySelector('span').innerHTML = data;
         //     });
-
         //     // set firebase data
         //     el.addEventListener('click', function() {
         //         dDatabase.transaction(function(dCount) {
@@ -123,11 +139,9 @@ export const home = () => {
         //         });
         //     });
         // });
-
         // const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
         // const count = containerPublication.querySelectorAll("#count");
         // console.log(btnsLikes);
-
         // getLikes()
         //   .then(() => {
         //     const user = localStorage.getItem("usuario");
@@ -151,9 +165,6 @@ export const home = () => {
       });
   });
 
-
-
-
   loginDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
   profileDiv.appendChild(imgProfile);
@@ -161,6 +172,7 @@ export const home = () => {
   loginDiv.appendChild(formPublication);
   formPublication.appendChild(publicationTitle);
   formPublication.appendChild(publicationText);
+  formPublication.appendChild(errorPublication);
   formPublication.appendChild(btnSave);
   loginDiv.appendChild(containerPublication);
   loginDiv.appendChild(postDiv);

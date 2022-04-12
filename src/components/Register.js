@@ -45,8 +45,6 @@ export const register = () => {
 
   btnRegisterUser.addEventListener('click', () => {
     registerWithEmail(inputEmail.value, inputPass.value, inputUserId.value);
-    // getDataUser(inputEmail.value, inputUserId.value);
-    // user(inputEmail.value, inputUserId.value);
   });
 
   btnGoogleRegister.addEventListener('click', () => {

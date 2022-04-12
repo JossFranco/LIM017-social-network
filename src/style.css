@@ -257,6 +257,16 @@ img{
     box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
     cursor: pointer
 } */
+.containerBtns{
+    display: none;
+}
+
+.errorPublication{
+    font-size: 1em;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 2%;
+}
 
 @media (min-width: 760px){ 
     .root{
