@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import {  logOut } from "../firebase/auth.js";
+import { logOut } from "../firebase/auth.js";
+import { userLogOut } from "../firebase/control.js";
 
 import {
   publication,
@@ -8,11 +9,12 @@ import {
   deletePublication,
   getPost,
   updatePublication,
+  addLike,
+  // removeLike,
+  // addArrLikes,
 } from "../firebase/firestore.js";
 
-import {
-   postsTemplate,
-} from "./template.js";
+import { postsTemplate } from "./template.js";
 
 export const home = () => {
   const loginDiv = document.createElement("div");
@@ -54,50 +56,50 @@ export const home = () => {
     logOut();
   });
 
-
   let editStatus = false;
   let id = "";
-
   formPublication.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (!editStatus && publicationTitle.value !== "" && publicationText.value !== "") 
-    {
-      publication(
-        publicationTitle.value,
-        publicationText.value,
-      );
+    if (!editStatus && publicationTitle.value !== "" &&  publicationText.value !== "") {
+      publication(publicationTitle.value, publicationText.value);
     } else if (!editStatus && publicationTitle.value === "") {
       errorPublication.textContent = "- Debe agregar el título";
       publicationTitle.setAttribute("id", "postTitle");
     } else if (!editStatus && publicationText.value === "") {
       errorPublication.textContent = "- Debe agregar descripción";
     } else {
-      updatePublication(id, {
-        title: publicationTitle.value,
-        text: publicationText.value,
+      updatePublication(id, { title: publicationTitle.value, text: publicationText.value,
       });
       editStatus = false;
+      btnSave.textContent = "Publicar";
     }
     formPublication.reset();
   });
 
-
-  onGetPublication((querySnapshot) => { 
+  onGetPublication((querySnapshot) => {
     getPublication()
       .then(async (data) => {
         postsTemplate(data, containerPublication);
+        // //  const dataLike = data.data().likes;
+        //  console.log('....');
+        //  console.log(dataLike);
+        //  console.log('----');
 
-          const btnsDelete = containerPublication.querySelectorAll('.btnsDelete');
-          const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
-          const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
-          // btnsLikes.forEach((btn) => {
-          //   btn.addEventListener("click",
+        const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
+        const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
+        const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
+        btnsLikes.forEach((btn) => {
+          btn.addEventListener("click", async ()=> {
+            let emailId = localStorage.getItem("email");
+            await addLike(emailId);
+            console.log("aqui no sdss");
+          });
+        });
 
-            btnsDelete.forEach((btn) => {
-              btn.addEventListener("click", async ({ target: { dataset } }) => {
-              await deletePublication(dataset.id);
-             });
-          
+        btnsDelete.forEach((btn) => {
+          btn.addEventListener("click", async ({ target: { dataset } }) => {
+            await deletePublication(dataset.id);
+          });
         });
 
         btnsEdit.forEach((btn) => {
@@ -112,13 +114,11 @@ export const home = () => {
             formPublication.reset();
           });
         });
-        
       })
       .catch((err) => {
         console.log(err);
       });
   });
- 
 
   loginDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);

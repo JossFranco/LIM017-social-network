@@ -4,18 +4,19 @@ export function postsTemplate (doc, place) {
   place.innerHTML += `
   <div class = "containerPublicationDiv" >
     <div class = "containerPosts">
-    <p>${e.data().timestamp.toDate().toDateString()} </p>
-    <p>${e.data().timestamp.toDate().toLocaleTimeString('es')} </p>
+      <div class = "containerDate">
+        <p class = "dateStyle" >${e.data().timestamp.toDate().toDateString()} </p> 
+        <p class = "dateStyle"  >${e.data().timestamp.toDate().toLocaleTimeString('es')} </p>
+      </div>
       <h3 class = "titlePost"> ${e.data().title}</h3>
       <p class = "descriptionPosts"> ${e.data().text}</p>
-      <p class = "authorPublication" id = "author"> Autor: ${e.data().author} </p> 
+      <p class = "authorPublication" id = "author"> <img src="user.png" alt="user"> ${e.data().author} </p> 
       <div class = "containerBtns" id ="containerBtns">
-      <button class = "btnsDelete" data-id = "${e.id}" ${e.data().author===localStorage.getItem('email')? '':'disabled'} >Eliminar</button>
-      <button class = "btnsEdit" data-id ="${e.id}"  ${e.data().author===localStorage.getItem('email')? '':'disabled'}> Editar </button>
+      <button class = "btnsDelete btnsStyle" data-id = "${e.id}" ${e.data().author===localStorage.getItem('email')? '':'disabled'} > Eliminar </i></button>
+      <button class = "btnsEdit btnsStyle" data-id ="${e.id}" ${e.data().author===localStorage.getItem('email')? '':'disabled'}> Editar </i></button>
+      <button class = "btnsLikes btnsStyle"  data-id ="${e.data().likes}"} > 
+      <span id = "iconLike" > Me Gusta </span><span id = "count" >${e.data().likes.length}</span></button>
       </div>
-      <button class = "btnsLikes"  data-id ="${e.data().likes}" > 
-      <span id = "iconLike" > <i class="fa-solid fa-thumbs-up"></i> </span>
-      <span id = "count" >${e.data().likes.length}</span></button>
      </div>
   </div>`;
    })

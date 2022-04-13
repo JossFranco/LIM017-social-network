@@ -54,9 +54,19 @@ export const registerWithEmail = async function (email, password, name) {
 };
 
 export const registerWithGoogle = async () => {
-  await registerGoogle().then(() => { onNavigate('/home')})
-  console.log(user.displayName);
+  await registerGoogle().then(() => { 
+    onNavigate('/home');
+    const user = result.user;
+    console.log(user);
+  if(localStorage.getItem('email') !== null)  {
+    localStorage.removeItem('email');
+    localStorage.setItem('email', user.displayName);
+  }else{
+    localStorage.setItem('email', user.displayName);
+   }
+  console.log();
   console.log(user.email);
+});
 };
 
 export const loginWithEmail = (email, password) => {
