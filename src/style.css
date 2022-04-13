@@ -52,6 +52,7 @@
 
 }
 
+.btnUpdate,
 .btnLogOut,
 .btnSave {
     width: 100%;
@@ -94,6 +95,9 @@
 .containerDate{
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 3%;
+  font-family:'Open Sans', sans-serif, Arial, Helvetica;
+  font-size: 0.8em;
 }
 
 .containerBtns{
@@ -114,8 +118,13 @@
     cursor: pointer;
 }
 
+.btnUpdate,
 .btnSave{
     margin: auto;
+}
+
+.btnUpdate{
+    background: #ff471a;
 }
 
 .btnStyle:hover{
@@ -240,7 +249,10 @@ img{
     border: none;
     padding: 0.5em 0;
 }
-
+.publicationTitle:hover,
+.publicationText:hover{
+    background:  #e6f2ff;
+}
 .publicationText{
     text-align: left;
     padding: 0 0.5em;
@@ -272,7 +284,7 @@ img{
 }
 
 .containerPublicationDiv{
-    border: 1px solid #ccddff;
+    border: 1px solid #3333cc;
     /* border-radius: 6%; */
     max-width: 100%;
     margin-top: 1%;
@@ -305,6 +317,23 @@ img{
     margin-bottom: 2%;
 }
 
+.imgAuthor{
+    object-fit: contain;
+    max-width: 9%;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 3%;
+    padding: 0%;
+}
+
+.authorPublication{
+ margin: 0%;
+ margin-bottom: 3%;
+ font-family:'Open Sans', sans-serif, Arial, Helvetica;
+ font-size: 0.8em;
+}
+
 @media (min-width: 760px){ 
     .root{
         max-width: 100%;
@@ -331,6 +360,10 @@ img{
     }
     .imgProfile{
         max-width: 30%;
+    }
+    .imgAuthor{
+        max-width: 5%;
+        height: auto;
     }
 }
 @media (min-width: 1500px){ 

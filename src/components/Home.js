@@ -62,6 +62,7 @@ export const home = () => {
     e.preventDefault();
     if (!editStatus && publicationTitle.value !== "" &&  publicationText.value !== "") {
       publication(publicationTitle.value, publicationText.value);
+      errorPublication.textContent='';
     } else if (!editStatus && publicationTitle.value === "") {
       errorPublication.textContent = "- Debe agregar el título";
       publicationTitle.setAttribute("id", "postTitle");
@@ -71,6 +72,7 @@ export const home = () => {
       updatePublication(id, { title: publicationTitle.value, text: publicationText.value,
       });
       editStatus = false;
+      btnSave.setAttribute("class", "btnSave");
       btnSave.textContent = "Publicar";
     }
     formPublication.reset();
@@ -111,6 +113,7 @@ export const home = () => {
             editStatus = true;
             id = e.target.dataset.id;
             btnSave.textContent = "Actualizar";
+            btnSave.setAttribute("class", "btnUpdate");
             formPublication.reset();
           });
         });
