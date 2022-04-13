@@ -17,15 +17,15 @@ import {
 
 const db = getFirestore();
 
-export const publication =  async (title, text) => {
-return await addDoc(collection(db, 'posts'), { 
-  title,
-  text,
-  author:  localStorage.getItem("email"), 
-  likes: [], 
-  timestamp: serverTimestamp()
-});
-}
+export const publication = async (title, text) => {
+  return await addDoc(collection(db, 'posts'), { 
+    title,
+    text,
+    author: localStorage.getItem('email'),
+    likes: [],
+    timestamp: serverTimestamp(),
+  });
+};
 
 const orderPublication = query((collection(db, 'posts')), orderBy('timestamp', 'desc'));
 
@@ -33,12 +33,12 @@ export const getPublication = async () => {
   const postsCollection = [];
   const querySnapshot = await getDocs(orderPublication);
   querySnapshot.forEach((doc) => {
-   postsCollection.push(doc);
+    postsCollection.push(doc);
    console.log('noviembre');
-   console.log(doc.data().likes)
+   console.log(doc.data().likes);
   });
-    return  postsCollection
-}
+  return postsCollection;
+};
 // const arrLikes =[];
 // export const addArrLikes =  (emailId) => arrLikes.splice(emailId);
 
@@ -57,8 +57,8 @@ export const updatePublication = (id, newField) => updateDoc(doc(db, 'posts', id
 // console.log('noviembre')
 // const likesRef= doc(db, 'posts', id);
 
-export const addLike =  async (addLikes) => {
-  await updateDoc(doc(db, 'posts', 'likes'), {likes: arrayUnion(addLikes)})
+export const addLike = async (addLikes) => {
+  await updateDoc(doc(db, 'posts', 'likes'), { likes: arrayUnion(addLikes) });
 };
 // export const removeLike =  async () => {
 //   return await updateDoc(likesRef, {
