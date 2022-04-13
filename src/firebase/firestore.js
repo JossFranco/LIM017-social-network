@@ -31,7 +31,7 @@ const orderPublication = query(
 );
 
 export const getPublication = async () => {
-  let postsCollection = [];
+  const postsCollection = [];
   const querySnapshot = await getDocs(orderPublication);
   querySnapshot.forEach((doc) => {
     postsCollection.push(doc);
@@ -61,7 +61,7 @@ console.log("noviembre");
 
 export const addLike = async () => {
   return await updateDoc(likesRef, {
-    likes: arrayUnion(localStorage.getItem('email')),
+    likes: arrayUnion(localStorage.getItem("email")),
   });
 };
 export const removeLike = async () => {
