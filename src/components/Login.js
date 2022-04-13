@@ -22,7 +22,7 @@ export const login = () => {
   loginPass.setAttribute('min', '6');
   const btnLogin = document.createElement('button');
   btnLogin.setAttribute('id', 'login');
-  btnLogin.setAttribute('class', 'btnStyle');
+  btnLogin.setAttribute('class', 'btnStyle btnLogIn');
   const btnRegister = document.createElement('button');
   btnRegister.setAttribute('class', 'btnStyleText');
   const btnGoogleLogin = document.createElement('button');
