@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { logOut } from "../firebase/auth.js";
+import { userLogOut } from "../firebase/control.js";
 
 import {
   publication,
@@ -8,6 +9,9 @@ import {
   deletePublication,
   getPost,
   updatePublication,
+  addLike,
+  // removeLike,
+  // addArrLikes,
 } from "../firebase/firestore.js";
 
 import { postsTemplate } from "./template.js";
@@ -54,14 +58,9 @@ export const home = () => {
 
   let editStatus = false;
   let id = "";
-
   formPublication.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (
-      !editStatus &&
-      publicationTitle.value !== "" &&
-      publicationText.value !== ""
-    ) {
+    if (!editStatus && publicationTitle.value !== "" &&  publicationText.value !== "") {
       publication(publicationTitle.value, publicationText.value);
     } else if (!editStatus && publicationTitle.value === "") {
       errorPublication.textContent = "- Debe agregar el título";
@@ -69,11 +68,10 @@ export const home = () => {
     } else if (!editStatus && publicationText.value === "") {
       errorPublication.textContent = "- Debe agregar descripción";
     } else {
-      updatePublication(id, {
-        title: publicationTitle.value,
-        text: publicationText.value,
+      updatePublication(id, { title: publicationTitle.value, text: publicationText.value,
       });
       editStatus = false;
+      btnSave.textContent = "Publicar";
     }
     formPublication.reset();
   });
@@ -82,12 +80,21 @@ export const home = () => {
     getPublication()
       .then(async (data) => {
         postsTemplate(data, containerPublication);
+        // //  const dataLike = data.data().likes;
+        //  console.log('....');
+        //  console.log(dataLike);
+        //  console.log('----');
 
         const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
         const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
         const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
-        // btnsLikes.forEach((btn) => {
-        //   btn.addEventListener("click",
+        btnsLikes.forEach((btn) => {
+          btn.addEventListener("click", async ()=> {
+            let emailId = localStorage.getItem("email");
+            await addLike(emailId);
+            console.log("aqui no sdss");
+          });
+        });
 
         btnsDelete.forEach((btn) => {
           btn.addEventListener("click", async ({ target: { dataset } }) => {
@@ -104,7 +111,7 @@ export const home = () => {
             editStatus = true;
             id = e.target.dataset.id;
             btnSave.textContent = "Actualizar";
-            formPublication.reset();
+2            formPublication.reset();
           });
         });
       })

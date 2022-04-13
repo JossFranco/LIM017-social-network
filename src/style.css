@@ -51,6 +51,7 @@
     cursor: pointer;
 
 }
+
 .btnLogOut,
 .btnSave {
     width: 100%;
@@ -67,6 +68,42 @@
     box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
     cursor: pointer;
 
+}
+
+.btnsStyle{
+    width: 30%;
+    max-width: 30%;
+    height: 2.5em;
+    text-align: center;
+    font-size: 0.8em;
+    /* font-weight: bold; */
+    color: #19334d;
+    border: none; 
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
+    cursor: pointer;
+    margin: 0.5%;
+
+}
+
+.btnsStyle:hover{
+    background:  #e6f2ff;
+}
+
+.containerDate{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.containerBtns{
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 1% ;
+    display: flex;
+    justify-content: center;
+    
 }
 
 .btnLogOut{
