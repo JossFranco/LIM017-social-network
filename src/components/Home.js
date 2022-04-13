@@ -111,7 +111,7 @@ export const home = () => {
             editStatus = true;
             id = e.target.dataset.id;
             btnSave.textContent = "Actualizar";
-2            formPublication.reset();
+            formPublication.reset();
           });
         });
       })
