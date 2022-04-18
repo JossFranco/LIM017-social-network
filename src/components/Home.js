@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { logOut } from '../firebase/auth.js';
-import { userLogOut } from '../firebase/control.js';
+import { logOut } from "../firebase/auth.js";
+import { userLogOut } from "../firebase/control.js";
 
 import {
   publication,
@@ -12,10 +12,9 @@ import {
   getDocLikes,
   addLike,
   removeLike,
-  
 } from "../firebase/firestore.js";
 
-import { postsTemplate } from './template.js';
+import { postsTemplate } from "./template.js";
 
 export const home = () => {
   const loginDiv = document.createElement("div");
@@ -50,7 +49,7 @@ export const home = () => {
   const errorPublication = document.createElement("div");
   errorPublication.setAttribute("class", "errorPublication");
 
-  const formEdit= document.createElement("form");
+  const formEdit = document.createElement("form");
   formEdit.setAttribute("class", "formPublication formEdit");
   formEdit.setAttribute("id", "formEdit");
 
@@ -75,59 +74,63 @@ export const home = () => {
   });
 
   let editStatus = false;
-  let id = '';
-  formPublication.addEventListener('submit', (e) => {
+  let id = "";
+  formPublication.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (!editStatus && publicationTitle.value !== '' && publicationText.value !== '') {
+    if (
+      !editStatus &&
+      publicationTitle.value !== "" &&
+      publicationText.value !== ""
+    ) {
       publication(publicationTitle.value, publicationText.value);
     } else if (!editStatus && publicationTitle.value === "") {
       errorPublication.textContent = "- Debe agregar el título";
       publicationTitle.setAttribute("id", "postTitle");
     } else if (!editStatus && publicationText.value === "") {
       errorPublication.textContent = "- Debe agregar descripción";
-    } 
-      editStatus = false;
+    }
+    editStatus = false;
     formPublication.reset();
   });
 
   formEdit.addEventListener("submit", (e) => {
     e.preventDefault();
-//   if(btnsLikes.setAttribute('class', 'btnsLikesRed')){
-//     btnsLikes.setAttribute('class', 'btnsLikesGrey')
-//   } else {
-//     btnsLikes.setAttribute('class', 'btnsLikesRed');
-//   }
-// };
-console.log('user / btn me gusta en camino');
-const userId = localStorage.getItem("email");
-console.log(userId);
-console.log('user / btn me gusta en camino');
+    if (editStatus) {
+      updatePublication(id, { title: editTitle.value, text: editText.value });
+    }
+    formEdit.reset();
+  });
+
+  console.log("user / btn me gusta en camino");
+  const userId = localStorage.getItem("email");
+  console.log(userId);
+  console.log("user / btn me gusta en camino");
 
   onGetPublication(() => {
     getPublication()
       .then(async (data) => {
         postsTemplate(data, containerPublication);
-        
+
         const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
         const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
         const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
         btnsLikes.forEach((btn) => {
-          btn.addEventListener("click", async (e)=> {
+          btn.addEventListener("click", async (e) => {
             const userId = localStorage.getItem("email");
-            const doc = await  getPost(e.target.dataset.id);
-            console.log('me gusta en camino');
+            const doc = await getPost(e.target.dataset.id);
+            console.log("me gusta en camino");
             console.log(doc);
             console.log(userId);
-            console.log('me gusta en camino');
+            console.log("me gusta en camino");
 
             id = doc.id;
             const dataCollection = doc.data();
-            if(dataCollection.likes.includes(userId)){
-              await updatePublication(userId)(id,{
+            if (dataCollection.likes.includes(userId)) {
+              await updatePublication(userId)(id, {
                 likes: removeLike(userId),
               });
-            }else{
-              await updatePublication(userId)(id,{
+            } else {
+              await updatePublication(userId)(id, {
                 likes: addLike(userId),
               });
             }
@@ -135,15 +138,15 @@ console.log('user / btn me gusta en camino');
         });
 
         btnsDelete.forEach((btn) => {
-          btn.addEventListener('click', async ({ target: { dataset } }) => {
+          btn.addEventListener("click", async ({ target: { dataset } }) => {
             await deletePublication(dataset.id);
           });
         });
 
         btnsEdit.forEach((btn) => {
           btn.addEventListener("click", async (e) => {
-            formPublication.setAttribute("class", "formHidden")
-            document.getElementById('formEdit').style.display ='block';
+            formPublication.setAttribute("class", "formHidden");
+            document.getElementById("formEdit").style.display = "block";
             const doc = await getPost(e.target.dataset.id);
             const publication = doc.data();
             editTitle.value = publication.title;
@@ -161,11 +164,10 @@ console.log('user / btn me gusta en camino');
       });
   });
 
-  btnUpdate.addEventListener('click', () =>{
+  btnUpdate.addEventListener("click", () => {
     formPublication.setAttribute("class", "formPublication ");
-    document.getElementById('formEdit').style.display ='none';
+    document.getElementById("formEdit").style.display = "none";
   });
-  
 
   loginDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
@@ -181,9 +183,8 @@ console.log('user / btn me gusta en camino');
   formEdit.appendChild(btnUpdate);
   loginDiv.appendChild(formEdit);
   loginDiv.appendChild(containerPublication);
-  loginDiv.appendChild(postDiv);
+  //loginDiv.appendChild(postDiv);
   loginDiv.appendChild(btnLogOut);
-  loginDiv.appendChild(footer);
-
+  // loginDiv.appendChild(footer);
   return loginDiv;
 };
