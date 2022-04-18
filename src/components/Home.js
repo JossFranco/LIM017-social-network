@@ -31,7 +31,7 @@ export const home = () => {
   nameDiv.setAttribute("class", "nameDiv");
   const btnLogOut = document.createElement("button");
   btnLogOut.setAttribute("class", "btnLogOut");
-  const postDiv = document.createElement("div");
+  // const postDiv = document.createElement("div");
   const formPublication = document.createElement("form");
   formPublication.setAttribute("class", "formPublication");
   // formPublication.setAttribute("id", "formPublication");
@@ -95,16 +95,21 @@ export const home = () => {
 
   formEdit.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (editStatus) {
-      updatePublication(id, { title: editTitle.value, text: editText.value });
-    }
-    formEdit.reset();
+      if(editStatus){
+        updatePublication(id, { title: editTitle.value, text: editText.value,})
+      }
+    formEdit.reset()
   });
 
-  console.log("user / btn me gusta en camino");
-  const userId = localStorage.getItem("email");
-  console.log(userId);
-  console.log("user / btn me gusta en camino");
+
+
+// function btnsLikesRed () {
+//   if(btnsLikes.setAttribute('class', 'btnsLikesRed')){
+//     btnsLikes.setAttribute('class', 'btnsLikesGrey')
+//   } else {
+//     btnsLikes.setAttribute('class', 'btnsLikesRed');
+//   }
+// };
 
   onGetPublication(() => {
     getPublication()
@@ -117,20 +122,22 @@ export const home = () => {
         btnsLikes.forEach((btn) => {
           btn.addEventListener("click", async (e) => {
             const userId = localStorage.getItem("email");
-            const doc = await getPost(e.target.dataset.id);
-            console.log("me gusta en camino");
+            const doc = await  getPost(e.currentTarget.dataset.id);
+
+            console.log('me gusta en camino');
             console.log(doc);
             console.log(userId);
             console.log("me gusta en camino");
 
             id = doc.id;
-            const dataCollection = doc.data();
-            if (dataCollection.likes.includes(userId)) {
-              await updatePublication(userId)(id, {
+            const dataCollection = doc.data().likes;
+            console.log(dataCollection);
+            if(dataCollection.includes(userId)){
+              await updatePublication(id,{
                 likes: removeLike(userId),
               });
-            } else {
-              await updatePublication(userId)(id, {
+            }else{
+              await updatePublication(id,{
                 likes: addLike(userId),
               });
             }
@@ -183,7 +190,7 @@ export const home = () => {
   formEdit.appendChild(btnUpdate);
   loginDiv.appendChild(formEdit);
   loginDiv.appendChild(containerPublication);
-  //loginDiv.appendChild(postDiv);
+  // loginDiv.appendChild(postDiv);
   loginDiv.appendChild(btnLogOut);
   // loginDiv.appendChild(footer);
   return loginDiv;

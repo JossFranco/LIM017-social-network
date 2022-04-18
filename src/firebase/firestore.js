@@ -33,10 +33,10 @@ export const getPublication = async () => {
   const postsCollection = [];
   const querySnapshot = await getDocs(orderPublication);
   querySnapshot.forEach((doc) => {
-    postsCollection.push(doc);
-   console.log('noviembre');
-   console.log(doc.data().likes)
-   console.log('diciembre');
+   postsCollection.push(doc);
+  //  console.log('noviembre');
+  //  console.log(doc.data().likes)
+  //  console.log('diciembre');
   });
   return postsCollection;
 };
