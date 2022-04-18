@@ -1,7 +1,11 @@
 // eslint-disable-next-line import/no-cycle
+<<<<<<< HEAD
 import { logOut } from '../firebase/auth.js';
 // eslint-disable-next-line no-unused-vars
 import { userLogOut } from '../firebase/control.js';
+=======
+import { logOut } from "../firebase/auth.js";
+>>>>>>> upstream/main
 
 import {
   publication,
@@ -10,15 +14,22 @@ import {
   deletePublication,
   getPost,
   updatePublication,
+<<<<<<< HEAD
   // eslint-disable-next-line no-unused-vars
   getDocLikes,
   addLike,
   removeLike,
 } from '../firebase/firestore.js';
+=======
+  addLike,
+  removeLike,
+} from "../firebase/firestore.js";
+>>>>>>> upstream/main
 
 import { postsTemplate } from './template.js';
 
 export const home = () => {
+<<<<<<< HEAD
   const loginDiv = document.createElement('div');
   loginDiv.setAttribute('class', 'loginDiv');
   const profileDiv = document.createElement('div');
@@ -64,6 +75,50 @@ export const home = () => {
   const btnUpdate = document.createElement('button');
   btnUpdate.setAttribute('class', 'btnSave');
   btnUpdate.setAttribute('id', 'btnSave');
+=======
+  const loginDiv = document.createElement("div");
+  loginDiv.setAttribute("class", "loginDiv");
+  const profileDiv = document.createElement("div");
+  profileDiv.setAttribute("class", "profileDiv");
+  const imgProfileDiv = document.createElement("IMG");
+  imgProfileDiv.setAttribute("src", "./Image/fondoCiudad.PNG");
+  imgProfileDiv.setAttribute("class", "imgProfileDiv");
+  const imgProfile = document.createElement("IMG");
+  imgProfile.setAttribute("src", "./Image/22Perfil.png");
+  imgProfile.setAttribute("class", "imgProfile");
+  const nameDiv = document.createElement("div");
+  nameDiv.setAttribute("class", "nameDiv");
+  const btnLogOut = document.createElement("button");
+  btnLogOut.setAttribute("class", "btnLogOut");
+  const formPublication = document.createElement("form");
+  formPublication.setAttribute("class", "formPublication");
+  const publicationTitle = document.createElement("input");
+  publicationTitle.setAttribute("placeholder", "¿Qué quieres compartir?");
+  publicationTitle.setAttribute("class", "publicationTitle");
+  const publicationText = document.createElement("textarea");
+  publicationText.setAttribute("placeholder", "Escribe aquí");
+  publicationText.setAttribute("class", "publicationText");
+  publicationText.setAttribute("rows", "5");
+  const btnSave = document.createElement("button");
+  btnSave.setAttribute("class", "btnSave");
+  btnSave.setAttribute("id", "btnSave");
+  const containerPublication = document.createElement("div");
+  const errorPublication = document.createElement("div");
+  errorPublication.setAttribute("class", "errorPublication");
+  const formEdit= document.createElement("form");
+  formEdit.setAttribute("class", "formPublication formEdit");
+  formEdit.setAttribute("id", "formEdit");
+  const editTitle = document.createElement("input");
+  editTitle.setAttribute("placeholder", "¿Qué quieres compartir?");
+  editTitle.setAttribute("class", "publicationTitle");
+  const editText = document.createElement("textarea");
+  editText.setAttribute("placeholder", "Escribe aquí");
+  editText.setAttribute("class", "publicationText");
+  editText.setAttribute("rows", "5");
+  const btnUpdate = document.createElement("button");
+  btnUpdate.setAttribute("class", "btnSave");
+  btnUpdate.setAttribute("id", "btnSave");
+>>>>>>> upstream/main
 
   btnLogOut.textContent = 'Cerrar Sesión';
   btnSave.textContent = 'Publicar';
@@ -104,6 +159,7 @@ export const home = () => {
     getPublication()
       .then(async (data) => {
         postsTemplate(data, containerPublication);
+<<<<<<< HEAD
 
         const btnsDelete = containerPublication.querySelectorAll('.btnsDelete');
         const btnsEdit = containerPublication.querySelectorAll('.btnsEdit');
@@ -112,6 +168,15 @@ export const home = () => {
           btn.addEventListener('click', async (e) => {
             const userId = localStorage.getItem('email');
             const doc = await getPost(e.currentTarget.dataset.id);
+=======
+        const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
+        const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
+        const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
+        btnsLikes.forEach((btn) => {
+          btn.addEventListener("click", async (e)=> {
+            const userId = localStorage.getItem("email");
+            const doc = await  getPost(e.currentTarget.dataset.id);
+>>>>>>> upstream/main
             id = doc.id;
             const dataCollection = doc.data().likes;
             if (dataCollection.includes(userId)) {

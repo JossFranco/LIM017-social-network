@@ -17,15 +17,15 @@ import {
 
 const db = getFirestore();
 
-export const publication = async (title, text) => {
-  return await addDoc(collection(db, 'posts'), { 
-    title,
-    text,
-    author: localStorage.getItem('email'),
-    likes: [],
-    timestamp: serverTimestamp(),
-  });
-};
+export const publication =  async (title, text) => {
+return await addDoc(collection(db, 'posts'), { 
+  title,
+  text,
+  author:  localStorage.getItem('email'), 
+  likes: [], 
+  timestamp: serverTimestamp()
+});
+}
 
 const orderPublication = query((collection(db, 'posts')), orderBy('timestamp', 'desc'));
 
@@ -46,10 +46,6 @@ export const getPost = (id) => getDoc(doc(db, 'posts', id));
 
 export const updatePublication = (id, newField) => updateDoc(doc(db, 'posts', id), newField);
 
-export const getDocLikes = (id) => {
-  return getDoc(doc(db, 'posts', id));
-};
+export const addLike =  (emailId) => arrayUnion(emailId);
 
-export const addLike =  (emailId) => {return arrayUnion(emailId); };
-
-export const removeLike =  (emailId) => {return  arrayRemove(emailId); } ;
+export const removeLike =  (emailId) => arrayRemove(emailId); 
