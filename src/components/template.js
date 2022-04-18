@@ -14,7 +14,7 @@ export function postsTemplate (doc, place) {
       <div class = "containerBtns" id ="containerBtns">
       <button class = "btnsDelete btnsStyle" data-id = "${e.id}" ${e.data().author===localStorage.getItem('email')? '':'disabled'} > Eliminar </i></button>
       <button class = "btnsEdit btnsStyle" data-id ="${e.id}" ${e.data().author===localStorage.getItem('email')? '':'disabled'}> Editar </i></button>
-      <button class = "btnsLikes btnsStyle"  data-id ="${e.data().likes}"} > 
+      <button class = "btnsLikes btnsStyle" } > 
       <span id = "iconLike" > Me Gusta </span><span id = "count" >${e.data().likes.length}</span></button>
       </div>
      </div>

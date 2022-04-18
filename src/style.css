@@ -241,6 +241,17 @@ img{
     margin-bottom: 5%;
 
 }
+.formEdit{
+    display: none;
+    background: #e6eeff ;
+    padding: 1%;
+}
+
+.formHidden{
+    visibility: hidden; 
+    width: 0;
+    height: 0;
+}
 
 .publicationText,
 .publicationTitle{
@@ -338,6 +349,19 @@ img{
  margin-bottom: 3%;
  font-family:'Open Sans', sans-serif, Arial, Helvetica;
  font-size: 0.8em;
+}
+
+.btnsLikesRed{
+    background: red;
+}
+
+.btnsLikesGrey{
+    background: grey;
+}
+
+.btnsDelete:disabled,
+.btnsEdit:disabled{
+    visibility: hidden; 
 }
 
 @media (min-width: 760px){ 

@@ -9,9 +9,10 @@ import {
   deletePublication,
   getPost,
   updatePublication,
+  getDocLikes,
   addLike,
-  // removeLike,
-  // addArrLikes,
+  removeLike,
+  
 } from "../firebase/firestore.js";
 
 import { postsTemplate } from "./template.js";
@@ -34,6 +35,7 @@ export const home = () => {
   const postDiv = document.createElement("div");
   const formPublication = document.createElement("form");
   formPublication.setAttribute("class", "formPublication");
+  // formPublication.setAttribute("id", "formPublication");
   const publicationTitle = document.createElement("input");
   publicationTitle.setAttribute("placeholder", "¿Qué quieres compartir?");
   publicationTitle.setAttribute("class", "publicationTitle");
@@ -47,6 +49,22 @@ export const home = () => {
   const containerPublication = document.createElement("div");
   const errorPublication = document.createElement("div");
   errorPublication.setAttribute("class", "errorPublication");
+
+  const formEdit= document.createElement("form");
+  formEdit.setAttribute("class", "formPublication formEdit");
+  formEdit.setAttribute("id", "formEdit");
+
+  const editTitle = document.createElement("input");
+  editTitle.setAttribute("placeholder", "¿Qué quieres compartir?");
+  editTitle.setAttribute("class", "publicationTitle");
+  const editText = document.createElement("textarea");
+  editText.setAttribute("placeholder", "Escribe aquí");
+  editText.setAttribute("class", "publicationText");
+  editText.setAttribute("rows", "5");
+
+  const btnUpdate = document.createElement("button");
+  btnUpdate.setAttribute("class", "btnSave");
+  btnUpdate.setAttribute("id", "btnSave");
 
   btnLogOut.textContent = "Cerrar Sesión";
   btnSave.textContent = "Publicar";
@@ -68,33 +86,62 @@ export const home = () => {
       publicationTitle.setAttribute("id", "postTitle");
     } else if (!editStatus && publicationText.value === "") {
       errorPublication.textContent = "- Debe agregar descripción";
-    } else {
-      updatePublication(id, { title: publicationTitle.value, text: publicationText.value,
-      });
+    } 
       editStatus = false;
-      btnSave.setAttribute("class", "btnSave");
-      btnSave.textContent = "Publicar";
-    }
     formPublication.reset();
   });
 
-  onGetPublication((querySnapshot) => {
+  formEdit.addEventListener("submit", (e) => {
+    e.preventDefault();
+      if(editStatus){
+        updatePublication(id, { title: editTitle.value, text: editText.value,
+        })
+      }
+    formEdit.reset()
+  });
+
+
+
+// function btnsLikesRed () {
+//   if(btnsLikes.setAttribute('class', 'btnsLikesRed')){
+//     btnsLikes.setAttribute('class', 'btnsLikesGrey')
+//   } else {
+//     btnsLikes.setAttribute('class', 'btnsLikesRed');
+//   }
+// };
+console.log('user / btn me gusta en camino');
+const userId = localStorage.getItem("email");
+console.log(userId);
+console.log('user / btn me gusta en camino');
+
+  onGetPublication(() => {
     getPublication()
       .then(async (data) => {
         postsTemplate(data, containerPublication);
-        // //  const dataLike = data.data().likes;
-        //  console.log('....');
-        //  console.log(dataLike);
-        //  console.log('----');
-
+        
         const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
         const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
         const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
         btnsLikes.forEach((btn) => {
-          btn.addEventListener("click", async ()=> {
-            let emailId = localStorage.getItem("email");
-            await addLike(emailId);
-            console.log("aqui no sdss");
+          btn.addEventListener("click", async (e)=> {
+            const userId = localStorage.getItem("email");
+            const doc = await  getPost(e.target.dataset.id);
+            console.log('me gusta en camino');
+            console.log(doc);
+            console.log(userId);
+            console.log('me gusta en camino');
+
+            id = doc.id;
+            const dataCollection = doc.data();
+            if(dataCollection.likes.includes(userId)){
+              await updatePublication(userId)(id,{
+                likes: removeLike(userId),
+              });
+            }else{
+              await updatePublication(userId)(id,{
+                likes: addLike(userId),
+              });
+            }
           });
         });
 
@@ -106,14 +153,16 @@ export const home = () => {
 
         btnsEdit.forEach((btn) => {
           btn.addEventListener("click", async (e) => {
+            formPublication.setAttribute("class", "formHidden")
+            document.getElementById('formEdit').style.display ='block';
             const doc = await getPost(e.target.dataset.id);
             const publication = doc.data();
-            publicationTitle.value = publication.title;
-            publicationText.value = publication.text;
+            editTitle.value = publication.title;
+            editText.value = publication.text;
             editStatus = true;
             id = e.target.dataset.id;
-            btnSave.textContent = "Actualizar";
-            btnSave.setAttribute("class", "btnUpdate");
+            btnUpdate.textContent = "Actualizar";
+            btnUpdate.setAttribute("class", "btnUpdate");
             formPublication.reset();
           });
         });
@@ -122,6 +171,12 @@ export const home = () => {
         console.log(err);
       });
   });
+
+  btnUpdate.addEventListener('click', () =>{
+    formPublication.setAttribute("class", "formPublication ");
+    document.getElementById('formEdit').style.display ='none';
+  });
+  
 
   loginDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
@@ -132,6 +187,10 @@ export const home = () => {
   formPublication.appendChild(publicationText);
   formPublication.appendChild(errorPublication);
   formPublication.appendChild(btnSave);
+  formEdit.appendChild(editTitle);
+  formEdit.appendChild(editText);
+  formEdit.appendChild(btnUpdate);
+  loginDiv.appendChild(formEdit);
   loginDiv.appendChild(containerPublication);
   loginDiv.appendChild(postDiv);
   loginDiv.appendChild(btnLogOut);
