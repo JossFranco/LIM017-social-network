@@ -2,16 +2,12 @@
     padding: 0;
     margin: 0; 
     box-sizing: border-box;
-   
 }
 
 .root{
     width: 100vw;
     height: 100vh;
     margin: auto;
-}
-.loginDiv{
-    background: #ffffff; 
 }
 
 .divRegister,
@@ -75,7 +71,8 @@
     height: 2.5em;
     text-align: center;
     font-size: 0.8em;
-    color: #19334d;
+    color: #8c8c8c;
+    font-weight: bold;
     border: none; 
     background: #ffffff;
     border-radius: 5px;
@@ -86,7 +83,9 @@
 }
 
 .btnsStyle:hover{
-    background:  #e6f2ff;
+    background: #f2f2f2;
+    font-weight: bold;
+    color:#737373;
 }
 
 .containerDate{
@@ -323,18 +322,23 @@ img{
  font-size: 0.8em;
 }
 
-.btnsLikesRed{
+/* .btnsLikesRed{
     background: red;
 }
 
 .btnsLikesGrey{
     background: grey;
-}
+} */
 
 .btnsDelete:disabled,
 .btnsEdit:disabled{
     visibility: hidden; 
 }
+
+/* .btnLikeBlue{
+    background: #3333cc;
+
+} */
 
 @media (min-width: 760px){ 
     .root{
