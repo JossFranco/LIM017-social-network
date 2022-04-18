@@ -12,10 +12,10 @@ export function postsTemplate (doc, place) {
       <p class = "descriptionPosts"> ${docPosts.data().text}</p>
       <p class = "authorPublication" id = "author"> <img src="./Image/imgPerfil.png" class = "imgAuthor" alt="user"> ${docPosts.data().author} </p> 
       <div class = "containerBtns" id ="containerBtns">
-      <button class = "btnsDelete btnsStyle" data-id = "${docPosts.id}" ${docPosts.data().author===localStorage.getItem('email')? '':'disabled'} > Eliminar </i></button>
-      <button class = "btnsEdit btnsStyle" data-id ="${docPosts.id}" ${docPosts.data().author===localStorage.getItem('email')? '':'disabled'}> Editar </i></button>
-      <button class = "btnsLikes btnsStyle" data-id ="${docPosts.id}"} > 
-      <span id = "iconLike" > Me Gusta </span><span id = "count" >${docPosts.data().likes.length}</span></button>
+      <button class = "btnsDelete btnsStyle" data-id = "${docPosts.id}" ${docPosts.data().author===localStorage.getItem('email')? '':'disabled'} ><i class="fa-regular fa-trash-can"></i></button>
+      <button class = "btnsEdit btnsStyle" data-id ="${docPosts.id}" ${docPosts.data().author===localStorage.getItem('email')? '':'disabled'}> <i class="fa-regular fa-pen-to-square"></i> </i></button>
+      <button class = "btnsLikes btnsStyle btnLikeBlue" data-id ="${docPosts.id}"} > 
+      <span id = "iconLike" class = "iconLike" ><i class="fa-regular fa-thumbs-up"></i></span><span id = "count" >  ${docPosts.data().likes.length}</span></button>
       </div>
      </div>
   </div>`;

@@ -34,14 +34,9 @@ export const getPublication = async () => {
   const querySnapshot = await getDocs(orderPublication);
   querySnapshot.forEach((doc) => {
    postsCollection.push(doc);
-  //  console.log('noviembre');
-  //  console.log(doc.data().likes)
-  //  console.log('diciembre');
   });
-  return postsCollection;
-};
-// const arrLikes =[];
-// export const addArrLikes =  (emailId) => arrLikes.splice(emailId);
+    return  postsCollection
+}
 
 export const onGetPublication = (callback) => onSnapshot(collection(db, 'posts'), callback);
 
@@ -58,18 +53,3 @@ export const getDocLikes = (id) => {
 export const addLike =  (emailId) => {return arrayUnion(emailId); };
 
 export const removeLike =  (emailId) => {return  arrayRemove(emailId); } ;
-
-
-// export const getLikes = async (id) => {
-//   let  likesCollection = [];
-//   let  docLikesCollection = [];
-//   const coleccion = await getDocs(doc(collection(db, 'posts', id)));
-//   coleccion.forEach((doc) => {
-//    likesCollection.push(doc);
-//    docLikesCollection = doc.data().likes;
-//    console.log('enero');
-//    console.log(docLikesCollection);
-//    console.log('febrero');
-//   });
-//     return  docLikesCollection
-// }

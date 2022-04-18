@@ -31,10 +31,8 @@ export const home = () => {
   nameDiv.setAttribute("class", "nameDiv");
   const btnLogOut = document.createElement("button");
   btnLogOut.setAttribute("class", "btnLogOut");
-  // const postDiv = document.createElement("div");
   const formPublication = document.createElement("form");
   formPublication.setAttribute("class", "formPublication");
-  // formPublication.setAttribute("id", "formPublication");
   const publicationTitle = document.createElement("input");
   publicationTitle.setAttribute("placeholder", "¿Qué quieres compartir?");
   publicationTitle.setAttribute("class", "publicationTitle");
@@ -102,15 +100,6 @@ export const home = () => {
   });
 
 
-
-// function btnsLikesRed () {
-//   if(btnsLikes.setAttribute('class', 'btnsLikesRed')){
-//     btnsLikes.setAttribute('class', 'btnsLikesGrey')
-//   } else {
-//     btnsLikes.setAttribute('class', 'btnsLikesRed');
-//   }
-// };
-
   onGetPublication(() => {
     getPublication()
       .then(async (data) => {
@@ -123,12 +112,10 @@ export const home = () => {
           btn.addEventListener("click", async (e) => {
             const userId = localStorage.getItem("email");
             const doc = await  getPost(e.currentTarget.dataset.id);
-
             console.log('me gusta en camino');
             console.log(doc);
             console.log(userId);
-            console.log("me gusta en camino");
-
+            console.log('me gusta en camino');
             id = doc.id;
             const dataCollection = doc.data().likes;
             console.log(dataCollection);
@@ -136,10 +123,12 @@ export const home = () => {
               await updatePublication(id,{
                 likes: removeLike(userId),
               });
+              // btnsLikes.classList.toggle('btnLikeBlue');
             }else{
               await updatePublication(id,{
                 likes: addLike(userId),
               });
+              // btnsLikes.classList.toggle('btnLikeBlue');
             }
           });
         });
@@ -190,7 +179,6 @@ export const home = () => {
   formEdit.appendChild(btnUpdate);
   loginDiv.appendChild(formEdit);
   loginDiv.appendChild(containerPublication);
-  // loginDiv.appendChild(postDiv);
   loginDiv.appendChild(btnLogOut);
   // loginDiv.appendChild(footer);
   return loginDiv;
