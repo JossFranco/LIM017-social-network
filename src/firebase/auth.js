@@ -6,6 +6,7 @@ import {
   registerGoogle,
   logInEmail,
   userLogOut,
+  provider,
   // authState,
 } from './control.js';
 // eslint-disable-next-line import/no-cycle
@@ -54,18 +55,41 @@ export const registerWithEmail = async function (email, password, name) {
 };
 
 export const registerWithGoogle = async () => {
-  await registerGoogle().then(() => { 
-    onNavigate('/home');
+  await registerGoogle()
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = provider;
+    const token = credential.accessToken;
+    console.log('aqui token');
+    console.log(token);
+    // The signed-in user info.
+    console.log('aqui user');
     const user = result.user;
     console.log(user);
-  if(localStorage.getItem('email') !== null)  {
-    localStorage.removeItem('email');
-    localStorage.setItem('email', user.displayName);
-  }else{
-    localStorage.setItem('email', user.displayName);
-   }
-  console.log();
-  console.log(user.email);
+    // ...
+    console.log('aqui userEmail');
+    const userEmail = user.email;
+    console.log(userEmail);
+    console.log('aqui credencial ');
+    console.log(credential);
+    if(localStorage.getItem('email') !== null)  {
+        localStorage.removeItem('email');
+        localStorage.setItem('email', userEmail);
+      }else{
+        localStorage.setItem('email', userEmail);
+       }
+    onNavigate('/home');
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    console.log(error);
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+    console.log(credential)
 });
 };
 

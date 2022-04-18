@@ -35,7 +35,8 @@ export const getPublication = async () => {
   querySnapshot.forEach((doc) => {
     postsCollection.push(doc);
    console.log('noviembre');
-   console.log(doc.data().likes);
+   console.log(doc.data().likes)
+   console.log('diciembre');
   });
   return postsCollection;
 };
@@ -50,18 +51,25 @@ export const getPost = (id) => getDoc(doc(db, 'posts', id));
 
 export const updatePublication = (id, newField) => updateDoc(doc(db, 'posts', id), newField);
 
-// const likesRef = doc(db, 'posts', id);
-
-// console.log('noviembre');
-// console.log(likesRef);
-// console.log('noviembre')
-// const likesRef= doc(db, 'posts', id);
-
-export const addLike = async (addLikes) => {
-  await updateDoc(doc(db, 'posts', 'likes'), { likes: arrayUnion(addLikes) });
+export const getDocLikes = (id) => {
+  return getDoc(doc(db, 'posts', id));
 };
-// export const removeLike =  async () => {
-//   return await updateDoc(likesRef, {
-//   likes: arrayRemove(localStorage.getItem("email"))
-// })
-// };
+
+export const addLike =  (emailId) => {return arrayUnion(emailId); };
+
+export const removeLike =  (emailId) => {return  arrayRemove(emailId); } ;
+
+
+// export const getLikes = async (id) => {
+//   let  likesCollection = [];
+//   let  docLikesCollection = [];
+//   const coleccion = await getDocs(doc(collection(db, 'posts', id)));
+//   coleccion.forEach((doc) => {
+//    likesCollection.push(doc);
+//    docLikesCollection = doc.data().likes;
+//    console.log('enero');
+//    console.log(docLikesCollection);
+//    console.log('febrero');
+//   });
+//     return  docLikesCollection
+// }
