@@ -1,18 +1,41 @@
 *{
-    padding: 0;
-    margin: 0; 
+    padding: 10px;
+    margin: 10px; 
     box-sizing: border-box;
-   
 }
-
-.root{
+html{
+    height: 100%;
+}
+body{
+    font-size:1.2rem;
+    min-height:100%
+}
+.root >* {
+    display:grid;
     width: 100vw;
     height: 100vh;
     margin: auto;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+
+box-shadow:-1px 1px 7px 0px grba(0,0,0,0,75);
+border-radius: 4px;
+padding: 10px;
+text-align: center;   
+/*grid-template-columns:50px 50px 50px 50px;
+grid-template-rows: 50px 50px auto 50px;*/
+
 }
+.root  {
+    display: grid;
+        gap: 10px;
+    }
 .loginDiv{
-    /* background: #e6f2ff; */
-    background: #ffffff; 
+    background: #e6f2ff;
+    /* background: #ffffff; */
+    justify-items: center;
 }
 
 .divRegister,
@@ -21,7 +44,10 @@
     flex-direction: column;
     align-items: center ;
 }
-
+.footer {
+    justify-items: start;
+    background: #ffffff;
+}
 .inputStyle{
     border: 1px solid #f0e6ff;
     outline:none;
@@ -202,20 +228,25 @@ img{
 .imgProfileDiv,
 .profileDiv{
  display: flex ;
- height: 7em;
+ height: 5em;
  margin-bottom: 5%;
  justify-content: center;
  position: relative;
+ flex-direction: column;
+ align-items: flex-start;
+ display: flex;
+
 }
 
 .imgProfileDiv{
-    z-index: 5;
+    z-index: 2;
+   grid-column: 1/4;
 }
 
 .imgProfile{
     border: 5px solid  #ffffff;
     object-fit: contain;
-    max-width: 25%;
+    max-width: 15%;
     height: auto;
     border-radius: 50%;
     overflow: hidden;
@@ -224,21 +255,23 @@ img{
     position: absolute;
 }
 
-.nameDiv{
+.nameDiv {
     font-size: 1em;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #000000;
-    text-align: center;
+    text-align: left;
     margin-bottom: 5%;
 }
 
-.formPublication{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: auto;
-    margin-bottom: 5%;
+
+    .formPublication {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        margin: 00% 10% 10% 10%;
+        flex-wrap: nowrap;
+        align-items: center;
 
 }
 
@@ -246,7 +279,7 @@ img{
 .publicationTitle{
     width: 100%;
     font-size: 1em;
-    text-align: center;
+    text-align: left;
     margin-bottom: 0.5em;
     outline: none;
     font-size: 1em;
@@ -254,14 +287,13 @@ img{
     font-family:'Open Sans', sans-serif, Arial, Helvetica;
     border: 1px solid #ccccff; 
     padding: 0.5em 0;
-    font-family: cursive
 }
 .publicationTitle:hover,
 .publicationText:hover{
     background:  #e6f2ff;
 }
 .publicationText{
-    text-align: left;
+    text-align: center;
     padding: 0 0.5em;
 }
 
@@ -275,9 +307,6 @@ img{
     font-size: 1em;
     text-align: justify;
     font-family: Arial, Helvetica, sans-serif;
-    font-family: cursive;
-    margin: 20px;
-    padding: 10px;
 }
 
 .titlePost{
@@ -294,13 +323,14 @@ img{
 }
 
 .containerPublicationDiv{
-    border: 1px solid #3333cc;
-    /* border-radius: 6%; */
-    max-width: 100%;
-    margin-top: 1%;
-    margin-bottom: 1em;
-    background: #ffffff;
-   
+        border: 1px solid #3333cc;
+        /* border-radius: 6%; */
+        max-width: 60%;
+        /* margin-top: 1%; */
+        /* margin-bottom: 1em; */
+        background: #ffffff;
+        margin: -6% 21% 10% 10%;
+    
 }
 
 /* .btnsPostsStyle{
@@ -348,6 +378,7 @@ img{
 @media (min-width: 760px){ 
     .root{
         max-width: 100%;
+        grid-column: 1/4;
     }
     .btnGoogle,
     .btnStyle,
@@ -364,13 +395,19 @@ img{
     .profileDiv{
      height: 15em;
      margin-bottom: 10%;
+     height: 25em;
+     margin: 15px 0px 15px 0px;
+ }
     }
     
     .imgProfileDiv{
         margin-bottom: 15%;
+            margin: 0% 0% 0% 0%;
+            height: 40em;
+            align-content: center;
     }
     .imgProfile{
-        max-width: 30%;
+        max-width: 15%;
     }
     .imgAuthor{
         max-width: 5%;
@@ -380,6 +417,7 @@ img{
 @media (min-width: 1500px){ 
     .root{
         max-width: 50%;
+        grid-column: 1/4;
     }
     .imgProfileDiv,
     .profileDiv{
@@ -391,10 +429,10 @@ img{
         margin-bottom: 15%;
     }
     .imgProfile{
-        max-width: 25%;
+        max-width: 15%;
     }
     .formPublication{
-        width: 80%;
+        width: 70%;
     }
     .containerPublicationDiv{
         max-width: 90%;

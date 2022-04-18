@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { logOut } from "../firebase/auth.js";
-import { userLogOut } from "../firebase/control.js";
+import { logOut } from '../firebase/auth.js';
+import { userLogOut } from '../firebase/control.js';
 
 import {
   publication,
@@ -21,20 +21,22 @@ export const home = () => {
   loginDiv.setAttribute('class', 'loginDiv');
   const profileDiv = document.createElement('div');
   profileDiv.setAttribute('class', 'profileDiv');
+  const muro = document.createElement('div');
+  muro.setAttribute('class', 'muro');
   const imgProfileDiv = document.createElement('IMG');
-  imgProfileDiv.setAttribute("src", "./Image/fondoCiudad.PNG");
-  imgProfileDiv.setAttribute("class", "imgProfileDiv");
-  const imgProfile = document.createElement("IMG");
-  imgProfile.setAttribute("src", "./Image/22Perfil.png");
-  imgProfile.setAttribute("class", "imgProfile");
-  const nameDiv = document.createElement("div");
-  nameDiv.setAttribute("class", "nameDiv");
-  const btnLogOut = document.createElement("button");
-  btnLogOut.setAttribute("class", "btnLogOut");
-  const postDiv = document.createElement("div");
-  const formPublication = document.createElement("form");
-  formPublication.setAttribute("class", "formPublication");
-  const publicationTitle = document.createElement("input");
+  imgProfileDiv.setAttribute('src', './Image/fondoCiudad.PNG');
+  imgProfileDiv.setAttribute('class', 'imgProfileDiv');
+  const imgProfile = document.createElement('IMG');
+  imgProfile.setAttribute('src', './Image/22Perfil.png');
+  imgProfile.setAttribute('class', 'imgProfile');
+  const nameDiv = document.createElement('div');
+  nameDiv.setAttribute('class', 'nameDiv');
+  const btnLogOut = document.createElement('button');
+  btnLogOut.setAttribute('class', 'btnLogOut');
+  const postDiv = document.createElement('div');
+  const formPublication = document.createElement('form');
+  formPublication.setAttribute('class', 'formPublication');
+  const publicationTitle = document.createElement('input');
   publicationTitle.setAttribute('placeholder', '¿Qué quieres compartir?');
   publicationTitle.setAttribute('class', 'publicationTitle');
   const publicationText = document.createElement('textarea');
@@ -45,9 +47,12 @@ export const home = () => {
   btnSave.setAttribute('class', 'btnSave');
   btnSave.setAttribute('id', 'btnSave');
   const containerPublication = document.createElement('div');
+  containerPublication.setAttribute('class', containerPublication);
   const errorPublication = document.createElement('div');
-  errorPublication.setAttribute('class', 'errorPublication');
-
+  errorPublication.setAttribute('class', 'errorPubl ication');
+  const footer = document.createElement('div');
+  footer.setAttribute('class', 'footer');
+  footer.textContent = 'Echo por Emilce y Joseline';
   btnLogOut.textContent = 'Cerrar Sesión';
   btnSave.textContent = 'Publicar';
   nameDiv.textContent = localStorage.getItem('email');
@@ -69,8 +74,7 @@ export const home = () => {
     } else if (!editStatus && publicationText.value === '') {
       errorPublication.textContent = '- Debe agregar descripción';
     } else {
-      updatePublication(id, { title: publicationTitle.value, text: publicationText.value,
-      });
+      updatePublication(id, { title: publicationTitle.value, text: publicationText.value });
       editStatus = false;
       btnSave.setAttribute('class', 'btnSave');
       btnSave.textContent = 'Publicar';
@@ -122,7 +126,7 @@ export const home = () => {
         console.log(err);
       });
   });
-
+  loginDiv.appendChild(muro);
   loginDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
   profileDiv.appendChild(imgProfile);
@@ -135,6 +139,7 @@ export const home = () => {
   loginDiv.appendChild(containerPublication);
   loginDiv.appendChild(postDiv);
   loginDiv.appendChild(btnLogOut);
+  loginDiv.appendChild(footer);
 
   return loginDiv;
 };
