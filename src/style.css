@@ -322,13 +322,6 @@ img{
  font-size: 0.8em;
 }
 
-/* .btnsLikesRed{
-    background: red;
-}
-
-.btnsLikesGrey{
-    background: grey;
-} */
 
 .btnsDelete:disabled,
 .btnsEdit:disabled{

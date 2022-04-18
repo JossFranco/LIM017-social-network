@@ -12,10 +12,6 @@ export const register = () => {
   logoImgRegister.setAttribute('src', './Image/webLogo.png');
   logoImgRegister.setAttribute('class', 'logoImg');
   const inputEmail = document.createElement('input');
-  const inputUserId = document.createElement('input');
-  inputUserId.setAttribute('type', 'text');
-  inputUserId.setAttribute('placeholder', 'Nombre de Usuario');
-  inputUserId.setAttribute('class', 'inputStyle');
   inputEmail.setAttribute('type', 'email');
   inputEmail.setAttribute('placeholder', 'E-mail');
   inputEmail.setAttribute('class', 'inputStyle');
@@ -44,7 +40,7 @@ export const register = () => {
   btnLogin.addEventListener('click', () => onNavigate('/'));
 
   btnRegisterUser.addEventListener('click', () => {
-    registerWithEmail(inputEmail.value, inputPass.value, inputUserId.value);
+    registerWithEmail(inputEmail.value, inputPass.value);
   });
 
   btnGoogleRegister.addEventListener('click', () => {
@@ -52,7 +48,6 @@ export const register = () => {
   });
 
   registerDiv.appendChild(logoImgRegister);
-  registerDiv.appendChild(inputUserId);
   registerDiv.appendChild(inputEmail);
   registerDiv.appendChild(inputPass);
   registerDiv.appendChild(btnRegisterUser);

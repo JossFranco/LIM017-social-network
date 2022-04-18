@@ -7,14 +7,13 @@ import {
   logInEmail,
   userLogOut,
   provider,
-  // authState,
 } from './control.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 
-export const registerWithEmail = async function (email, password, name) {
+export const registerWithEmail = async function (email, password) {
   try {
-     const register = await registerEmail(email, password, name);
+     const register = await registerEmail(email, password);
      console.log(register);
      const send = await sendEmail();
      console.log(send);
@@ -24,18 +23,11 @@ export const registerWithEmail = async function (email, password, name) {
       'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';
       const uid = user.uid;
       console.log(uid);
-      if(localStorage.getItem('usuario') !== null && localStorage.getItem('email') !== null && localStorage.getItem('name')!== null)  {
-        localStorage.removeItem('usuario');
+      if(localStorage.getItem('email') !== null)  {
         localStorage.removeItem('email');
-        localStorage.removeItem('name');
-        localStorage.setItem('usuario', uid );
         localStorage.setItem('email', email );
-        localStorage.setItem('name', name );
       }else{
-        localStorage.setItem('usuario', uid );
         localStorage.setItem('email', email );
-        localStorage.setItem('name', name );
-        user(email, name);
        }
           
   } catch (error) {
@@ -57,21 +49,10 @@ export const registerWithEmail = async function (email, password, name) {
 export const registerWithGoogle = async () => {
   await registerGoogle()
   .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = provider;
-    const token = credential.accessToken;
-    console.log('aqui token');
-    console.log(token);
-    // The signed-in user info.
-    console.log('aqui user');
     const user = result.user;
-    console.log(user);
-    // ...
-    console.log('aqui userEmail');
     const userEmail = user.email;
     console.log(userEmail);
-    console.log('aqui credencial ');
-    console.log(credential);
     if(localStorage.getItem('email') !== null)  {
         localStorage.removeItem('email');
         localStorage.setItem('email', userEmail);
@@ -80,16 +61,10 @@ export const registerWithGoogle = async () => {
        }
     onNavigate('/home');
   }).catch((error) => {
-    // Handle Errors here.
     const errorCode = error.code;
-    console.log(error);
     const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-    console.log(credential)
+    console.log(errorCode);
+    console.log(errorMessage);
 });
 };
 
@@ -106,20 +81,11 @@ export const loginWithEmail = (email, password) => {
         onNavigate('/home');
         const uid = user.uid;
           console.log(uid);
-          if(localStorage.getItem('usuario') !== null && localStorage.getItem('email') !== null && localStorage.getItem('name')!== null)  {
-            localStorage.removeItem('usuario');
+          if(localStorage.getItem('email') !== null)  {
             localStorage.removeItem('email');
-            localStorage.removeItem('name');
-            localStorage.setItem('usuario', uid );
             localStorage.setItem('email', email );
-            localStorage.setItem('name', name );
           }else{
-            localStorage.setItem('usuario', uid );
             localStorage.setItem('email', email );
-            localStorage.setItem('name', name );
-            console.log('tu email aqui');
-            console.log(user.displayName);
-            console.log(user.email);
           }
         }
     })
@@ -142,20 +108,6 @@ export const loginWithEmail = (email, password) => {
       console.log(errorMessage);
     });
 };
-
-// export const emailAuthState = () => {
-//   authState().then(() => {
-//     console.log(user + 'observador');
-//     if (user.emailVerified === true) {
-//       const uid = user.uid;
-//       onNavigate('/home');
-//       console.log('si puedo entrar, pero no');
-//     } else {
-//       onNavigate('/');
-//       console.log('no puedo entrar');
-//     }
-//   });
-// };
 
 export const logOut = () => {
   userLogOut()

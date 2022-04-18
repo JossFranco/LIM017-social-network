@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-cycle
 import { logOut } from "../firebase/auth.js";
-import { userLogOut } from "../firebase/control.js";
 
 import {
   publication,
@@ -9,10 +8,8 @@ import {
   deletePublication,
   getPost,
   updatePublication,
-  getDocLikes,
   addLike,
   removeLike,
-  
 } from "../firebase/firestore.js";
 
 import { postsTemplate } from "./template.js";
@@ -47,11 +44,9 @@ export const home = () => {
   const containerPublication = document.createElement("div");
   const errorPublication = document.createElement("div");
   errorPublication.setAttribute("class", "errorPublication");
-
   const formEdit= document.createElement("form");
   formEdit.setAttribute("class", "formPublication formEdit");
   formEdit.setAttribute("id", "formEdit");
-
   const editTitle = document.createElement("input");
   editTitle.setAttribute("placeholder", "¿Qué quieres compartir?");
   editTitle.setAttribute("class", "publicationTitle");
@@ -59,7 +54,6 @@ export const home = () => {
   editText.setAttribute("placeholder", "Escribe aquí");
   editText.setAttribute("class", "publicationText");
   editText.setAttribute("rows", "5");
-
   const btnUpdate = document.createElement("button");
   btnUpdate.setAttribute("class", "btnSave");
   btnUpdate.setAttribute("id", "btnSave");
@@ -102,7 +96,6 @@ export const home = () => {
     getPublication()
       .then(async (data) => {
         postsTemplate(data, containerPublication);
-        
         const btnsDelete = containerPublication.querySelectorAll(".btnsDelete");
         const btnsEdit = containerPublication.querySelectorAll(".btnsEdit");
         const btnsLikes = containerPublication.querySelectorAll(".btnsLikes");
@@ -110,10 +103,6 @@ export const home = () => {
           btn.addEventListener("click", async (e)=> {
             const userId = localStorage.getItem("email");
             const doc = await  getPost(e.currentTarget.dataset.id);
-            console.log('me gusta en camino');
-            console.log(doc);
-            console.log(userId);
-            console.log('me gusta en camino');
             id = doc.id;
             const dataCollection = doc.data().likes;
             console.log(dataCollection);
