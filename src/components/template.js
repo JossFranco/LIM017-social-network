@@ -1,7 +1,7 @@
-export function postsTemplate(doc, place) {
-  place.innerHTML = '';
+export function postsTemplate(doc, containerPost) {
+  containerPost.innerHTML = '';
   doc.forEach((docPosts) => {
-    place.innerHTML += `
+    containerPost.innerHTML += `
   <div class = "containerPublicationDiv" >
     <div class = "containerPosts">
       <div class = "containerDate">
