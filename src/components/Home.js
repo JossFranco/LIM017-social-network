@@ -15,8 +15,8 @@ import {
 import { postsTemplate } from './template.js';
 
 export const home = () => {
-  const loginDiv = document.createElement('div');
-  loginDiv.setAttribute('class', 'loginDiv');
+  const homeDiv = document.createElement('div');
+  homeDiv.setAttribute('class', 'loginDiv');
   const profileDiv = document.createElement('div');
   profileDiv.setAttribute('class', 'profileDiv');
   const imgProfileDiv = document.createElement('IMG');
@@ -149,11 +149,11 @@ export const home = () => {
     document.getElementById('formEdit').style.display = 'none';
   });
 
-  loginDiv.appendChild(profileDiv);
+  homeDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
   profileDiv.appendChild(imgProfile);
-  loginDiv.appendChild(nameDiv);
-  loginDiv.appendChild(formPublication);
+  homeDiv.appendChild(nameDiv);
+  homeDiv.appendChild(formPublication);
   formPublication.appendChild(publicationTitle);
   formPublication.appendChild(publicationText);
   formPublication.appendChild(errorPublication);
@@ -161,9 +161,9 @@ export const home = () => {
   formEdit.appendChild(editTitle);
   formEdit.appendChild(editText);
   formEdit.appendChild(btnUpdate);
-  loginDiv.appendChild(formEdit);
-  loginDiv.appendChild(containerPublication);
-  loginDiv.appendChild(btnLogOut);
+  homeDiv.appendChild(formEdit);
+  homeDiv.appendChild(containerPublication);
+  homeDiv.appendChild(btnLogOut);
 
-  return loginDiv;
+  return homeDiv;
 };

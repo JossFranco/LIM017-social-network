@@ -4,8 +4,8 @@ import { onNavigate } from '../main.js';
 import { registerWithGoogle, loginWithEmail } from '../firebase/auth.js';
 
 export const login = () => {
-  const homeDiv = document.createElement('div');
-  homeDiv.setAttribute('class', 'divHome');
+  const loginDiv = document.createElement('div');
+  loginDiv.setAttribute('class', 'divHome');
   const logoImg = document.createElement('IMG');
   logoImg.setAttribute('src', './Image/webLogo.png');
   logoImg.setAttribute('class', 'logoImg');
@@ -27,8 +27,8 @@ export const login = () => {
   btnRegister.setAttribute('class', 'btnStyleText');
   const btnGoogleLogin = document.createElement('button');
   btnGoogleLogin.setAttribute('class', 'btnGoogle');
-  const loginDiv = document.createElement('div');
-  loginDiv.setAttribute('id', 'loginDiv');
+  const loginDiv2 = document.createElement('div');
+  loginDiv2.setAttribute('id', 'loginDiv');
   const img = document.createElement('IMG');
   img.setAttribute('src', './Image/img.svg');
   img.setAttribute('class', 'imgHome');
@@ -48,15 +48,15 @@ export const login = () => {
     registerWithGoogle();
   });
 
-  homeDiv.appendChild(logoImg);
-  homeDiv.appendChild(loginEmail);
-  homeDiv.appendChild(loginPass);
-  homeDiv.appendChild(informationDiv);
-  homeDiv.appendChild(btnLogin);
-  homeDiv.appendChild(btnGoogleLogin);
-  homeDiv.appendChild(btnRegister);
-  homeDiv.appendChild(loginDiv);
-  homeDiv.appendChild(img);
+  loginDiv.appendChild(logoImg);
+  loginDiv.appendChild(loginEmail);
+  loginDiv.appendChild(loginPass);
+  loginDiv.appendChild(informationDiv);
+  loginDiv.appendChild(btnGoogleLogin);
+  loginDiv.appendChild(btnRegister);
+  loginDiv.appendChild(loginDiv2);
+  loginDiv.appendChild(img);
+  loginDiv.appendChild(btnLogin);
 
-  return homeDiv;
+  return loginDiv;
 };
