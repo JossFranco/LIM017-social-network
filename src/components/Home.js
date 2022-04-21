@@ -78,7 +78,7 @@ export const home = () => {
     if (
       !editStatus
       && publicationTitle.value !== ''
-       && publicationText.value !== ''
+      && publicationText.value !== ''
     ) {
       publication(publicationTitle.value, publicationText.value);
     } else if (!editStatus && publicationTitle.value === '') {

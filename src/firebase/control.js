@@ -8,9 +8,44 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
   signOut,
-} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js";
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 
-const auth = getAuth();
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  onSnapshot,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  serverTimestamp,
+  query,
+  orderBy,
+  arrayUnion,
+  arrayRemove,
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+
+export {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  onSnapshot,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  serverTimestamp,
+  query,
+  orderBy,
+  arrayUnion,
+  arrayRemove,
+};
+
+export const auth = getAuth();
+export const provider = new GoogleAuthProvider();
 
 export const registerEmail = function (email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -20,9 +55,8 @@ export const sendEmail = function () {
   return sendEmailVerification(auth.currentUser);
 };
 
-export const provider = new GoogleAuthProvider();
 export const registerGoogle = function () {
-  return signInWithPopup(auth, provider)
+  return signInWithPopup(auth, provider);
 };
 
 export const logInEmail = function (email, password) {

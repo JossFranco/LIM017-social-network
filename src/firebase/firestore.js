@@ -13,23 +13,22 @@ import {
   orderBy,
   arrayUnion,
   arrayRemove,
-} from "https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js";
+} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
 const db = getFirestore();
 
-export const publication = async (title, text) => {
-  return await addDoc(collection(db, "posts"), {
-    title,
-    text,
-    author: localStorage.getItem("email"),
-    likes: [],
-    timestamp: serverTimestamp(),
-  });
-};
+// eslint-disable-next-line no-return-await
+export const publication = async (title, text) => await addDoc(collection(db, 'posts'), {
+  title,
+  text,
+  author: localStorage.getItem('email'),
+  likes: [],
+  timestamp: serverTimestamp(),
+});
 
 const orderPublication = query(
-  collection(db, "posts"),
-  orderBy("timestamp", "desc")
+  collection(db, 'posts'),
+  orderBy('timestamp', 'desc'),
 );
 
 export const getPublication = async () => {
@@ -41,15 +40,13 @@ export const getPublication = async () => {
   return postsCollection;
 };
 
-export const onGetPublication = (callback) =>
-  onSnapshot(collection(db, "posts"), callback);
+export const onGetPublication = (callback) => onSnapshot(collection(db, 'posts'), callback);
 
-export const deletePublication = (id) => deleteDoc(doc(db, "posts", id));
+export const deletePublication = (id) => deleteDoc(doc(db, 'posts', id));
 
-export const getPost = (id) => getDoc(doc(db, "posts", id));
+export const getPost = (id) => getDoc(doc(db, 'posts', id));
 
-export const updatePublication = (id, newField) =>
-  updateDoc(doc(db, "posts", id), newField);
+export const updatePublication = (id, newField) => updateDoc(doc(db, 'posts', id), newField);
 
 export const addLike = (emailId) => arrayUnion(emailId);
 

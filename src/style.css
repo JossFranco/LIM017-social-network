@@ -328,10 +328,10 @@ img{
     visibility: hidden; 
 }
 
-/* .btnLikeBlue{
+.btnLikeBlue{
     background: #3333cc;
 
-} */
+} 
 
 @media (min-width: 760px){ 
     .root{
