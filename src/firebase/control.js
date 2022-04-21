@@ -13,7 +13,7 @@ import {
 import {
   getFirestore,
   collection,
-  addDoc,  
+  addDoc,
   getDocs,
   onSnapshot,
   deleteDoc,
@@ -27,11 +27,10 @@ import {
   arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
-
 export {
   getFirestore,
   collection,
-  addDoc,  
+  addDoc,
   getDocs,
   onSnapshot,
   deleteDoc,
@@ -57,7 +56,7 @@ export const sendEmail = function () {
 };
 
 export const registerGoogle = function () {
-  return signInWithPopup(auth, provider)
+  return signInWithPopup(auth, provider);
 };
 
 export const logInEmail = function (email, password) {
