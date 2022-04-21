@@ -110,12 +110,11 @@ export const home = () => {
               await updatePublication(id,{
                 likes: removeLike(userId),
               });
-              // btnsLikes.classList.toggle('btnLikeBlue');
+             
             }else{
               await updatePublication(id,{
                 likes: addLike(userId),
               });
-              // btnsLikes.classList.toggle('btnLikeBlue');
             }
           });
         });

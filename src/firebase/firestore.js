@@ -13,7 +13,7 @@ import {
   orderBy,
   arrayUnion,
   arrayRemove,
-} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+} from './control.js';
 
 const db = getFirestore();
 
