@@ -1,25 +1,23 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line import/no-unresolved
 import {
-  registerEmail,
-  sendEmail,
-  registerGoogle,
-  logInEmail,
-  userLogOut,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  signOut,
   provider,
 } from './control.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
+import { auth } from '../config/firebase.config.js';
 
 export const registerWithEmail = async function (email, password) {
   try {
-    const register = await registerEmail(email, password);
+    const register = await createUserWithEmailAndPassword(auth, email, password);
     console.log(register);
-    const send = await sendEmail();
+    const send = await sendEmailVerification(auth.currentUser);
     console.log(send);
-    onNavigate('/register');
-    document.getElementById('informationRegister').style.display = 'block';
-    document.getElementById('informationRegister').textContent = 'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';
     const uid = user.uid;
     console.log(uid);
     if (localStorage.getItem('email') !== null) {
@@ -45,7 +43,7 @@ export const registerWithEmail = async function (email, password) {
 };
 
 export const registerWithGoogle = async () => {
-  await registerGoogle()
+  await signInWithPopup(auth, provider)
     .then((result) => {
       const credential = provider;
       const user = result.user;
@@ -68,7 +66,7 @@ export const registerWithGoogle = async () => {
 };
 
 export const loginWithEmail = (email, password) => {
-  logInEmail(email, password)
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log(user);
@@ -106,13 +104,6 @@ export const loginWithEmail = (email, password) => {
 };
 
 export const logOut = () => {
-  userLogOut()
-    .then(() => {
-      console.log('Salir');
-      onNavigate('/');
-      localStorage.clear();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  signOut(auth)
 };
+

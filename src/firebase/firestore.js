@@ -1,5 +1,5 @@
 import {
-  getFirestore,
+  // getFirestore,
   collection,
   addDoc,
   getDocs,
@@ -13,9 +13,10 @@ import {
   orderBy,
   arrayUnion,
   arrayRemove,
-} from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+} from './control.js';
+import { db } from '../config/firebase.config.js'
 
-const db = getFirestore();
+// const db = getFirestore();
 
 // eslint-disable-next-line no-return-await
 export const publication = async (title, text) => await addDoc(collection(db, 'posts'), {

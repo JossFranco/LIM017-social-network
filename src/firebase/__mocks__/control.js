@@ -13,11 +13,10 @@ export const orderBy = jest.fn(() => Promise.resolve({}));
 export const arrayUnion = jest.fn(() => Promise.resolve({}));
 export const arrayRemove = jest.fn(() => Promise.resolve({}));
 
-export const auth = () => {};
+export const auth = () => ({});
 export class provider {}
-export const registerEmail = jest.fn(() => Promise.resolve({}));
-export const sendEmail = jest.fn(() => Promise.resolve({}));
-export const registerGoogle = jest.fn(() => Promise.resolve({}));
-export const logInEmail = jest.fn(() => Promise.resolve({}));
-export const userLogOut = jest.fn(() => Promise.resolve({}));
-export const initializeApp = () => {};
+export const registerEmail = () => Promise.resolve({});
+export const sendEmail = () => Promise.resolve({});
+export const registerGoogle = () => Promise.resolve({});
+export const logInEmail = () => Promise.resolve({});
+export const userLogOut = () => Promise.resolve({});

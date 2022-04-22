@@ -1,9 +1,4 @@
-import{} from '../../src/firebase/auth';
+import {   } from '../../src/firebase/auth.js';
+
 jest.mock('../../src/firebase/control');
 
-describe('myFunction', () => {
-    it('debería ser una función', () => {
-      expect(typeof myFunction).toBe('function');
-    });
-  });
-  

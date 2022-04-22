@@ -41,6 +41,9 @@ export const register = () => {
 
   btnRegisterUser.addEventListener('click', () => {
     registerWithEmail(inputEmail.value, inputPass.value);
+    onNavigate('/register');
+    document.getElementById('informationRegister').style.display = 'block';
+    document.getElementById('informationRegister').textContent = 'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';
   });
 
   btnGoogleRegister.addEventListener('click', () => {

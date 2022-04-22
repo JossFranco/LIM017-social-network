@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { logOut } from '../firebase/auth.js';
-// eslint-disable-next-line no-unused-vars
-import { userLogOut } from '../firebase/control.js';
+import { onNavigate } from '../main.js';
 
 import {
   publication,
@@ -69,6 +68,8 @@ export const home = () => {
 
   btnLogOut.addEventListener('click', () => {
     logOut();
+      onNavigate('/');
+      localStorage.clear();
   });
 
   let editStatus = false;

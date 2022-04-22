@@ -4,9 +4,6 @@
 import { registerWithEmail } from '../../src/components/register';
 
 jest.mock('../../src/firebase/control');
-jest.mock('../../src/firebase/auth');
-jest.mock('../../src/firebase/firestore');
-
 /* describe('myFunction', () => {
   it('debería ser una función', () => {
     expect(typeof myFunction).toBe('function');
