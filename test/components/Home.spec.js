@@ -1,1 +1,1 @@
-import{} from '../../src/components/Home'
+import {} from '../../src/components/Home';

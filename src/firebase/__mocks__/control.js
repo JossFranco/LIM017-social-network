@@ -1,23 +1,23 @@
-// jest.fn()
-export const getFirestore = () => Promise.resolve({});
-export const collection = () => Promise.resolve({});
-export const addDoc = () => Promise.resolve({});
-export const getDocs = () => Promise.resolve({});
-export const onSnapshot = () => Promise.resolve({});
-export const deleteDoc = () => Promise.resolve({});
-export const doc = () => Promise.resolve({});
-export const getDoc = () => Promise.resolve({});
-export const updateDoc = () => Promise.resolve({});
-export const serverTimestamp = () => Promise.resolve({});
-export const query = () => Promise.resolve({});
-export const orderBy = () => Promise.resolve({});
-export const arrayUnion = () => Promise.resolve({});
-export const arrayRemove = () => Promise.resolve({});
+export const getFirestore = jest.fn(() => Promise.resolve({}));
+export const collection = jest.fn(() => Promise.resolve({}));
+export const addDoc = jest.fn(() => Promise.resolve({}));
+export const getDocs = jest.fn(() => Promise.resolve({}));
+export const onSnapshot = jest.fn(() => Promise.resolve({}));
+export const deleteDoc = jest.fn(() => Promise.resolve({}));
+export const doc = jest.fn(() => Promise.resolve({}));
+export const getDoc = jest.fn(() => Promise.resolve({}));
+export const updateDoc = jest.fn(() => Promise.resolve({}));
+export const serverTimestamp = jest.fn(() => Promise.resolve({}));
+export const query = jest.fn(() => Promise.resolve({}));
+export const orderBy = jest.fn(() => Promise.resolve({}));
+export const arrayUnion = jest.fn(() => Promise.resolve({}));
+export const arrayRemove = jest.fn(() => Promise.resolve({}));
 
 export const auth = () => {};
 export class provider {}
-export const registerEmail = () => Promise.resolve({});
-export const sendEmail = () => Promise.resolve({});
-export const registerGoogle = () => Promise.resolve({});
-export const logInEmail = () => Promise.resolve({});
-export const userLogOut = () => Promise.resolve({});
+export const registerEmail = jest.fn(() => Promise.resolve({}));
+export const sendEmail = jest.fn(() => Promise.resolve({}));
+export const registerGoogle = jest.fn(() => Promise.resolve({}));
+export const logInEmail = jest.fn(() => Promise.resolve({}));
+export const userLogOut = jest.fn(() => Promise.resolve({}));
+export const initializeApp = () => {};

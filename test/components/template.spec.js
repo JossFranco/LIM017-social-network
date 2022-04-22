@@ -1,1 +1,1 @@
-import{} from '../../src/components/template'
+import {} from '../../src/components/template';

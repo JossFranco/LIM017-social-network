@@ -1,1 +1,1 @@
-import{} from '../../src/components/Login'
+import {} from '../../src/components/Login';

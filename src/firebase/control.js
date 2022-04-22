@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-unresolved
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -9,6 +7,8 @@ import {
   sendEmailVerification,
   signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
+
+/* export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';  */
 
 import {
   getFirestore,
@@ -26,6 +26,10 @@ import {
   arrayUnion,
   arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
+
+import { initializeApp } from './auth.js';
+
+// export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 
 export {
   getFirestore,
