@@ -34,6 +34,7 @@ const orderPublication = query(
 export const getPublication = async () => {
   const postsCollection = [];
   const querySnapshot = await getDocs(orderPublication);
+  // eslint-disable-next-line no-shadow
   querySnapshot.forEach((doc) => {
     postsCollection.push(doc);
   });

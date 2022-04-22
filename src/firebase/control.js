@@ -47,6 +47,7 @@ export {
 export const auth = getAuth();
 export const provider = new GoogleAuthProvider();
 
+// eslint-disable-next-line func-names
 export const registerEmail = function (email, password) {
   return createUserWithEmailAndPassword(auth, email, password);
 };

@@ -1,6 +1,8 @@
 export function postsTemplate(doc, containerPost) {
+  // eslint-disable-next-line no-param-reassign
   containerPost.innerHTML = '';
   doc.forEach((docPosts) => {
+    // eslint-disable-next-line no-param-reassign
     containerPost.innerHTML += `
   <div class = "containerPublicationDiv" >
     <div class = "containerPosts">

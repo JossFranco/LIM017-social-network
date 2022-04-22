@@ -14,12 +14,14 @@ import { onNavigate } from '../main.js';
 export const registerWithEmail = async function (email, password) {
   try {
     const register = await registerEmail(email, password);
-    console.log(register);
+    // eslint-disable-next-line no-unused-expressions
+    (register);
     const send = await sendEmail();
     console.log(send);
     onNavigate('/register');
     document.getElementById('informationRegister').style.display = 'block';
     document.getElementById('informationRegister').textContent = 'Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.';
+    // eslint-disable-next-line no-undef
     const uid = user.uid;
     console.log(uid);
     if (localStorage.getItem('email') !== null) {
@@ -94,11 +96,12 @@ export const loginWithEmail = (email, password) => {
       if (error.message === 'Firebase: Error (auth/wrong-password).') {
         document.getElementById('information').style.display = 'block';
         document.getElementById('information').textContent = 'La contraseña que has introducido es incorrecta.';
+        // eslint-disable-next-line no-undef
         loginPass.style.borderColor = '#ff5050';
       } else {
         document.getElementById('information').style.display = 'block';
         document.getElementById('information').textContent = 'El correo electrónico que ingresó no está conectado a una cuenta.';
-        loginEmail.style.borderColor = '#ff5050';
+        logInEmail.style.borderColor = '#ff5050';
       }
       console.log(errorMessage);
     });
