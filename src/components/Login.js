@@ -52,11 +52,12 @@ export const login = () => {
   loginDiv.appendChild(loginEmail);
   loginDiv.appendChild(loginPass);
   loginDiv.appendChild(informationDiv);
+  loginDiv.appendChild(btnLogin);
   loginDiv.appendChild(btnGoogleLogin);
   loginDiv.appendChild(btnRegister);
   loginDiv.appendChild(loginDiv2);
   loginDiv.appendChild(img);
-  loginDiv.appendChild(btnLogin);
+  
 
   return loginDiv;
 };

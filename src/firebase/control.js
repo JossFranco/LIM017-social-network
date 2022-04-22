@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line import/no-unresolved
+// import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js'
+import { auth } from '../config/firebase.config.js'
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -27,6 +30,11 @@ import {
   arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
+export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js'
+export{
+  getAuth
+};
+
 export {
   getFirestore,
   collection,
@@ -44,25 +52,13 @@ export {
   arrayRemove,
 };
 
-export const auth = getAuth();
+// export const auth = getAuth(app);
+export{
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithPopup,
+  signInWithEmailAndPassword, 
+  signOut
+}
+
 export const provider = new GoogleAuthProvider();
-
-export const registerEmail = function (email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
-};
-
-export const sendEmail = function () {
-  return sendEmailVerification(auth.currentUser);
-};
-
-export const registerGoogle = function () {
-  return signInWithPopup(auth, provider);
-};
-
-export const logInEmail = function (email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
-};
-
-export const userLogOut = function () {
-  return signOut(auth);
-};

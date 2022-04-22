@@ -1,5 +1,5 @@
 import {
-  getFirestore,
+  // getFirestore,
   collection,
   addDoc,
   getDocs,
@@ -14,8 +14,9 @@ import {
   arrayUnion,
   arrayRemove,
 } from './control.js';
+import { db } from '../config/firebase.config.js'
 
-const db = getFirestore();
+// const db = getFirestore();
 
 export const publication = async (title, text) => await addDoc(collection(db, 'posts'), {
   title,

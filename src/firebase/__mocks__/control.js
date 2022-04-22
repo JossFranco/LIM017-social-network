@@ -14,7 +14,7 @@ export const orderBy = () => Promise.resolve({});
 export const arrayUnion = () => Promise.resolve({});
 export const arrayRemove = () => Promise.resolve({}); 
 
-export const auth = () => {};
+export const auth = () => ({});
 export class   provider {}
 export const  registerEmail = () => Promise.resolve({});
 export const  sendEmail = () => Promise.resolve({});

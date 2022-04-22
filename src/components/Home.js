@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { logOut } from '../firebase/auth.js';
+import { onNavigate } from '../main.js';
 
 import {
   publication,
@@ -64,6 +65,8 @@ export const home = () => {
 
   btnLogOut.addEventListener('click', () => {
     logOut();
+      onNavigate('/');
+      localStorage.clear();
   });
 
   let editStatus = false;
