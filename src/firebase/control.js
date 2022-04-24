@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line import/no-unresolved
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js'
-import { auth } from '../config/firebase.config.js'
+
 
 import {
   getAuth,
@@ -32,7 +32,8 @@ import {
 
 export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js'
 export{
-  getAuth
+  getAuth,
+  GoogleAuthProvider
 };
 
 export {
@@ -61,4 +62,4 @@ export{
   signOut
 }
 
-export const provider = new GoogleAuthProvider();
+ 

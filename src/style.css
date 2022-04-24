@@ -189,6 +189,10 @@ img{
     color: #70db70;
 }
 
+.informationRegisterErr{
+    color: #ff5050;
+}
+
 .imgProfileDiv,
 .profileDiv{
  display: flex ;

@@ -18,43 +18,58 @@ import { postsTemplate } from './template.js';
 export const home = () => {
   const homeDiv = document.createElement('div');
   homeDiv.setAttribute('class', 'loginDiv');
+
   const profileDiv = document.createElement('div');
   profileDiv.setAttribute('class', 'profileDiv');
+
   const imgProfileDiv = document.createElement('IMG');
   imgProfileDiv.setAttribute('src', './Image/fondoCiudad.PNG');
   imgProfileDiv.setAttribute('class', 'imgProfileDiv');
+
   const imgProfile = document.createElement('IMG');
   imgProfile.setAttribute('src', './Image/22Perfil.png');
   imgProfile.setAttribute('class', 'imgProfile');
+
   const nameDiv = document.createElement('div');
   nameDiv.setAttribute('class', 'nameDiv');
+
   const btnLogOut = document.createElement('button');
   btnLogOut.setAttribute('class', 'btnLogOut');
+
   const formPublication = document.createElement('form');
   formPublication.setAttribute('class', 'formPublication');
+
   const publicationTitle = document.createElement('input');
   publicationTitle.setAttribute('placeholder', '¿Qué quieres compartir?');
   publicationTitle.setAttribute('class', 'publicationTitle');
+
   const publicationText = document.createElement('textarea');
   publicationText.setAttribute('placeholder', 'Escribe aquí');
   publicationText.setAttribute('class', 'publicationText');
   publicationText.setAttribute('rows', '5');
+
   const btnSave = document.createElement('button');
   btnSave.setAttribute('class', 'btnSave');
   btnSave.setAttribute('id', 'btnSave');
+
   const containerPublication = document.createElement('div');
+
   const errorPublication = document.createElement('div');
   errorPublication.setAttribute('class', 'errorPublication');
+
   const formEdit = document.createElement('form');
   formEdit.setAttribute('class', 'formPublication formEdit');
   formEdit.setAttribute('id', 'formEdit');
+
   const editTitle = document.createElement('input');
   editTitle.setAttribute('placeholder', '¿Qué quieres compartir?');
   editTitle.setAttribute('class', 'publicationTitle');
+
   const editText = document.createElement('textarea');
   editText.setAttribute('placeholder', 'Escribe aquí');
   editText.setAttribute('class', 'publicationText');
   editText.setAttribute('rows', '5');
+  
   const btnUpdate = document.createElement('button');
   btnUpdate.setAttribute('class', 'btnSave');
   btnUpdate.setAttribute('id', 'btnSave');
