@@ -19,6 +19,18 @@ export const home = () => {
   const homeDiv = document.createElement('div');
   homeDiv.setAttribute('class', 'loginDiv');
 
+  const navDiv = document.createElement('div');
+  navDiv.setAttribute('class', 'navDiv');
+
+  const imgLogo = document.createElement('IMG');
+  imgLogo.setAttribute('src', './Image/logo.png');
+  imgLogo.setAttribute('class', 'logoHome');
+
+  const imgLogOut = document.createElement('IMG');
+  imgLogOut.setAttribute('src', './Image/cerrarSesion.svg');
+  imgLogOut.setAttribute('class', 'imgLogOut');
+
+
   const profileDiv = document.createElement('div');
   profileDiv.setAttribute('class', 'profileDiv');
 
@@ -77,6 +89,12 @@ export const home = () => {
   btnLogOut.textContent = 'Cerrar Sesión';
   btnSave.textContent = 'Publicar';
   nameDiv.textContent = localStorage.getItem('email');
+  
+  imgLogOut.addEventListener('click', () => {
+    logOut();
+      onNavigate('/');
+      localStorage.clear();
+  });
 
   btnLogOut.addEventListener('click', () => {
     logOut();
@@ -167,6 +185,9 @@ export const home = () => {
     document.getElementById('formEdit').style.display = 'none';
   });
 
+  homeDiv.appendChild(navDiv);
+  navDiv.appendChild(imgLogo);
+  navDiv.appendChild(imgLogOut)
   homeDiv.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
   profileDiv.appendChild(imgProfile);
