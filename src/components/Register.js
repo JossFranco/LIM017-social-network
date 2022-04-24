@@ -7,6 +7,7 @@ import { onNavigate } from '../main.js';
 import { fnLocalStorage } from '../firebase/funtions.js';
 
 export const register = () => {
+  
   const registerDiv = document.createElement('div');
   registerDiv.setAttribute('class', 'divRegister');
 

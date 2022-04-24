@@ -16,6 +16,12 @@ import {
 import { postsTemplate } from './template.js';
 
 export const home = () => {
+  const containerDiv = document.createElement('div');
+  containerDiv.setAttribute( 'class', 'containerDiv');
+
+  const containerProfile = document.createElement('div');
+  containerProfile.setAttribute( 'class', 'containerProfile');
+
   const homeDiv = document.createElement('div');
   homeDiv.setAttribute('class', 'loginDiv');
 
@@ -89,7 +95,7 @@ export const home = () => {
   btnLogOut.textContent = 'Cerrar Sesión';
   btnSave.textContent = 'Publicar';
   nameDiv.textContent = localStorage.getItem('email');
-  
+
   imgLogOut.addEventListener('click', () => {
     logOut();
       onNavigate('/');
@@ -184,14 +190,16 @@ export const home = () => {
     formPublication.setAttribute('class', 'formPublication ');
     document.getElementById('formEdit').style.display = 'none';
   });
-
-  homeDiv.appendChild(navDiv);
-  navDiv.appendChild(imgLogo);
-  navDiv.appendChild(imgLogOut)
-  homeDiv.appendChild(profileDiv);
+  
+  containerDiv.appendChild(navDiv);
+  containerDiv.appendChild(containerProfile);
+  containerDiv.appendChild(homeDiv);
+  containerProfile.appendChild(profileDiv)
   profileDiv.appendChild(imgProfileDiv);
   profileDiv.appendChild(imgProfile);
-  homeDiv.appendChild(nameDiv);
+  containerProfile.appendChild(nameDiv);
+  navDiv.appendChild(imgLogo);
+  navDiv.appendChild(imgLogOut);
   homeDiv.appendChild(formPublication);
   formPublication.appendChild(publicationTitle);
   formPublication.appendChild(publicationText);
@@ -204,5 +212,5 @@ export const home = () => {
   homeDiv.appendChild(containerPublication);
   homeDiv.appendChild(btnLogOut);
 
-  return homeDiv;
+  return containerDiv;
 };

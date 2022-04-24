@@ -39,7 +39,7 @@ body {
     margin-top: 1%;
     display: inline-block;
     position: absolute;
-    right: 26%;
+    right: 30%;
 }
 
 
@@ -373,6 +373,22 @@ img{
     .btnLogOut{
         display: none;
     }
+    .containerDiv{
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: "navDiv navDiv" "containerProfile loginDiv";
+    }
+    .navDiv{
+        grid-area: navDiv;
+    }
+    .containerProfile{
+        grid-area: containerProfile;
+    }
+    .loginDiv{
+        grid-area: loginDiv;
+    }
     .btnGoogle,
     .btnStyle,
     .inputStyle{
@@ -411,6 +427,7 @@ img{
     .btnLogOut{
         display: none;
     }
+
     .imgProfileDiv,
     .profileDiv{
      height: 15em;
