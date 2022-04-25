@@ -23,7 +23,7 @@ export const sendEmail = () => {
 }
 // Función de Registrar con Google 
 export const registerWithGoogle = () => {
- signInWithPopup(auth, provider)
+ return signInWithPopup(auth, provider)
   .then((result) => {
     const credential = provider;
     const user = result.user;
