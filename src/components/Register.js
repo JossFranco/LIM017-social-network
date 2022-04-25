@@ -23,12 +23,14 @@ export const register = () => {
 
   const inputPass = document.createElement('input');
   inputPass.setAttribute('type', 'password');
+  inputPass.setAttribute('id', 'inputPass');
   inputPass.setAttribute('placeholder', 'Contraseña');
   inputPass.setAttribute('class', 'inputStyle');
   inputPass.setAttribute('min', '6');
 
   const inputPassword = document.createElement('input');
   inputPassword.setAttribute('type', 'password');
+  inputPassword.setAttribute('id', 'inputPassword');
   inputPassword.setAttribute('placeholder', 'Confirmar contraseña');
   inputPassword.setAttribute('class', 'inputStyle');
   inputPassword.setAttribute('min', '6');
@@ -38,6 +40,7 @@ export const register = () => {
 
   const btnRegisterUser = document.createElement('button');
   btnRegisterUser.setAttribute('class', 'btnStyle');
+  btnRegisterUser.setAttribute('id', 'btnRegisterUser');
 
   const btnGoogleRegister = document.createElement('button');
   btnGoogleRegister.setAttribute('class', 'btnGoogle');
