@@ -3,9 +3,19 @@
  * @jest-environment jsdom
  */
 
- it('use', () => {
+ describe ('register()', () => {
+  it('Estructura', () =>{
     
-    const rootDiv = document.body.innerHTML = "<div id='rootDiv'>Publicar</div>";
+    const rootDiv = document.body.innerHTML = "<div id='rootDiv'></div>";
+    const components = {
+      const register:  = () => {
+        const registerDiv = document.createElement('div');
+        registerDiv.innerHTML = 'Hola Mundo';
+        return registerDiv
+    }
+      
+   })
+})
     
     // const component = component();
     // rootDiv.appendChild(component);
