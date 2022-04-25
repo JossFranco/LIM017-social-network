@@ -14,7 +14,7 @@ import {
   arrayUnion,
   arrayRemove,
 } from './control.js';
-import { db } from '../config/firebase.config.js'
+import { db } from '../config/firebase.config.js';
 
 // const db = getFirestore();
 

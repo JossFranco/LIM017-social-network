@@ -15,7 +15,7 @@ export const arrayRemove = jest.fn(() => Promise.resolve({}));
 
 export const auth = () => ({});
 export class provider {}
-export const registerEmail = () => Promise.resolve({});
+export const registerEmail = jest.fn(() => Promise.resolve({}));
 export const sendEmail = () => Promise.resolve({});
 export const registerGoogle = () => Promise.resolve({});
 export const logInEmail = () => Promise.resolve({});
