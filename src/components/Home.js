@@ -111,11 +111,7 @@ export const home = () => {
   let id = '';
   formPublication.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (
-      !editStatus
-      && publicationTitle.value !== ''
-      && publicationText.value !== ''
-    ) {
+    if (!editStatus && publicationTitle.value !== '' && publicationText.value !== '') {
       publication(publicationTitle.value, publicationText.value);
       errorPublication.textContent = '';
     } else if (!editStatus && publicationTitle.value === '') {
@@ -193,6 +189,7 @@ export const home = () => {
     formPublication.setAttribute('class', 'formPublication ');
     document.getElementById('formEdit').style.display = 'none';
   });
+
   containerDiv.appendChild(navDiv);
   containerDiv.appendChild(containerProfile);
   containerDiv.appendChild(homeDiv);

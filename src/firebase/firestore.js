@@ -18,7 +18,6 @@ import { db } from '../config/firebase.config.js';
 
 // const db = getFirestore();
 
-// eslint-disable-next-line no-return-await
 export const publication = async (title, text) => await addDoc(collection(db, 'posts'), {
   title,
   text,
@@ -35,7 +34,6 @@ const orderPublication = query(
 export const getPublication = async () => {
   const postsCollection = [];
   const querySnapshot = await getDocs(orderPublication);
-  // eslint-disable-next-line no-shadow
   querySnapshot.forEach((doc) => {
     postsCollection.push(doc);
   });

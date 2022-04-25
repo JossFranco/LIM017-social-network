@@ -1,5 +1,5 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js' 
 import {
+  initializeApp,
   getAuth,
   getFirestore,
   GoogleAuthProvider,
