@@ -3,6 +3,17 @@ export const initializeApp = () => ({});
 export const collection = () => ({});
 export const getDocs = (collection) => ({});
 
+export const getAuth = () => ({});
+export class GoogleAuthProvider {}
+export const createUserWithEmailAndPassword = jest.fn(( email , password) => Promise.resolve({}));
+export const signInWithEmailAndPassword = jest.fn(( email , password) => Promise.resolve({}));
+export const signOut = jest.fn()
+
+
+export const sendEmailVerification = () => Promise.resolve({}); 
+export const signInWithPopup = () => Promise.resolve({});
+
+
 export const getFirestore = () => ({});
 
 export const addDoc = () => Promise.resolve({});
@@ -15,6 +26,7 @@ export const serverTimestamp = () => Promise.resolve({});
 export const query = () => Promise.resolve({});
 export const orderBy = () => Promise.resolve({});
 export const arrayUnion = () => Promise.resolve({});
+<<<<<<< HEAD
 export const arrayRemove = () => Promise.resolve({});
 
 export const getAuth = () => ({});
@@ -24,3 +36,6 @@ export const sendEmailVerification = () => Promise.resolve({});
 export const signInWithPopup = () => Promise.resolve({});
 export const signInWithEmailAndPassword = () => Promise.resolve({});
 export const signOut = () => Promise.resolve({});
+=======
+export const arrayRemove = () => Promise.resolve({}); 
+>>>>>>> upstream/main
