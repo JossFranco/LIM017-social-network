@@ -417,15 +417,9 @@ img{
         height: auto;
     }
 }
-@media (min-width: 1200px){ 
+@media (min-width: 1500px){ 
     .root{
-        max-width: 90%;
-    }
-    .loginDiv{
-        display: grid;
-        grid-template-columns: repeat(30% 70%);
-        grid-template-rows: repeat(30% 70%);
-        grid-template-areas:'profileDiv formPublication' 'nameDiv formEdit' 'auto containerPublication';
+        max-width: 50%;
     }
     .navDiv{
         display: block;
@@ -439,22 +433,7 @@ img{
      height: 10em;
      margin-bottom: 10%;
     }
-    .formPublication{
-        grid-area formPublication;
-        max-width:100%;
-    }
-    .nameDiv{
-        grid-area: nameDiv;
-        max-width:80%;
-    }
-    .formEdit{
-        grid-area: formEdit;
-        max-width:100%;
-    }
-    .containerPublication{
-        grid-area: containerPublication;
-        max-width:100%;
-    }
+    
     .imgProfileDiv{
         margin-bottom: 15%;
     }

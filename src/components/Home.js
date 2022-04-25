@@ -17,10 +17,10 @@ import { postsTemplate } from './template.js';
 
 export const home = () => {
   const containerDiv = document.createElement('div');
-  containerDiv.setAttribute( 'class', 'containerDiv');
+  containerDiv.setAttribute('class', 'containerDiv');
 
   const containerProfile = document.createElement('div');
-  containerProfile.setAttribute( 'class', 'containerProfile');
+  containerProfile.setAttribute('class', 'containerProfile');
 
   const homeDiv = document.createElement('div');
   homeDiv.setAttribute('class', 'loginDiv');
@@ -35,7 +35,6 @@ export const home = () => {
   const imgLogOut = document.createElement('IMG');
   imgLogOut.setAttribute('src', './Image/cerrarSesion.svg');
   imgLogOut.setAttribute('class', 'imgLogOut');
-
 
   const profileDiv = document.createElement('div');
   profileDiv.setAttribute('class', 'profileDiv');
@@ -87,7 +86,7 @@ export const home = () => {
   editText.setAttribute('placeholder', 'Escribe aquí');
   editText.setAttribute('class', 'publicationText');
   editText.setAttribute('rows', '5');
-  
+
   const btnUpdate = document.createElement('button');
   btnUpdate.setAttribute('class', 'btnSave');
   btnUpdate.setAttribute('id', 'btnSave');
@@ -98,14 +97,14 @@ export const home = () => {
 
   imgLogOut.addEventListener('click', () => {
     logOut();
-      onNavigate('/');
-      localStorage.clear();
+    onNavigate('/');
+    localStorage.clear();
   });
 
   btnLogOut.addEventListener('click', () => {
     logOut();
-      onNavigate('/');
-      localStorage.clear();
+    onNavigate('/');
+    localStorage.clear();
   });
 
   let editStatus = false;
@@ -118,6 +117,7 @@ export const home = () => {
       && publicationText.value !== ''
     ) {
       publication(publicationTitle.value, publicationText.value);
+      errorPublication.textContent = '';
     } else if (!editStatus && publicationTitle.value === '') {
       errorPublication.textContent = '- Debe agregar el título';
       publicationTitle.setAttribute('id', 'postTitle');
@@ -135,11 +135,11 @@ export const home = () => {
     }
     formEdit.reset();
   });
+
   onGetPublication(() => {
     getPublication()
       .then(async (data) => {
         postsTemplate(data, containerPublication);
-
         const btnsDelete = containerPublication.querySelectorAll('.btnsDelete');
         const btnsEdit = containerPublication.querySelectorAll('.btnsEdit');
         const btnsLikes = containerPublication.querySelectorAll('.btnsLikes');
@@ -149,16 +149,15 @@ export const home = () => {
             const doc = await getPost(e.currentTarget.dataset.id);
             id = doc.id;
             const dataCollection = doc.data().likes;
+            console.log(dataCollection);
             if (dataCollection.includes(userId)) {
               await updatePublication(id, {
                 likes: removeLike(userId),
               });
-              // btnsLikes.classList.toggle('btnLikeBlue');
             } else {
               await updatePublication(id, {
                 likes: addLike(userId),
               });
-              // btnsLikes.classList.toggle('btnLikeBlue');
             }
           });
         });
@@ -174,7 +173,6 @@ export const home = () => {
             formPublication.setAttribute('class', 'formHidden');
             document.getElementById('formEdit').style.display = 'block';
             const doc = await getPost(e.target.dataset.id);
-            // eslint-disable-next-line no-shadow
             const publication = doc.data();
             editTitle.value = publication.title;
             editText.value = publication.text;
@@ -190,11 +188,11 @@ export const home = () => {
         console.log(err);
       });
   });
+
   btnUpdate.addEventListener('click', () => {
     formPublication.setAttribute('class', 'formPublication ');
     document.getElementById('formEdit').style.display = 'none';
   });
-
   containerDiv.appendChild(navDiv);
   containerDiv.appendChild(containerProfile);
   containerDiv.appendChild(homeDiv);
@@ -209,7 +207,6 @@ export const home = () => {
   formPublication.appendChild(publicationText);
   formPublication.appendChild(errorPublication);
   formPublication.appendChild(btnSave);
-  loginDiv.appendChild(formEdit);
   formEdit.appendChild(editTitle);
   formEdit.appendChild(editText);
   formEdit.appendChild(btnUpdate);

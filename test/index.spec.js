@@ -3,7 +3,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { registerWithEmail } from '../../src/firebase/auth';
 
-jest.mock('../../src/firebase/control');
+jest.mock('src\firebase\__mocks__\control.js');
 /* describe('myFunction', () => {
   it('debería ser una función', () => {
     expect(typeof myFunction).toBe('function');

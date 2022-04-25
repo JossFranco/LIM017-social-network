@@ -1,8 +1,8 @@
-import { 
-  initializeApp,
-  getAuth, 
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js' 
+import {
+  getAuth,
   getFirestore,
-  GoogleAuthProvider
+  GoogleAuthProvider,
 } from '../firebase/control.js';
 
 const firebaseConfig = {
