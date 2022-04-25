@@ -194,11 +194,11 @@ export const home = () => {
     formPublication.setAttribute('class', 'formPublication ');
     document.getElementById('formEdit').style.display = 'none';
   });
-  
+
   containerDiv.appendChild(navDiv);
   containerDiv.appendChild(containerProfile);
   containerDiv.appendChild(homeDiv);
-  containerProfile.appendChild(profileDiv)
+  containerProfile.appendChild(profileDiv);
   profileDiv.appendChild(imgProfileDiv);
   profileDiv.appendChild(imgProfile);
   containerProfile.appendChild(nameDiv);

@@ -1,6 +1,9 @@
 import { registerWithEmail } from '../../src/firebase/auth.js';
  
-// @jest-environment jsdom
+
+/**
+ * @jest-environment jsdom
+ */
  
 jest.mock('../../src/firebase/control');
 
