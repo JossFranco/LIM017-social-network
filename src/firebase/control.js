@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line import/no-unresolved
 // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js'
-import { auth } from '../config/firebase.config.js'
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -10,6 +10,7 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
   signOut,
+// eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-auth.js';
 
 /* export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';  */
@@ -29,11 +30,14 @@ import {
   orderBy,
   arrayUnion,
   arrayRemove,
+// eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
-export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js'
+// eslint-disable-next-line import/no-unresolved
+export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 export {
   getAuth,
+  GoogleAuthProvider,
 };
 
 export {
@@ -54,12 +58,10 @@ export {
 };
 
 // export const auth = getAuth(app);
-export{
+export {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithPopup,
   signInWithEmailAndPassword,
   signOut,
 };
-
-export const provider = new GoogleAuthProvider();
