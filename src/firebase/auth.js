@@ -41,3 +41,4 @@ export const loginWithEmail = (email, password) => signInWithEmailAndPassword(au
 
 // Función de Cerrar Sesion
 export const logOut = () => signOut(auth);
+ 
