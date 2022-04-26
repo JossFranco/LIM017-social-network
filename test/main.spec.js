@@ -1,25 +1,16 @@
-
+import { onNavigate} from './../src/main.js';
+import { home } from '../../src/components/Home.js'
 /**
  * @jest-environment jsdom
  */
+ jest.mock('../../src/firebase/control');
+ 
+ describe ('onNavigate()', () => {
+  it('Debe cargar la vista de home', () =>{
+    document.body.innerHTML = "<div id='root'></div>";
+    const home = home();
+    expect(onNavigate('/home')).toEqual(home) 
+   });
 
- describe ('register()', () => {
-  it('Estructura', () =>{
-    
-    const rootDiv = document.body.innerHTML = "<div id='rootDiv'></div>";
-    const components = {
-      const register:  = () => {
-        const registerDiv = document.createElement('div');
-        registerDiv.innerHTML = 'Hola Mundo';
-        return registerDiv
-    }
-      
-   })
 })
-    
-    // const component = component();
-    // rootDiv.appendChild(component);
-    
-    expect(rootDiv).not.toBeNull();
-    // expect(rootDiv).toContain(component());
-  });
+ 

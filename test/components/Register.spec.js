@@ -1,18 +1,24 @@
-// import { register } from "../../src/components/Register";
+import { register } from "../../src/components/Register";
+import { registerWithEmail } from "../../src/firebase/auth";
 
-// jest.mock('../../src/firebase/control');
+jest.mock('../../src/firebase/control');
 
-// describe ('register()', () => {
-//     it('Estructura', () =>{
-//      const components = {
-//       const register: () => {
-//         const registerDiv = document.createElement('div');
-//         registerDiv.innerHTML = 'Hola Mundo';
-//         return registerDiv
-//     }
+describe ('register()', () => {
+    it('Estructura', () =>{
+     const result = register();
+     const btnRegister = result.querySelector('#btnRegisterUser');
 
-//     })
-// })
+     expect(btnRegister.textContent).toBe('Registrarme');
+
+    // btnRegister.dispatchEvent(new Event('click'))
+
+       
+        // const registerDiv = document.createElement('div');
+        // registerDiv.innerHTML = 'Hola Mundo';
+      
+
+    })
+})
 
 // describe ('Pass = Password', () => {
 //     it('Mensaje de error', () =>{
