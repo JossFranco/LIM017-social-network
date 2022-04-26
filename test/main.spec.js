@@ -1,24 +1,28 @@
+import { onNavigate} from './../src/main.js';
+import { home } from './../src/components/Home.js'
+import { login } from './../src/components/Login.js'
+import { register } from './../src/components/Register.js'
 /**
  * @jest-environment jsdom
  */
+ jest.mock('../src/firebase/control');
 
- describe ('register()', () => {
-  it('Estructura', () =>{
-    
-    const rootDiv = document.body.innerHTML = "<div id='rootDiv'></div>";
-    const components = {
-      const register :  = () => {
-        const registerDiv = document.createElement('div');
-        registerDiv.innerHTML = 'Hola Mundo';
-        return registerDiv
-    }
-      
+ describe ('onNavigate()', () => {
+  it('Debe cargar la vista de Home', () =>{
+    document.body.innerHTML = "<div id='root'></div>";
+    const homeView = home();
+    expect(onNavigate('/home')).toEqual(homeView) 
    })
-})
-    
-    // const component = component();
-    // rootDiv.appendChild(component);
-    
-    expect(rootDiv).not.toBeNull();
-    // expect(rootDiv).toContain(component());
-
+ it('Debe cargar vista Login', () =>{
+   document.body.innerHTML = "<div id='root'></div>";
+   const loginView = login();
+   expect(onNavigate('/login')).toEqual(loginView) 
+ })
+ it('Debe cargar vista Register', () =>{
+   document.body.innerHTML = "<div id='root'></div>";
+   const registerView = register();
+   expect(onNavigate('/register')).toEqual(registerView) 
+ })
+ 
+});
+ 

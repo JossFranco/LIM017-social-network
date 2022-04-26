@@ -4,19 +4,11 @@ import { registerWithEmail } from "../../src/firebase/auth";
 jest.mock('../../src/firebase/control');
 
 describe ('register()', () => {
-    it('Estructura', () =>{
+    it('El botón de Registrarse se encuentra en register()', () =>{
      const result = register();
      const btnRegister = result.querySelector('#btnRegisterUser');
-
+     btnRegister.dispatchEvent(new Event('click'))
      expect(btnRegister.textContent).toBe('Registrarme');
-
-    // btnRegister.dispatchEvent(new Event('click'))
-
-       
-        // const registerDiv = document.createElement('div');
-        // registerDiv.innerHTML = 'Hola Mundo';
-      
-
     })
 })
 
