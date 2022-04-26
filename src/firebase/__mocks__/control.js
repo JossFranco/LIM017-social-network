@@ -1,11 +1,12 @@
 // jest.fn()
 export const initializeApp = () => ({});
 export const collection = () => ({});
-export const getDocs = (collection) => ({});
+export const getDocs = (collection) =>({})
 
+export const registerWithEmail = jest.fn();
 export const getAuth = () => ({});
 export class GoogleAuthProvider {}
-export const createUserWithEmailAndPassword = jest.fn(( email , password) => Promise.resolve({}));
+export const createUserWithEmailAndPassword = ( ) => Promise.resolve({});
 export const signInWithEmailAndPassword = jest.fn(( email , password) => Promise.resolve({}));
 export const signOut = jest.fn();
 

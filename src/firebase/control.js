@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line import/no-unresolved
 import {
   getAuth,
   createUserWithEmailAndPassword,
