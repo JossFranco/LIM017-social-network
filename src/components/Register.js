@@ -2,12 +2,12 @@
 import {
   registerWithEmail, registerWithGoogle, sendEmail,
 } from '../firebase/auth.js';
+
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 import { fnLocalStorage } from '../firebase/funtions.js';
 
 export const register = () => {
-  
   const registerDiv = document.createElement('div');
   registerDiv.setAttribute('class', 'divRegister');
 
@@ -19,6 +19,7 @@ export const register = () => {
   inputEmail.setAttribute('type', 'email');
   inputEmail.setAttribute('placeholder', 'E-mail');
   inputEmail.setAttribute('class', 'inputStyle');
+  inputEmail.setAttribute('id', 'inputEmail');
 
   const inputPass = document.createElement('input');
   inputPass.setAttribute('type', 'password');
