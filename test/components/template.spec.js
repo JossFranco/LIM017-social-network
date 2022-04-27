@@ -8,6 +8,6 @@ describe ('postsTemplate()', () => {
      const resultTemplate = postsTemplate();
      const containerPost = resultTemplate.createElement('div');
      const btn = resultTemplate.querySelector("#btnsDelete");
-     expect(btnsDelete.textContent).toBe('Iniciar Sesión');
+     expect(containerPost).toBe('Iniciar Sesión');
     })
 })

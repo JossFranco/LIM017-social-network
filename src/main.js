@@ -6,7 +6,6 @@ import { register } from './components/Register.js';
 // eslint-disable-next-line import/no-cycle
 import { home } from './components/Home.js';
 
-const rootDiv = document.getElementById('root');
 const routes = {
   '/': login,
   '/register': register,
@@ -14,6 +13,7 @@ const routes = {
 };
 
 export const onNavigate = (pathname) => {
+  const rootDiv = document.getElementById('root');
   window.history.pushState({}, pathname, window.location.origin + pathname);
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
@@ -22,6 +22,7 @@ export const onNavigate = (pathname) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
+  const rootDiv = document.getElementById('root');
   const component = routes[window.location.pathname];
   window.onpopstate = () => {
     rootDiv.appendChild(component());

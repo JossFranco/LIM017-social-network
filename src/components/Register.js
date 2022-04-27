@@ -4,6 +4,7 @@ import {
   registerWithGoogle,
   sendEmail,
 } from '../firebase/auth.js';
+
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 import { fnLocalStorage } from '../firebase/funtions.js';
@@ -20,6 +21,7 @@ export const register = () => {
   inputEmail.setAttribute('type', 'email');
   inputEmail.setAttribute('placeholder', 'E-mail');
   inputEmail.setAttribute('class', 'inputStyle');
+  inputEmail.setAttribute('id', 'inputEmail');
 
   const inputPass = document.createElement('input');
   inputPass.setAttribute('type', 'password');
@@ -74,8 +76,8 @@ export const register = () => {
       registerWithEmail(inputEmail.value, inputPass.value)
         .then((user) => {
           sendEmail();
-          const uid = user.uid;
-          console.log(uid);
+          // const uid = user.uid;
+          // console.log(uid);
           fnLocalStorage(inputEmail.value);
           onNavigate('/register');
           document.getElementById('informationRegister').style.display = 'block';
@@ -83,9 +85,9 @@ export const register = () => {
         })
         .catch((error) => {
           const errorCode = error.code;
-          console.log(errorCode);
+          // console.log(errorCode);
           const errorMessage = error.message;
-          console.log(errorMessage);
+          // console.log(errorMessage);
           if (errorCode === 'auth/email-already-in-use') {
             document.getElementById('informationRegister').style.display = 'block';
             document.getElementById('informationRegister').textContent = 'El correo electrónico ya esta asociado a una cuenta.';
