@@ -5,7 +5,6 @@
 }
 
 body {
-    /* background: -webkit-linear-gradient(top, #99bbff,#9999ff, ); */
     background: #edf5f8;
 }
 
@@ -93,19 +92,19 @@ body {
 .containerCount{
 width: 30%;
 max-width:30% ;
-margin-left: 35%;
 display: flex;
+justify-content: end;
 }
 
 .containerAuthor{
     display: flex;
-
+    justify-content: space-between;
 }
 .count{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.8em;
   color: #a6a6a6;
-  padding-top: 20%;
+  padding-top: 12%;
 }
 .imgLike{
 width: 2em;
@@ -403,6 +402,9 @@ img{
         max-width: 100%;
     }
     
+    .count{
+        padding-top: 9%;
+      }
     .btnGoogle,
     .btnStyle,
     .inputStyle{
@@ -431,8 +433,6 @@ img{
     }
 
     .nameDiv{
-        /* margin-top: 0;
-        padding-top: 0; */
         background: #ffffff;
         padding: 2% 0;
     }

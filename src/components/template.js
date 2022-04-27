@@ -17,8 +17,8 @@ export function postsTemplate(doc, containerPost) {
       <div class = "containerBtns" id ="containerBtns">
       <button class="btnsDelete btnsStyle" id="btnsDelete" data-id = "${docPosts.id}" ${docPosts.data().author === localStorage.getItem('email') ? '' : 'disabled'} >Eliminar <i class="fa-regular fa-trash-can"></i></button>
       <button class = "btnsEdit btnsStyle" data-id ="${docPosts.id}" ${docPosts.data().author === localStorage.getItem('email') ? '' : 'disabled'}>Editar <i class="fa-regular fa-pen-to-square"></i> </i></button>
-      <button class = "btnsLikes btnsStyle ${docPosts.data().likes.includes(localStorage.getItem('email')) ? 'btnLikeBlue' :'' }" data-id ="${docPosts.id}"} > 
-      <span id = "iconLike" class = "iconLike" > Me gusta <i class="fa-regular fa-thumbs-up"></i></span></button>
+      <button class = "btnsLikes btnsStyle ${docPosts.data().likes.includes(localStorage.getItem('email')) ? 'btnLikeBlue' :''}" data-id ="${docPosts.id}"} > 
+      <span id = "iconLike" class = "iconLike" > Me gusta  <i class="fa-regular fa-thumbs-up"></i></span></button>
       </div>
      </div>
   </div>`;
