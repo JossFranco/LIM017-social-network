@@ -7,7 +7,7 @@ describe ('register()', () => {
     it('El botón de Registrarse se encuentra en register()', () =>{
      const result = register();
      const btnRegister = result.querySelector('#btnRegisterUser');
-     btnRegister.dispatchEvent(new Event('click'))
+     btnRegister.dispatchEvent(new Event('click'));
      expect(btnRegister.textContent).toBe('Registrarme');
     })
 })

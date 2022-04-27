@@ -17,10 +17,10 @@ describe('registerWithEmail', () => {
     const email = 'user@gmail.com';
     const password = 'Laboratoria';
     const user = registerWithEmail(email, password)
-      .then(() => {})
+      .then(() => {});
       .catch(() => {});
-    expect(user.email).toEqual('user@gmail.com');
-    expect(user.password).toEqual('Laboratoria');
+    expect(user.email).toBe('user@gmail.com');
+    expect(user.password).toBe('Laboratoria');
     expect(typeof registerWithEmail).toBe('function');
   });
 });
