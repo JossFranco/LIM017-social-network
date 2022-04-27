@@ -34,7 +34,7 @@ export const login = () => {
   btnRegister.setAttribute('class', 'btnStyleText');
 
   const btnGoogleLogin = document.createElement('button');
-  btnRegister.setAttribute('id', 'btnGoogleLogin');
+  btnGoogleLogin.setAttribute('id', 'btnGoogleLogin');
   btnGoogleLogin.setAttribute('class', 'btnGoogle');
 
   const loginDiv2 = document.createElement('div');

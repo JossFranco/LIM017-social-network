@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword, 
   signOut,
 } from './control.js';
+
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../main.js';
 import { auth, provider, } from '../config/firebase.config.js';

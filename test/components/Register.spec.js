@@ -15,6 +15,7 @@ describe ('register()', () => {
 describe ('register()', () => {
     it('Datos de Registro', () =>{
         const result = register();
+        const fnResult = registerWithEmail();
         const inputEmail = result.querySelector('#inputEmail');
         const inputPass = result.querySelector('#inputPass');
         const inputPassword = result.querySelector('#inputPassword');
@@ -25,9 +26,9 @@ describe ('register()', () => {
         inputPass.value = 'Passw1';
         inputPassword.value = 'Passw1';
 
-        // btn.dispatchEvent(new Event('click'));
+        btn.dispatchEvent(new Event('click'));
 
-        expect(informationDiv.textContent).toBe('Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.');
+        expect(informationDiv.innerHTML).toEqual('Confírmanos que la  dirección de correo electrónico agregada te pertenece. Hazlo a través del correo electrónico que te envíamos.');
     })
 });
 

@@ -6,7 +6,7 @@
 
 body {
     /* background: -webkit-linear-gradient(top, #99bbff,#9999ff, ); */
-    background: #f2f2f2;
+    background: #edf5f8;
 }
 
 .root{
@@ -24,22 +24,23 @@ body {
 }
 
 .navDiv{
-
     display: none;
+    background: #91c2d4;
+    margin-bottom: 1%;
   }
+
 .logoHome{
     max-width: 10%;
-    margin-top: 1%;
-    margin-bottom: 1%;
+    margin-left: 2%;
     display: inline-block;
 }
 
 .imgLogOut{
-    max-width: 1.5%;
-    margin-top: 1%;
+    max-width: 1.2%;
+    margin-bottom: 1%;
     display: inline-block;
     position: absolute;
-    right: 30%;
+    right: 25.5%;
 }
 
 
@@ -69,7 +70,6 @@ body {
     border-radius: 5px;
     box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
     cursor: pointer;
-
 }
 
 .btnUpdate,
@@ -90,7 +90,29 @@ body {
     cursor: pointer;
 
 }
+.containerCount{
+width: 30%;
+max-width:30% ;
+margin-left: 35%;
+display: flex;
+}
 
+.containerAuthor{
+    display: flex;
+
+}
+.count{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  color: #a6a6a6;
+  padding-top: 20%;
+}
+.imgLike{
+width: 2em;
+height: auto;
+max-width: 2em;
+object-fit: contain;
+}
 .btnsStyle{
     width: 30%;
     max-width: 30%;
@@ -177,6 +199,9 @@ body {
     color: #66b3ff;
     cursor: pointer;
 }
+.count{
+ margin: 0 3%;
+}
 
 img{
     width: 100%;
@@ -184,6 +209,7 @@ img{
 
 .imgHome{
   margin-top: 10%;
+  margin-bottom: 20%;
 }
 
 .imgRegister{
@@ -195,6 +221,7 @@ img{
 .logoImg{
     width: 50%;
     margin-top: 20%;
+    margin-bottom: 6% ;
 }
 
 .information{
@@ -219,24 +246,32 @@ img{
     color: #ff5050;
 }
 
-.imgProfileDiv,
+.containerProfile{
+ max-height: 10%;
+}
+
 .profileDiv{
  display: flex ;
- height: 7em;
- margin-bottom: 5%;
+ height: 10%;
+ margin-bottom: 1%;
  justify-content: center;
  position: relative;
 }
 
 .imgProfileDiv{
-    z-index: 5;
+ display: flex ;
+ height: 15%;
+ margin-bottom: 1%;
+ justify-content: center;
+ position: relative;
+ z-index: 5;
 }
 
 .imgProfile{
     border: 5px solid  #ffffff;
     object-fit: contain;
-    max-width: 25%;
-    height: auto;
+    width: 23%;
+    max-width: 23%;
     border-radius: 50%;
     overflow: hidden;
     margin-top: 10%;
@@ -367,11 +402,39 @@ img{
     .root{
         max-width: 100%;
     }
+    
+    .btnGoogle,
+    .btnStyle,
+    .inputStyle{
+        width: 70%;
+        max-width: 70%;
+        height: 3em;
+    }
+    .btnStyleText {
+        font-size: 1em;
+    }
+    
+    .imgAuthor{
+        max-width: 5%;
+        height: auto;
+    }
+}
+@media (min-width: 1500px){ 
+    .root{
+        max-width: 50%;
+    }
     .navDiv{
         display: block;
     }
     .btnLogOut{
         display: none;
+    }
+
+    .nameDiv{
+        /* margin-top: 0;
+        padding-top: 0; */
+        background: #ffffff;
+        padding: 2% 0;
     }
     .containerDiv{
         max-width: 100%;
@@ -389,56 +452,20 @@ img{
     .loginDiv{
         grid-area: loginDiv;
     }
-    .btnGoogle,
-    .btnStyle,
-    .inputStyle{
-        width: 70%;
-        max-width: 70%;
-        height: 3em;
-    }
-    .btnStyleText {
-        font-size: 1em;
-    }
-    
-    .imgProfileDiv,
-    .profileDiv{
-     height: 10em;
-     margin-bottom: 10%;
-    }
-    
-    .imgProfileDiv{
-        margin-bottom: 15%;
-    }
-    .imgProfile{
-        max-width: 30%;
-    }
-    .imgAuthor{
-        max-width: 5%;
-        height: auto;
-    }
-}
-@media (min-width: 1500px){ 
-    .root{
-        max-width: 50%;
-    }
-    .navDiv{
-        display: block;
-    }
-    .btnLogOut{
-        display: none;
-    }
 
     .imgProfileDiv,
     .profileDiv{
      height: 10em;
-     margin-bottom: 10%;
+     margin-bottom: 1%;
     }
-    
+/*     
     .imgProfileDiv{
-        margin-bottom: 15%;
-    }
+        /* margin-bottom: 15%; */
+        /* display: none; */
+    } */
     .imgProfile{
-        max-width: 25%;
+        width: 60%;
+        max-width: 60%;
     }
     .formPublication{
         width: 80%;

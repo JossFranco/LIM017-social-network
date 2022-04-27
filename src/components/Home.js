@@ -36,7 +36,6 @@ export const home = () => {
   imgLogOut.setAttribute('src', './Image/cerrarSesion.svg');
   imgLogOut.setAttribute('class', 'imgLogOut');
 
-
   const profileDiv = document.createElement('div');
   profileDiv.setAttribute('class', 'profileDiv');
 
