@@ -1,0 +1,478 @@
+*{
+    padding: 0;
+    margin: 0; 
+    box-sizing: border-box;
+}
+
+body {
+    /* background: -webkit-linear-gradient(top,#99bbff ,#9999ff, ); */
+    background: #edf5f8;
+}
+
+.root{
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+}
+
+.divRegister,
+.divHome {
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    background: #ffffff;
+}
+
+.navDiv{
+    display: none;
+    background: #91c2d4;
+    margin-bottom: 1%;
+  }
+
+.logoHome{
+    max-width: 10%;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+.imgLogOut{
+    max-width: 1.2%;
+    margin-bottom: 1%;
+    display: inline-block;
+    position: absolute;
+    right: 25.5%;
+}
+
+
+.inputStyle{
+    border: 1px solid #f0e6ff;
+    outline:none;
+    width: 70%;
+    max-width: 70%;
+    height: 2em;
+    margin: 2%;
+    text-align: center;
+    box-shadow: 0px 0px 1px rgba(204, 204, 204, 0.712);
+    font-size: 1em;
+}
+
+.btnStyle {
+    width: 70%;
+    max-width: 70%;
+    height: 2em;
+    margin: 2%;
+    text-align: center;
+    font-size: 1em;
+    color: #ffffff;
+    font-weight: bold;
+    border: none; 
+    background: #6600ff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
+    cursor: pointer;
+}
+
+.btnUpdate,
+.btnLogOut,
+.btnSave {
+    width: 100%;
+    max-width: 100%;
+    height: 2em;
+    margin: 2%;
+    text-align: center;
+    font-size: 1em;
+    color: #ffffff;
+    font-weight: bold;
+    border: none; 
+    background: #6600ff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
+    cursor: pointer;
+
+}
+.containerCount{
+width: 30%;
+max-width:30% ;
+margin-left: 35%;
+display: flex;
+}
+
+.containerAuthor{
+    display: flex;
+
+}
+.count{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  color: #a6a6a6;
+  padding-top: 20%;
+}
+.imgLike{
+width: 2em;
+height: auto;
+max-width: 2em;
+object-fit: contain;
+}
+.btnsStyle{
+    width: 30%;
+    max-width: 30%;
+    height: 2.5em;
+    text-align: center;
+    font-size: 0.8em;
+    color: #8c8c8c;
+    font-weight: bold;
+    border: none; 
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgba(204, 204, 204, 0.712);
+    cursor: pointer;
+    margin: 0.5%;
+
+}
+
+.btnsStyle:hover{
+    background: #f2f2f2;
+    font-weight: bold;
+    color:#737373;
+}
+
+.containerDate{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 3%;
+  font-family:'Open Sans', sans-serif, Arial, Helvetica;
+  font-size: 0.8em;
+}
+
+.containerBtns{
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 1% ;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.btnLogOut{
+    width: 50%;
+    margin-left: 40%;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+}
+
+.btnUpdate,
+.btnSave{
+    margin: auto;
+}
+
+.btnUpdate{
+    background: #ff471a;
+}
+
+.btnStyle:hover{
+    box-shadow: 3px 0 30px rgba(163, 163, 163, 1);
+}
+
+.btnGoogle{
+    width: 70%;
+    max-width: 70%;
+    height: 2em;
+    margin: 2%;
+    text-align: center;
+    font-size: 1em;
+    color: #000000;
+    font-weight: bold;
+    border: 1px solid #f0e6ff;
+    border-radius: 50px;
+    background: #EAF2F8;
+    box-shadow: 0px 0px 1px rgba(204, 204, 204, 0.712);
+    cursor: pointer;
+}
+
+.btnStyleText {
+    font-size: 1em;
+    border: none;
+    background: #ffffff;
+    margin: 3% 0 5% 0;
+    color: #66b3ff;
+    cursor: pointer;
+}
+.count{
+ margin: 0 3%;
+}
+
+img{
+    width: 100%;
+}
+
+.imgHome{
+  margin-top: 10%;
+  margin-bottom: 20%;
+}
+
+.imgRegister{
+ margin: 3% 0 6% 0;
+ width: 80% ;
+ object-fit: contain;
+}
+
+.logoImg{
+    width: 50%;
+    margin-top: 20%;
+    margin-bottom: 6% ;
+}
+
+.information{
+    display: none;
+    width: 70%;
+    max-width: 70%;
+    margin: 2%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    font-size: bold;
+    color: #ff5050;
+    text-align: center;
+    position: relative;
+}
+
+.informationRegister{
+    color: #70db70;
+}
+
+.informationRegisterErr{
+    color: #ff5050;
+}
+
+.containerProfile{
+ max-height: 10%;
+}
+
+.profileDiv{
+ display: flex ;
+ height: 10%;
+ margin-bottom: 1%;
+ justify-content: center;
+ position: relative;
+}
+
+.imgProfileDiv{
+ display: flex ;
+ height: 15%;
+ margin-bottom: 1%;
+ justify-content: center;
+ position: relative;
+ z-index: 5;
+}
+
+.imgProfile{
+    border: 5px solid  #ffffff;
+    object-fit: contain;
+    width: 23%;
+    max-width: 23%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 10%;
+    z-index: 100;
+    position: absolute;
+}
+
+.nameDiv{
+    font-size: 1em;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.formPublication{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 5%;
+
+}
+.formEdit{
+    display: none;
+    background: #e6eeff ;
+    padding: 1%;
+}
+
+.formHidden{
+    visibility: hidden; 
+    width: 0;
+    height: 0;
+}
+
+.publicationText,
+.publicationTitle{
+    width: 100%;
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 0.5em;
+    outline: none;
+    font-size: 1em;
+    text-align: center;
+    font-family:'Open Sans', sans-serif, Arial, Helvetica;
+    border: 1px solid #ccccff; 
+    padding: 0.5em 0;
+}
+.publicationTitle:hover,
+.publicationText:hover{
+    background:  #e6f2ff;
+}
+.publicationText{
+    text-align: left;
+    padding: 0 0.5em;
+}
+
+.containerPosts{
+    margin: 1em;
+    font-size: 1.1em;
+}
+
+.descriptionPosts,
+.titlePost{
+    font-size: 1em;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.titlePost{
+    margin-bottom: 0.8em;
+    text-align: center;
+}
+
+.descriptionPosts{
+ font-size: 0.9em;
+}
+.userData{
+    color:#000000;
+    font-size: 1em;
+}
+
+.containerPublicationDiv{
+    border: 1px solid #3333cc;
+    max-width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1em;
+    background: #ffffff;
+}
+
+.errorPublication{
+    font-size: 1em;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 2%;
+}
+
+.imgAuthor{
+    object-fit: contain;
+    max-width: 9%;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 3%;
+    padding: 0%;
+}
+
+.authorPublication{
+ margin: 0%;
+ margin-bottom: 3%;
+ font-family:'Open Sans', sans-serif, Arial, Helvetica;
+ font-size: 0.8em;
+}
+
+
+.btnsDelete:disabled,
+.btnsEdit:disabled{
+    visibility: hidden; 
+}
+
+.btnLikeBlue{
+   color: #0073e6;
+
+} 
+
+@media (min-width: 760px){ 
+    .root{
+        max-width: 100%;
+    }
+    
+    .btnGoogle,
+    .btnStyle,
+    .inputStyle{
+        width: 70%;
+        max-width: 70%;
+        height: 3em;
+    }
+    .btnStyleText {
+        font-size: 1em;
+    }
+    
+    .imgAuthor{
+        max-width: 5%;
+        height: auto;
+    }
+}
+@media (min-width: 1500px){ 
+    .root{
+        max-width: 50%;
+    }
+    .navDiv{
+        display: block;
+    }
+    .btnLogOut{
+        display: none;
+    }
+
+    .nameDiv{
+        /* margin-top: 0;
+        padding-top: 0; */
+        background: #ffffff;
+        padding: 2% 0;
+    }
+    .containerDiv{
+        max-width: 100%;
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: repeat(2, auto);
+        grid-template-areas: "navDiv navDiv" "containerProfile loginDiv";
+    }
+    .navDiv{
+        grid-area: navDiv;
+    }
+    .containerProfile{
+        grid-area: containerProfile;
+    }
+    .loginDiv{
+        grid-area: loginDiv;
+    }
+
+    .imgProfileDiv,
+    .profileDiv{
+     height: 10em;
+     margin-bottom: 1%;
+    }
+/*     
+    .imgProfileDiv{
+        /* margin-bottom: 15%; */
+        /* display: none; */
+    } */
+    .imgProfile{
+        width: 60%;
+        max-width: 60%;
+    }
+    .formPublication{
+        width: 80%;
+    }
+    .containerPublicationDiv{
+        max-width: 90%;
+        margin: auto;
+        margin-bottom: 2%;
+    }
+}
