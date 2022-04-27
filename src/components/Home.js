@@ -111,7 +111,11 @@ export const home = () => {
   let id = '';
   formPublication.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (!editStatus && publicationTitle.value !== '' && publicationText.value !== '') {
+    if (
+      !editStatus
+      && publicationTitle.value !== ''
+      && publicationText.value !== ''
+    ) {
       publication(publicationTitle.value, publicationText.value);
       errorPublication.textContent = '';
     } else if (!editStatus && publicationTitle.value === '') {
@@ -139,7 +143,7 @@ export const home = () => {
         const btnsDelete = containerPublication.querySelectorAll('.btnsDelete');
         const btnsEdit = containerPublication.querySelectorAll('.btnsEdit');
         const btnsLikes = containerPublication.querySelectorAll('.btnsLikes');
-        
+
         btnsLikes.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             const userId = localStorage.getItem('email');
