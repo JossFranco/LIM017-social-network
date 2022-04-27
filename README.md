@@ -49,7 +49,8 @@ Como usuario quiero poner “Me gusta” a las publicaciones para apoyar a los p
 -	El contador debe sumar el “Me gusta”que  se agrega.
 -	El contador debe restar el “Me gusta” que se agregó anteriormente.
 
-#####Diseño
+#### Diseño
+
 ![](https://i.ibb.co/xqVRDzG/Movil.png)
 
 
