@@ -414,11 +414,12 @@ img {
     height: auto;
   }
   .containerDiv{
-    background-image: url("./Image/opaRepeat.PNG");
+    background-image: url("./Image/personOpa.PNG");
     background-repeat: repeat;
     padding: 0 1%;
   }
   .nameDiv {
+    margin-top: 1%;
     background: #ffffff;
     padding: 2% 0;
   }
@@ -473,9 +474,9 @@ img {
     margin: auto;
     margin-bottom: 2%;
   }
-  .containerDiv{
+  /* .containerDiv{
     background-image: url("./Image/opaRepeat.PNG");
     background-repeat: repeat;
     padding: 0 1%;
-  }
+  } */
 }
