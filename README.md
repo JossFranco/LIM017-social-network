@@ -51,5 +51,10 @@ Como usuario quiero poner “Me gusta” a las publicaciones para apoyar a los p
 
 #### Diseño
 
-![](https://i.ibb.co/xqVRDzG/Movil.png)
+-
+![](https://i.ibb.co/VwR6NBx/Movil1.png)
+-
+![](https://i.ibb.co/gJGCmDD/Movil2.png)
+-
+![](https://i.ibb.co/thbS7c3/Movil3.png)
 
