@@ -1,4 +1,3 @@
-// jest.fn()
 export const initializeApp = () => ({});
 export const collection = () => ({});
 export const getDocs = (collection) => ({});

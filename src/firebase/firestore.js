@@ -16,14 +16,9 @@ import {
 } from './control.js';
 import { db } from '../config/firebase.config.js';
 
-// const db = getFirestore();
-
+// eslint-disable-next-line no-return-await
 export const publication = async (title, text) => await addDoc(collection(db, 'posts'), {
-  title,
-  text,
-  author: localStorage.getItem('email'),
-  likes: [],
-  timestamp: serverTimestamp(),
+  title, text, author: localStorage.getItem('email'), likes: [], timestamp: serverTimestamp(),
 });
 
 const orderPublication = query(

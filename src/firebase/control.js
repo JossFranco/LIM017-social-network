@@ -28,7 +28,7 @@ import {
   arrayRemove,
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
-export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js'
+export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 export {
   getAuth,
   GoogleAuthProvider,
@@ -50,8 +50,6 @@ export {
   arrayUnion,
   arrayRemove,
 };
-
-// export const auth = getAuth(app);
 export {
   createUserWithEmailAndPassword,
   sendEmailVerification,
