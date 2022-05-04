@@ -2,9 +2,7 @@ import { onNavigate } from '../src/main.js';
 import { home } from '../src/components/Home.js';
 import { login } from '../src/components/Login.js';
 import { register } from '../src/components/Register.js';
-/**
- * @jest-environment jsdom
- */
+
 jest.mock('../src/firebase/control');
 
 describe('onNavigate()', () => {
