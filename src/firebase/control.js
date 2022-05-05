@@ -26,8 +26,10 @@ import {
   orderBy,
   arrayUnion,
   arrayRemove,
+// eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-firestore.js';
 
+// eslint-disable-next-line import/no-unresolved
 export { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.9/firebase-app.js';
 export {
   getAuth,
